@@ -1,0 +1,115 @@
+/* =========================================================
+   THE GROOT OOTY — Design Tokens / Variables
+   ========================================================= */
+
+:root {
+  /* --- Brand Colors --- */
+  --color-forest:       #1A2B1C;
+  --color-forest-deep:  #111B12;
+  --color-moss:         #2C4A2A;
+  --color-sage:         #4A6741;
+  --color-sage-light:   #5D8058;
+  --color-cream:        #F4EDE0;
+  --color-cream-warm:   #FAF6EF;
+  --color-warm-white:   #FDFAF5;
+  --color-beige:        #E5D9C3;
+  --color-beige-dark:   #C9B99A;
+  --color-brown:        #8B6E52;
+  --color-brown-light:  #A88E72;
+  --color-bronze:       #B8935A;
+  --color-bronze-dark:  #9E7C42;
+  --color-amber:        #D4A853;
+  --color-charcoal:     #2A2A28;
+  --color-charcoal-soft:#3D3D3A;
+  --color-stone:        #6B6560;
+  --color-mist:         rgba(255,255,255,0.08);
+
+  /* --- Semantic Colors --- */
+  --bg-dark:            var(--color-forest);
+  --bg-section:         var(--color-forest-deep);
+  --bg-card:            rgba(44, 74, 42, 0.25);
+  --bg-glass:           rgba(255, 255, 255, 0.06);
+  --bg-light:           var(--color-warm-white);
+  --text-primary:       var(--color-cream);
+  --text-secondary:     rgba(244, 237, 224, 0.70);
+  --text-muted:         rgba(244, 237, 224, 0.45);
+  --text-dark:          var(--color-charcoal);
+  --text-dark-secondary:var(--color-stone);
+  --accent-primary:     var(--color-bronze);
+  --accent-hover:       var(--color-amber);
+  --border-dark:        rgba(255,255,255,0.10);
+  --border-light:       rgba(0,0,0,0.10);
+
+  /* --- Typography --- */
+  --font-display:       'Playfair Display', Georgia, serif;
+  --font-body:          'Inter', system-ui, -apple-system, sans-serif;
+
+  --text-xs:    0.75rem;   /* 12px */
+  --text-sm:    0.875rem;  /* 14px */
+  --text-base:  1rem;      /* 16px */
+  --text-md:    1.125rem;  /* 18px */
+  --text-lg:    1.25rem;   /* 20px */
+  --text-xl:    1.5rem;    /* 24px */
+  --text-2xl:   1.875rem;  /* 30px */
+  --text-3xl:   2.25rem;   /* 36px */
+  --text-4xl:   3rem;      /* 48px */
+  --text-5xl:   3.75rem;   /* 60px */
+  --text-6xl:   4.5rem;    /* 72px */
+  --text-7xl:   5.5rem;    /* 88px */
+
+  /* --- Spacing --- */
+  --space-1:    0.25rem;
+  --space-2:    0.5rem;
+  --space-3:    0.75rem;
+  --space-4:    1rem;
+  --space-5:    1.25rem;
+  --space-6:    1.5rem;
+  --space-8:    2rem;
+  --space-10:   2.5rem;
+  --space-12:   3rem;
+  --space-16:   4rem;
+  --space-20:   5rem;
+  --space-24:   6rem;
+  --space-32:   8rem;
+  --space-40:   10rem;
+
+  /* --- Borders & Radius --- */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.18);
+  --shadow-md:   0 8px 32px rgba(0,0,0,0.28);
+  --shadow-lg:   0 20px 60px rgba(0,0,0,0.40);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.15);
+  --shadow-glow: 0 0 40px rgba(184,147,90,0.25);
+
+  /* --- Transitions --- */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:   200ms;
+  --dur-base:   350ms;
+  --dur-slow:   600ms;
+  --dur-xslow:  900ms;
+
+  /* --- Layout --- */
+  --container-max:  1320px;
+  --container-pad:  clamp(1rem, 5vw, 4rem);
+  --nav-height:     76px;
+  --section-pad:    clamp(4rem, 10vw, 8rem);
+  --mobile-bar:     64px;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast:   0ms;
+    --dur-base:   0ms;
+    --dur-slow:   0ms;
+    --dur-xslow:  0ms;
+  }
+}

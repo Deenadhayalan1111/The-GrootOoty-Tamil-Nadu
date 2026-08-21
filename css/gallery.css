@@ -1,0 +1,119 @@
+/* =========================================================
+   THE GROOT OOTY — Gallery Page CSS
+   ========================================================= */
+
+.gallery-page {
+  background: var(--color-forest-deep);
+  padding-top: var(--nav-height);
+  min-height: 100vh;
+}
+
+.gallery-hero {
+  padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------
+   FILTER TABS
+   --------------------------------------------------------- */
+
+.gallery-filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.gallery-filter-btn {
+  padding: 0.625rem 1.375rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border: 1.5px solid var(--border-dark);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+  font-family: var(--font-body);
+}
+
+.gallery-filter-btn:hover {
+  border-color: var(--color-bronze);
+  color: var(--color-cream);
+}
+
+.gallery-filter-btn.active {
+  background: var(--color-bronze);
+  border-color: var(--color-bronze);
+  color: var(--color-forest-deep);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   MASONRY GALLERY
+   --------------------------------------------------------- */
+
+.gallery-masonry {
+  columns: 3;
+  column-gap: var(--space-4);
+  padding: 0 var(--container-pad);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-bottom: var(--space-16);
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.gallery-item:hover img { transform: scale(1.04); }
+
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(17,27,18,0.45);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+.gallery-item-overlay svg {
+  color: var(--color-cream);
+  width: 32px;
+  height: 32px;
+}
+
+.gallery-item.hidden {
+  display: none;
+}
+
+@media (max-width: 1024px) { .gallery-masonry { columns: 2; } }
+@media (max-width: 640px)  { .gallery-masonry { columns: 2; column-gap: var(--space-2); } }
+@media (max-width: 400px)  { .gallery-masonry { columns: 1; } }
+
+/* ---------------------------------------------------------
+   GALLERY PAGINATION (Load More)
+   --------------------------------------------------------- */
+
+.gallery-load-more {
+  text-align: center;
+  padding: var(--space-8) 0 var(--space-16);
+}
