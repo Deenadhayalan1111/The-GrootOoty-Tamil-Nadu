@@ -95,28 +95,29 @@
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-size: clamp(2.75rem, 7vw, 6rem);
   font-weight: 700;
-  line-height: 1.0;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-cream);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
   opacity: 0;
   animation: fadeInUp 0.8s var(--ease-out) 0.5s both;
-  max-width: 750px;
+  max-width: 780px;
 }
 
 .hero-title em {
   font-style: italic;
   color: var(--color-bronze);
+  display: inline-block;
 }
 
 .hero-subtitle {
   font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: rgba(244,237,224,0.75);
+  color: rgba(244,237,224,0.80);
   font-weight: 300;
-  line-height: 1.65;
-  max-width: 480px;
+  line-height: 1.7;
+  max-width: 520px;
   margin-bottom: var(--space-8);
   opacity: 0;
   animation: fadeInUp 0.8s var(--ease-out) 0.7s both;
@@ -127,23 +128,18 @@
   align-items: center;
   gap: var(--space-4);
   flex-wrap: wrap;
+  margin-bottom: var(--space-8);
   opacity: 0;
   animation: fadeInUp 0.8s var(--ease-out) 0.9s both;
 }
 
 /* ---------------------------------------------------------
-   HERO BADGES (bottom strip)
+   HERO BADGES (in content flow for no collision)
    --------------------------------------------------------- */
 
 .hero-badges {
-  position: absolute;
-  bottom: calc(var(--space-16) + 30px);
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 10;
-  padding: 0 var(--container-pad);
-  max-width: var(--container-max);
-  margin: 0 auto;
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
@@ -181,7 +177,7 @@
 
 .hero-scroll {
   position: absolute;
-  bottom: var(--space-8);
+  bottom: var(--space-6);
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -195,36 +191,43 @@
 
 @media (max-width: 768px) {
   .hero {
-    align-items: flex-end;
-    padding-bottom: calc(var(--mobile-bar) + var(--space-10));
+    min-height: 100vh;
+    height: auto;
+    padding-top: calc(var(--nav-height) + var(--space-6));
+    padding-bottom: calc(var(--mobile-bar) + var(--space-8));
+    align-items: center;
   }
 
   .hero-content {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
   }
 
   .hero-title {
-    font-size: clamp(2.2rem, 11vw, 3.5rem);
+    font-size: clamp(2.2rem, 9vw, 3.2rem);
+    line-height: 1.18;
+    margin-bottom: var(--space-4);
   }
 
   .hero-subtitle {
     font-size: var(--text-base);
+    line-height: 1.6;
     max-width: 100%;
+    margin-bottom: var(--space-6);
   }
 
   .hero-actions {
     gap: var(--space-3);
+    margin-bottom: var(--space-6);
   }
 
   .hero-badges {
-    bottom: calc(var(--mobile-bar) + var(--space-20));
     gap: var(--space-2);
   }
 
   .hero-badge {
-    font-size: 0.6rem;
-    padding: 5px 10px;
+    font-size: 0.7rem;
+    padding: 6px 12px;
   }
 
   .hero-scroll {
@@ -233,7 +236,7 @@
 
   .hero-overlay {
     background:
-      linear-gradient(to top, rgba(17,27,18,0.88) 0%, rgba(17,27,18,0.50) 50%, rgba(17,27,18,0.25) 100%);
+      linear-gradient(to top, rgba(17,27,18,0.92) 0%, rgba(17,27,18,0.60) 50%, rgba(17,27,18,0.40) 100%);
   }
 }
 
@@ -241,3 +244,4 @@
   .hero-actions .btn { width: 100%; justify-content: center; }
   .hero-actions { flex-direction: column; align-items: stretch; }
 }
+
