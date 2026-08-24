@@ -388,6 +388,7 @@ window.scrollToSection = function(id) {
    --------------------------------------------------------- */
 function initGrootThemeSelector() {
   const themes = [
+    { id: "default", name: "Default Baseline 🌲", colors: ["#1A2B1C", "#111B12", "#B8935A"] },
     { id: "royal-burgundy", name: "Royal Burgundy 🍷", colors: ["#1B0F13", "#281319", "#C9A46A"] },
     { id: "obsidian-noir", name: "Obsidian Noir 🖤", colors: ["#090A09", "#111311", "#C8A65B"] },
     { id: "ooty-forest", name: "Ooty Forest 🌲", colors: ["#10251C", "#17352A", "#C5A96A"] },
@@ -424,18 +425,22 @@ function initGrootThemeSelector() {
   };
 
   // If a theme was previously saved, update the button UI accent & apply data-theme attribute
-  if (savedThemeId) {
+  if (savedThemeId && savedThemeId !== "default") {
     const match = themes.find(t => t.id === savedThemeId);
     if (match) {
       updateButtonThemeAccent(match);
       document.documentElement.setAttribute("data-theme", savedThemeId);
     }
+  } else {
+    updateButtonThemeAccent(themes[0]);
   }
 
   themes.forEach((t) => {
     const swatch = document.createElement("div");
     swatch.className = "groot-theme-swatch";
-    if (t.id === savedThemeId) swatch.classList.add("groot-theme-selected");
+    if (t.id === savedThemeId || (!savedThemeId && t.id === "default")) {
+      swatch.classList.add("groot-theme-selected");
+    }
     swatch.setAttribute("data-label", t.name);
     swatch.setAttribute("role", "button");
     swatch.setAttribute("tabindex", "0");
@@ -448,11 +453,17 @@ function initGrootThemeSelector() {
     swatches.push({ element: swatch, theme: t });
 
     const handleSelect = () => {
-      // Phase 2: Apply targeted theme accent attribute to html
-      document.documentElement.setAttribute("data-theme", t.id);
-      try {
-        localStorage.setItem("groot-ooty-theme", t.id);
-      } catch (e) {}
+      if (t.id === "default") {
+        document.documentElement.removeAttribute("data-theme");
+        try {
+          localStorage.removeItem("groot-ooty-theme");
+        } catch (e) {}
+      } else {
+        document.documentElement.setAttribute("data-theme", t.id);
+        try {
+          localStorage.setItem("groot-ooty-theme", t.id);
+        } catch (e) {}
+      }
 
       swatches.forEach(s => s.element.classList.remove("groot-theme-selected"));
       swatch.classList.add("groot-theme-selected");
