@@ -113,3 +113,194 @@
     --dur-xslow:  0ms;
   }
 }
+
+/* =========================================================
+   ISOLATED THEME SELECTOR COMPONENT (PHASE 1)
+   Strictly scoped under .groot-theme-* prefix.
+   Zero impact on existing website CSS/HTML.
+   ========================================================= */
+
+.groot-theme-container {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 50px;
+  height: 50px;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .groot-theme-container {
+    bottom: calc(24px + var(--mobile-bar, 64px));
+  }
+}
+
+.groot-theme-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-bronze, #B8935A);
+  color: var(--color-forest-deep, #111B12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.groot-theme-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+}
+
+.groot-theme-btn.groot-theme-active {
+  background: var(--color-cream, #F4EDE0);
+  transform: rotate(90deg);
+}
+
+.groot-theme-swatch {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+  transform: translate(0, 0) scale(0);
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.groot-theme-swatch::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-family: system-ui, -apple-system, sans-serif;
+  white-space: nowrap;
+  background: rgba(17, 27, 18, 0.92);
+  color: #F4EDE0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.groot-theme-swatch:hover::after {
+  opacity: 1;
+}
+
+.groot-theme-container.groot-theme-open .groot-theme-swatch {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1);
+}
+
+.groot-theme-swatch:hover {
+  transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1.15) !important;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.45);
+}
+
+.groot-theme-swatch.groot-theme-selected {
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.8), 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================================
+   PHASE 2: LIMITED ACCENT THEME APPLICATION
+   Applies theme accent colors ONLY to:
+   - .btn-primary
+   - .btn-ghost
+   - .room-card-cta
+   - .section-badge
+   Zero impact on layout, cards, backgrounds, fonts, or images.
+   ========================================================= */
+
+/* Theme 1: Royal Emerald (Green + Gold) */
+[data-theme="royal-emerald"] {
+  --groot-primary: #082F24;
+  --groot-accent: #E2C275;
+  --groot-accent-dark: #C4A459;
+}
+
+/* Theme 2: Midnight Sapphire (Blue + Platinum Silver) */
+[data-theme="midnight-sapphire"] {
+  --groot-primary: #07162F;
+  --groot-accent: #C9D4E5;
+  --groot-accent-dark: #A5B3C9;
+}
+
+/* Theme 3: Burgundy Royale (Burgundy + Rose Gold) */
+[data-theme="burgundy-royale"] {
+  --groot-primary: #350D19;
+  --groot-accent: #D39A8A;
+  --groot-accent-dark: #B67B6B;
+}
+
+/* Theme 4: Imperial Plum (Purple + Lavender) */
+[data-theme="imperial-plum"] {
+  --groot-primary: #24112F;
+  --groot-accent: #C8A9D9;
+  --groot-accent-dark: #A786B9;
+}
+
+/* Theme 5: Obsidian Gold (Black + Metallic Gold) */
+[data-theme="obsidian-gold"] {
+  --groot-primary: #181818;
+  --groot-accent: #D4AF37;
+  --groot-accent-dark: #B59223;
+}
+
+/* Theme 6: Sage Champagne (Sage + Terracotta) */
+[data-theme="sage-champagne"] {
+  --groot-primary: #3D4A38;
+  --groot-accent: #C9825B;
+  --groot-accent-dark: #AA6540;
+}
+
+/* Targeted Element Accents (Active ONLY when data-theme attribute is present) */
+[data-theme] .btn-primary {
+  background: var(--groot-accent) !important;
+  color: var(--groot-primary) !important;
+}
+[data-theme] .btn-primary:hover {
+  background: var(--groot-accent-dark) !important;
+}
+
+[data-theme] .btn-ghost {
+  color: var(--groot-accent) !important;
+  border-color: var(--groot-accent) !important;
+}
+[data-theme] .btn-ghost:hover {
+  background: var(--groot-accent) !important;
+  color: var(--groot-primary) !important;
+}
+
+[data-theme] .room-card-cta {
+  color: var(--groot-accent) !important;
+}
+
+[data-theme] .section-badge {
+  color: var(--groot-accent) !important;
+}

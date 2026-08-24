@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhoneLinks();
   initLazyImages();
   setActiveNavLink();
+  initGrootThemeSelector();
 });
 
 /* ---------------------------------------------------------
@@ -378,3 +379,133 @@ window.scrollToSection = function(id) {
     window.scrollTo({ top, behavior: 'smooth' });
   }
 };
+
+/* ---------------------------------------------------------
+   ISOLATED THEME SELECTOR COMPONENT (PHASE 1 ONLY)
+   Strictly scoped under .groot-theme-* classes.
+   Operates only on its own floating button UI.
+   Zero impact on existing website CSS/HTML.
+   --------------------------------------------------------- */
+function initGrootThemeSelector() {
+  const themes = [
+    { id: "royal-emerald", name: "Royal Emerald", colors: ["#176B4D", "#082F24", "#E2C275"] },
+    { id: "midnight-sapphire", name: "Midnight Sapphire", colors: ["#2456A6", "#07162F", "#C9D4E5"] },
+    { id: "burgundy-royale", name: "Burgundy Royale", colors: ["#7A2035", "#350D19", "#D39A8A"] },
+    { id: "imperial-plum", name: "Imperial Plum", colors: ["#6A3D86", "#24112F", "#C8A9D9"] },
+    { id: "obsidian-gold", name: "Obsidian Gold", colors: ["#181818", "#292929", "#D4AF37"] },
+    { id: "sage-champagne", name: "Sage Champagne", colors: ["#84977E", "#3D4A38", "#C9825B"] }
+  ];
+
+  let savedThemeId = null;
+  try {
+    savedThemeId = localStorage.getItem("groot-ooty-theme");
+  } catch (e) {
+    // Fail safe if localStorage disabled
+  }
+
+  const container = document.createElement("div");
+  container.className = "groot-theme-container";
+  container.setAttribute("aria-label", "Theme Selector");
+
+  // Floating Theme Button
+  const toggleBtn = document.createElement("button");
+  toggleBtn.className = "groot-theme-btn";
+  toggleBtn.setAttribute("type", "button");
+  toggleBtn.setAttribute("aria-label", "Open Theme Selector");
+  toggleBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>`;
+  container.appendChild(toggleBtn);
+
+  const swatches = [];
+
+  const updateButtonThemeAccent = (themeObj) => {
+    if (themeObj) {
+      toggleBtn.style.background = `linear-gradient(135deg, ${themeObj.colors[0]} 0%, ${themeObj.colors[1]} 100%)`;
+      toggleBtn.style.color = themeObj.colors[2];
+      toggleBtn.style.borderColor = themeObj.colors[2];
+    }
+  };
+
+  // If a theme was previously saved, update the button UI accent & apply data-theme attribute
+  if (savedThemeId) {
+    const match = themes.find(t => t.id === savedThemeId);
+    if (match) {
+      updateButtonThemeAccent(match);
+      document.documentElement.setAttribute("data-theme", savedThemeId);
+    }
+  }
+
+  themes.forEach((t) => {
+    const swatch = document.createElement("div");
+    swatch.className = "groot-theme-swatch";
+    if (t.id === savedThemeId) swatch.classList.add("groot-theme-selected");
+    swatch.setAttribute("data-label", t.name);
+    swatch.setAttribute("role", "button");
+    swatch.setAttribute("tabindex", "0");
+    swatch.setAttribute("aria-label", `Select theme ${t.name}`);
+    
+    // Scoped swatch styling
+    swatch.style.background = `linear-gradient(135deg, ${t.colors[0]} 0%, ${t.colors[1]} 50%, ${t.colors[2]} 100%)`;
+    
+    container.appendChild(swatch);
+    swatches.push({ element: swatch, theme: t });
+
+    const handleSelect = () => {
+      // Phase 2: Apply targeted theme accent attribute to html
+      document.documentElement.setAttribute("data-theme", t.id);
+      try {
+        localStorage.setItem("groot-ooty-theme", t.id);
+      } catch (e) {}
+
+      swatches.forEach(s => s.element.classList.remove("groot-theme-selected"));
+      swatch.classList.add("groot-theme-selected");
+
+      updateButtonThemeAccent(t);
+
+      // Close popup
+      container.classList.remove("groot-theme-open");
+      toggleBtn.classList.remove("groot-theme-active");
+    };
+
+    swatch.addEventListener("click", handleSelect);
+    swatch.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleSelect();
+      }
+    });
+  });
+
+  document.body.appendChild(container);
+
+  // Position calculation for an adaptive 90-degree quadrant arc (Right to Top)
+  const updateRadialPositions = () => {
+    const radius = window.innerWidth <= 430 ? 110 : 130; 
+    const count = swatches.length;
+    swatches.forEach((item, i) => {
+      const angleDeg = (i / (count - 1)) * 90;
+      const angleRad = angleDeg * (Math.PI / 180);
+      const x = Math.cos(angleRad) * radius;
+      const y = -Math.sin(angleRad) * radius; // Negative Y moves UP in CSS translate
+      
+      item.element.style.setProperty('--tx', `${x}px`);
+      item.element.style.setProperty('--ty', `${y}px`);
+    });
+  };
+
+  updateRadialPositions();
+  window.addEventListener('resize', updateRadialPositions);
+
+  // Toggle Popup
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = container.classList.toggle("groot-theme-open");
+    toggleBtn.classList.toggle("groot-theme-active", isOpen);
+  });
+
+  // Close on outside click
+  document.addEventListener("click", (e) => {
+    if (!container.contains(e.target) && container.classList.contains("groot-theme-open")) {
+      container.classList.remove("groot-theme-open");
+      toggleBtn.classList.remove("groot-theme-active");
+    }
+  });
+}
