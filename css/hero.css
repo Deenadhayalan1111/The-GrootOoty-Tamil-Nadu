@@ -9,10 +9,14 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100svh;
-  min-height: 600px;
+  min-height: 100svh;
+  min-height: 100dvh;
+  height: auto;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--nav-height) + var(--space-4));
+  padding-bottom: var(--space-8);
   overflow: hidden;
 }
 
@@ -24,12 +28,23 @@
 }
 
 .hero-bg-img {
-  width: 100%;
-  height: 115%;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
-  object-position: center;
+  object-position: center bottom !important;
+  transform-origin: right bottom !important;
   will-change: transform;
-  animation: kenburns 25s ease-in-out infinite;
+  animation: hero-kenburns 25s ease-in-out infinite;
+  image-rendering: high-quality;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@keyframes hero-kenburns {
+  0%   { transform: scale(1.15) translateX(0); }
+  50%  { transform: scale(1.22) translateX(-1%); }
+  100% { transform: scale(1.15) translateX(0); }
 }
 
 /* Overlay layers */
@@ -39,7 +54,7 @@
   z-index: 1;
   background:
     linear-gradient(to right, rgba(17,27,18,0.75) 0%, rgba(17,27,18,0.30) 60%, transparent 100%),
-    linear-gradient(to top, rgba(17,27,18,0.70) 0%, transparent 50%);
+    linear-gradient(to top, var(--bg-dark) 0%, transparent 15%);
 }
 
 /* Mist atmosphere effect */
@@ -62,7 +77,6 @@
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-pad);
-  padding-top: var(--nav-height);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -186,8 +200,47 @@
 }
 
 /* ---------------------------------------------------------
-   RESPONSIVE
+   RESPONSIVE & DESKTOP COMPOSITION
    --------------------------------------------------------- */
+
+@media (min-width: 1025px) {
+  .hero {
+    background-color: var(--bg-dark);
+  }
+  .hero-bg {
+    left: auto;
+    right: 5vw;
+    top: 6vh;
+    bottom: 6vh;
+    height: 88vh;
+    width: auto;
+    max-width: 45vw;
+    aspect-ratio: 1087 / 1446;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+    mask-image: linear-gradient(to right, transparent 0%, black 25%);
+    border-radius: 8px; /* Subtle premium edge */
+  }
+  .hero-bg-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; 
+    object-position: center !important;
+    animation: none !important; /* Disable zoom to prevent any cropping */
+    transform: none !important;
+  }
+  .hero-overlay {
+    background: linear-gradient(to right, rgba(17,27,18,0.5) 0%, transparent 60%);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  @keyframes hero-kenburns {
+    0%   { transform: scale(1.10) translateX(0); }
+    50%  { transform: scale(1.15) translateX(-1%); }
+    100% { transform: scale(1.10) translateX(0); }
+  }
+}
 
 @media (max-width: 768px) {
   .hero {
@@ -195,7 +248,7 @@
     height: auto;
     padding-top: calc(var(--nav-height) + var(--space-6));
     padding-bottom: calc(var(--mobile-bar) + var(--space-8));
-    align-items: center;
+    justify-content: center;
   }
 
   .hero-content {
@@ -237,6 +290,12 @@
   .hero-overlay {
     background:
       linear-gradient(to top, rgba(17,27,18,0.92) 0%, rgba(17,27,18,0.60) 50%, rgba(17,27,18,0.40) 100%);
+  }
+
+  .hero-bg-img {
+    object-position: center bottom !important;
+    transform-origin: center bottom !important;
+    animation: kenburns 25s ease-in-out infinite; /* Standard scale on mobile */
   }
 }
 

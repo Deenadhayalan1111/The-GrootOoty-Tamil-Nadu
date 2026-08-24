@@ -128,12 +128,27 @@
   position: relative;
 }
 
+.room-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--dur-slow) var(--ease-out);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 .parallax-img {
   width: 100%;
   height: 115%;
   object-fit: cover;
+  object-position: center;
   will-change: transform;
-  transform: translateY(0px);
+  transform: translateY(0px) translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: auto;
 }
 
 /* ---------------------------------------------------------

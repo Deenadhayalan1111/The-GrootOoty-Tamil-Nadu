@@ -11,6 +11,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
 }
@@ -38,11 +39,33 @@ body {
   border-radius: 2px;
 }
 
-/* Images */
+/* Images — 4K quality rendering */
 img {
   display: block;
   max-width: 100%;
   height: auto;
+  /* Full 4K Photo Quality */
+  image-rendering: high-quality;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Smooth rendering for cover/parallax images (overrides crisp-edges for scaled fills) */
+img.parallax-img,
+img.hero-bg-img,
+img.room-card-img-wrap img,
+img.intro-image-main,
+.exp-hero img,
+.exp-card-img,
+.gallery-item img,
+.day-image,
+.ooty-card-img,
+.food-img-main {
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 a {

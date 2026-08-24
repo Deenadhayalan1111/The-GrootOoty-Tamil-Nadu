@@ -21,20 +21,25 @@ function initHeader() {
   const header = document.getElementById('site-header');
   if (!header) return;
 
-  let lastScroll = 0;
+  let ticking = false;
 
   const onScroll = () => {
     const scroll = window.scrollY;
-
     if (scroll > 60) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-    lastScroll = scroll;
+    ticking = false;
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+  
   onScroll(); // init state
 }
 
@@ -128,24 +133,35 @@ function initParallax() {
   const parallaxEls = document.querySelectorAll('.parallax-img');
   if (!parallaxEls.length) return;
 
+  let ticking = false;
+
   const onScroll = () => {
+    const viewH = window.innerHeight;
+    
     parallaxEls.forEach(img => {
       const wrapper = img.closest('.parallax-wrapper') || img.closest('[class*="section"]');
       if (!wrapper) return;
 
       const rect = wrapper.getBoundingClientRect();
-      const viewH = window.innerHeight;
 
       if (rect.bottom < 0 || rect.top > viewH) return;
 
       const scrollFrac = (viewH - rect.top) / (viewH + rect.height);
       const offset = (scrollFrac - 0.5) * 80;
 
-      img.style.transform = `translateY(${offset}px)`;
+      img.style.transform = `translate3d(0, ${offset}px, 0)`; // Use translate3d for hardware acceleration
     });
+    
+    ticking = false;
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+  
   onScroll();
 }
 

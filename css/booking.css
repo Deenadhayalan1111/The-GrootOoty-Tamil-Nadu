@@ -661,8 +661,6 @@
   margin-bottom: var(--space-2);
 }
 
-.review-field { }
-
 .review-field-label {
   font-size: var(--text-xs);
   color: var(--text-muted);

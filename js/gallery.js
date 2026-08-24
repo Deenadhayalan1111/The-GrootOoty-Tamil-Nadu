@@ -1,5 +1,5 @@
 /* =========================================================
-   THE GROOT OOTY — Gallery JS (Masonry, Filters, Lightbox)
+   THE GROOT OOTY � Gallery JS (Masonry, Filters, Lightbox)
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,23 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
    --------------------------------------------------------- */
 
 const GALLERY_IMAGES = [
-  { src: 'assets/images/hero-main.png',         alt: 'The Groot property exterior',        category: 'property' },
-  { src: 'assets/images/aframe-exterior.png',   alt: 'A-Frame cabin exterior',             category: 'rooms' },
-  { src: 'assets/images/aframe-interior.png',   alt: 'A-Frame interior',                   category: 'rooms' },
-  { src: 'assets/images/glasshouse-exterior.png',alt: 'Glass House exterior',              category: 'rooms' },
-  { src: 'assets/images/glasshouse-interior.png',alt: 'Glass House interior view',         category: 'rooms' },
-  { src: 'assets/images/standard-room.png',     alt: 'Standard Room',                      category: 'rooms' },
-  { src: 'assets/images/suite-interior.png',    alt: 'Luxurious Suite',                    category: 'rooms' },
-  { src: 'assets/images/campfire-night.png',    alt: 'Campfire night at The Groot',        category: 'campfire' },
-  { src: 'assets/images/food-homemade.png',     alt: 'Home-cooked food at The Groot',      category: 'food' },
-  { src: 'assets/images/property-garden.png',   alt: 'The Groot garden',                   category: 'property' },
-  { src: 'assets/images/morning-mist.png',      alt: 'Ooty morning mist',                  category: 'ooty' },
-  { src: 'assets/images/ooty-lake.png',         alt: 'Ooty Lake',                          category: 'ooty' },
-  { src: 'assets/images/tea-estate.png',        alt: 'Nilgiri tea estates',                category: 'ooty' },
-  // Duplicates for richer gallery
-  { src: 'assets/images/campfire-night.png',    alt: 'Evening campfire gathering',         category: 'experience' },
-  { src: 'assets/images/property-garden.png',   alt: 'Garden pathway at The Groot',        category: 'property' },
-  { src: 'assets/images/food-homemade.png',     alt: 'Authentic South Indian breakfast',   category: 'food' },
+  // Property & Exterior
+  { src: 'assets/images/gen-misty-exterior.png', alt: 'Misty property exterior', category: 'property' },
+  { src: 'assets/images/gen-property-day.png', alt: 'A-frame at The Groot during the day', category: 'property' },
+  { src: 'assets/images/gen-property-night.png', alt: 'The Groot property illuminated at night', category: 'property' },
+  // Rooms & Interiors
+  { src: 'assets/images/gen-bedroom.png', alt: 'Cozy bedroom interior at The Groot', category: 'rooms' },
+  { src: 'assets/images/gen-room-cozy.png', alt: 'Cozy reading nook inside the A-frame', category: 'rooms' },
+  { src: 'assets/images/gen-forest-window.png', alt: 'Triangular glass window with forest view', category: 'rooms' },
+  { src: 'assets/images/gen-bathroom.png', alt: 'Rustic premium bathroom vanity', category: 'rooms' },
+  // Campfire
+  { src: 'assets/images/IMG-20260821-WA0041.jpg', alt: 'The Groot at night property entrance', category: 'campfire' },
+  { src: 'assets/images/gen-campfire-friends.png', alt: 'Outdoor campfire setup in the evening', category: 'campfire' },
+  // Food
+  { src: 'assets/images/IMG-20260821-WA0041.jpg', alt: 'Home-cooked food at The Groot', category: 'food' },
+  // Experience
+  { src: 'assets/images/IMG-20260821-WA0037.jpg', alt: 'A-Frame exterior experience The Groot', category: 'experience' },
+  { src: 'assets/images/gen-nilgiri-nature.png', alt: 'Misty Nilgiri nature surrounding the property', category: 'experience' },
+  // Ooty
+  { src: 'assets/images/gen-ooty-views.png', alt: 'Scenic viewpoint in Ooty', category: 'ooty' },
+  { src: 'assets/images/gen-ooty-property.png', alt: 'Lush greenery and tea estates in Ooty', category: 'ooty' },
+  { src: 'assets/images/gen-nilgiri-hills.png', alt: 'Winding roads through Nilgiri hills', category: 'ooty' },
+  // Additional property
+  { src: 'assets/images/gen-property-alt.png', alt: 'Outdoor dining deck at The Groot Ooty', category: 'property' },
 ];
 
 let currentIndex = 0;
