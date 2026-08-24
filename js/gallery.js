@@ -13,28 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const GALLERY_IMAGES = [
   // Property & Exterior
-  { src: 'assets/images/gen-misty-exterior.png', alt: 'Misty property exterior', category: 'property' },
-  { src: 'assets/images/gen-property-day.png', alt: 'A-frame at The Groot during the day', category: 'property' },
-  { src: 'assets/images/gen-property-night.png', alt: 'The Groot property illuminated at night', category: 'property' },
+  { src: 'assets/images/1000032834_professional.webp', alt: 'Real 4K property exterior at The Groot Ooty', category: 'property' },
+  { src: 'assets/images/1000032835_professional.webp', alt: 'Real 4K misty Nilgiri property landscape', category: 'property' },
+  { src: 'assets/images/1000032841_professional.webp', alt: 'Real 4K illuminated property at night', category: 'property' },
+  { src: 'assets/images/IMG-20260821-WA0037.jpg', alt: 'Glass House outdoor view deck', category: 'property' },
   // Rooms & Interiors
-  { src: 'assets/images/gen-bedroom.png', alt: 'Cozy bedroom interior at The Groot', category: 'rooms' },
-  { src: 'assets/images/gen-room-cozy.png', alt: 'Cozy reading nook inside the A-frame', category: 'rooms' },
-  { src: 'assets/images/gen-forest-window.png', alt: 'Triangular glass window with forest view', category: 'rooms' },
-  { src: 'assets/images/gen-bathroom.png', alt: 'Rustic premium bathroom vanity', category: 'rooms' },
-  // Campfire
-  { src: 'assets/images/IMG-20260821-WA0041.jpg', alt: 'The Groot at night property entrance', category: 'campfire' },
-  { src: 'assets/images/gen-campfire-friends.png', alt: 'Outdoor campfire setup in the evening', category: 'campfire' },
-  // Food
-  { src: 'assets/images/IMG-20260821-WA0041.jpg', alt: 'Home-cooked food at The Groot', category: 'food' },
-  // Experience
-  { src: 'assets/images/IMG-20260821-WA0037.jpg', alt: 'A-Frame exterior experience The Groot', category: 'experience' },
-  { src: 'assets/images/gen-nilgiri-nature.png', alt: 'Misty Nilgiri nature surrounding the property', category: 'experience' },
-  // Ooty
-  { src: 'assets/images/gen-ooty-views.png', alt: 'Scenic viewpoint in Ooty', category: 'ooty' },
-  { src: 'assets/images/gen-ooty-property.png', alt: 'Lush greenery and tea estates in Ooty', category: 'ooty' },
-  { src: 'assets/images/gen-nilgiri-hills.png', alt: 'Winding roads through Nilgiri hills', category: 'ooty' },
-  // Additional property
-  { src: 'assets/images/gen-property-alt.png', alt: 'Outdoor dining deck at The Groot Ooty', category: 'property' },
+  { src: 'assets/images/1000032836_professional.webp', alt: 'Real 4K A-Frame cabin exterior and wooden interior', category: 'rooms' },
+  { src: 'assets/images/1000032837_professional.webp', alt: 'Real 4K Glass House panoramic room experience', category: 'rooms' },
+  { src: 'assets/images/1000032838_professional.webp', alt: 'Real 4K Luxurious Suite bedroom interior', category: 'rooms' },
+  { src: 'assets/images/1000032839_professional.webp', alt: 'Real 4K Standard Room cozy bedroom interior', category: 'rooms' },
+  { src: 'assets/images/IMG-20260821-WA0035.jpg', alt: 'Cozy wooden reading nook inside the cabin', category: 'rooms' },
+  // Campfire & Night
+  { src: 'assets/images/1000032841_professional.webp', alt: 'Real 4K campfire evening under Nilgiri stars', category: 'campfire' },
+  { src: 'assets/images/IMG-20260821-WA0036.jpg', alt: 'Outdoor campfire gathering with friends', category: 'campfire' },
+  // Food & Dining
+  { src: 'assets/images/IMG-20260821-WA0041.jpg', alt: 'Authentic South Indian home-cooked meal at The Groot', category: 'food' },
+  // Experience & Nature
+  { src: 'assets/images/1000032840_professional.webp', alt: 'Real 4K lush Nilgiri greenery and tea gardens', category: 'experience' },
+  { src: 'assets/images/IMG-20260821-WA0034.jpg', alt: 'Guided tea estate walk and mountain views', category: 'experience' },
+  // Ooty Attractions & Views
+  { src: 'assets/images/IMG-20260821-WA0039.jpg', alt: 'Ooty Lake and misty Nilgiri mountain panorama', category: 'ooty' },
+  { src: 'assets/images/1000032835_professional.webp', alt: 'Real 4K scenic Nilgiri mountain viewpoint', category: 'ooty' }
 ];
 
 let currentIndex = 0;

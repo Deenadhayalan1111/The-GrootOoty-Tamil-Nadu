@@ -388,12 +388,10 @@ window.scrollToSection = function(id) {
    --------------------------------------------------------- */
 function initGrootThemeSelector() {
   const themes = [
-    { id: "royal-emerald", name: "Royal Emerald", colors: ["#176B4D", "#082F24", "#E2C275"] },
-    { id: "midnight-sapphire", name: "Midnight Sapphire", colors: ["#2456A6", "#07162F", "#C9D4E5"] },
-    { id: "burgundy-royale", name: "Burgundy Royale", colors: ["#7A2035", "#350D19", "#D39A8A"] },
-    { id: "imperial-plum", name: "Imperial Plum", colors: ["#6A3D86", "#24112F", "#C8A9D9"] },
-    { id: "obsidian-gold", name: "Obsidian Gold", colors: ["#181818", "#292929", "#D4AF37"] },
-    { id: "sage-champagne", name: "Sage Champagne", colors: ["#84977E", "#3D4A38", "#C9825B"] }
+    { id: "royal-burgundy", name: "Royal Burgundy 🍷", colors: ["#1B0F13", "#281319", "#C9A46A"] },
+    { id: "obsidian-noir", name: "Obsidian Noir 🖤", colors: ["#090A09", "#111311", "#C8A65B"] },
+    { id: "ooty-forest", name: "Ooty Forest 🌲", colors: ["#10251C", "#17352A", "#C5A96A"] },
+    { id: "dark-golden", name: "Dark Golden 🏆", colors: ["#12110F", "#1C1915", "#C6A15B"] }
   ];
 
   let savedThemeId = null;

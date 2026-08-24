@@ -237,70 +237,206 @@
    Zero impact on layout, cards, backgrounds, fonts, or images.
    ========================================================= */
 
-/* Theme 1: Royal Emerald (Green + Gold) */
-[data-theme="royal-emerald"] {
-  --groot-primary: #082F24;
-  --groot-accent: #E2C275;
-  --groot-accent-dark: #C4A459;
+/* =========================================================
+   FULL WEBSITE 3-THEME HARMONIZED COLOR SYSTEM
+   redefines base/semantic color tokens on data-theme attribute
+   Zero impact on layout, cards, backgrounds, fonts, or images.
+   ========================================================= */
+
+/* Theme 1: Royal Burgundy Luxury 🍷 (Heritage Deep Burgundy + Champagne Gold) */
+[data-theme="royal-burgundy"] {
+  --color-forest:       #1B0F13;
+  --color-forest-deep:  #281319;
+  --color-moss:         #351A22;
+  --color-sage:         rgba(201, 164, 106, 0.22);
+  --color-sage-light:   #C9A46A;
+  --color-cream:        #F4E7D8;
+  --color-cream-warm:   #D8C8BC;
+  --color-warm-white:   #281319;
+  --color-beige:        #A99691;
+  --color-beige-dark:   #7D6D68;
+  --color-brown:        #8F6745;
+  --color-brown-light:  #C9A46A;
+  --color-bronze:       #C9A46A;
+  --color-bronze-dark:  #E2C58F;
+  --color-amber:        #E2C58F;
+  --color-charcoal:     #F4E7D8;
+  --color-charcoal-soft:#D8C8BC;
+  --color-stone:        rgba(201, 164, 106, 0.22);
+  --color-mist:         rgba(201, 164, 106, 0.08);
+
+  --bg-dark:            #1B0F13;
+  --bg-section:         #281319;
+  --bg-card:            #351A22;
+  --bg-glass:           rgba(53, 26, 34, 0.65);
+  --bg-light:           #281319;
+  --text-primary:       #F4E7D8;
+  --text-secondary:     #D8C8BC;
+  --text-muted:         #A99691;
+  --text-dark:          #F4E7D8;
+  --text-dark-secondary:#D8C8BC;
+  --accent-primary:     #C9A46A;
+  --accent-hover:       #E2C58F;
+  --border-dark:        rgba(201, 164, 106, 0.22);
+  --border-light:       rgba(255, 255, 255, 0.08);
+
+  --groot-accent:       #C9A46A;
+  --groot-accent-dark:  #E2C58F;
+  --groot-primary:      #1B0F13;
 }
 
-/* Theme 2: Midnight Sapphire (Blue + Platinum Silver) */
-[data-theme="midnight-sapphire"] {
-  --groot-primary: #07162F;
-  --groot-accent: #C9D4E5;
-  --groot-accent-dark: #A5B3C9;
+/* Theme 2: Obsidian Noir 🖤 (Deep Cinematic Black Luxury) */
+[data-theme="obsidian-noir"] {
+  --color-forest:       #090A09;
+  --color-forest-deep:  #111311;
+  --color-moss:         #181B18;
+  --color-sage:         #30342F;
+  --color-sage-light:   #50544E;
+  --color-cream:        #F4EFE5;
+  --color-cream-warm:   #D2CDC2;
+  --color-warm-white:   #111311;
+  --color-beige:        #92958F;
+  --color-beige-dark:   #62655F;
+  --color-brown:        #8A703A;
+  --color-brown-light:  #A88A4E;
+  --color-bronze:       #C8A65B;
+  --color-bronze-dark:  #E5C378;
+  --color-amber:        #E5C378;
+  --color-charcoal:     #F4EFE5;
+  --color-charcoal-soft:#D2CDC2;
+  --color-stone:        #30342F;
+  --color-mist:         rgba(200, 166, 91, 0.08);
+
+  --bg-dark:            #090A09;
+  --bg-section:         #111311;
+  --bg-card:            #181B18;
+  --bg-glass:           rgba(24, 27, 24, 0.6);
+  --bg-light:           #111311;
+  --text-primary:       #F4EFE5;
+  --text-secondary:     #D2CDC2;
+  --text-muted:         #92958F;
+  --text-dark:          #F4EFE5;
+  --text-dark-secondary:#D2CDC2;
+  --accent-primary:     #C8A65B;
+  --accent-hover:       #E5C378;
+  --border-dark:        #30342F;
+  --border-light:       rgba(255, 255, 255, 0.10);
+
+  --groot-accent:       #C8A65B;
+  --groot-accent-dark:  #E5C378;
+  --groot-primary:      #090A09;
 }
 
-/* Theme 3: Burgundy Royale (Burgundy + Rose Gold) */
-[data-theme="burgundy-royale"] {
-  --groot-primary: #350D19;
-  --groot-accent: #D39A8A;
-  --groot-accent-dark: #B67B6B;
+/* Theme 3: Ooty Forest 🌲 (Deep Premium Forest Green) */
+[data-theme="ooty-forest"] {
+  --color-forest:       #10251C;
+  --color-forest-deep:  #17352A;
+  --color-moss:         #204536;
+  --color-sage:         #355847;
+  --color-sage-light:   #4A7360;
+  --color-cream:        #F2EBDD;
+  --color-cream-warm:   #D8D4C8;
+  --color-warm-white:   #17352A;
+  --color-beige:        #9EA89F;
+  --color-beige-dark:   #6E786F;
+  --color-brown:        #8C7443;
+  --color-brown-light:  #A88E5B;
+  --color-bronze:       #C5A96A;
+  --color-bronze-dark:  #E0C485;
+  --color-amber:        #E0C485;
+  --color-charcoal:     #F2EBDD;
+  --color-charcoal-soft:#D8D4C8;
+  --color-stone:        #355847;
+  --color-mist:         rgba(197, 169, 106, 0.08);
+
+  --bg-dark:            #10251C;
+  --bg-section:         #17352A;
+  --bg-card:            #204536;
+  --bg-glass:           rgba(32, 69, 54, 0.6);
+  --bg-light:           #17352A;
+  --text-primary:       #F2EBDD;
+  --text-secondary:     #D8D4C8;
+  --text-muted:         #9EA89F;
+  --text-dark:          #F2EBDD;
+  --text-dark-secondary:#D8D4C8;
+  --accent-primary:     #C5A96A;
+  --accent-hover:       #E0C485;
+  --border-dark:        #355847;
+  --border-light:       rgba(255, 255, 255, 0.10);
+
+  --groot-accent:       #C5A96A;
+  --groot-accent-dark:  #E0C485;
+  --groot-primary:      #10251C;
 }
 
-/* Theme 4: Imperial Plum (Purple + Lavender) */
-[data-theme="imperial-plum"] {
-  --groot-primary: #24112F;
-  --groot-accent: #C8A9D9;
-  --groot-accent-dark: #A786B9;
+/* Theme 4: Dark Golden Luxury 🏆 (Cinematic Warm Gold Luxury) */
+[data-theme="dark-golden"] {
+  --color-forest:       #12110F;
+  --color-forest-deep:  #1C1915;
+  --color-moss:         #242019;
+  --color-sage:         rgba(198, 161, 91, 0.22);
+  --color-sage-light:   #C6A15B;
+  --color-cream:        #F3EBDD;
+  --color-cream-warm:   #D4C9B8;
+  --color-warm-white:   #1C1915;
+  --color-beige:        #9F9585;
+  --color-beige-dark:   #756C5D;
+  --color-brown:        #8E6D35;
+  --color-brown-light:  #C6A15B;
+  --color-bronze:       #C6A15B;
+  --color-bronze-dark:  #E0C27A;
+  --color-amber:        #E0C27A;
+  --color-charcoal:     #F3EBDD;
+  --color-charcoal-soft:#D4C9B8;
+  --color-stone:        rgba(198, 161, 91, 0.22);
+  --color-mist:         rgba(198, 161, 91, 0.08);
+
+  --bg-dark:            #12110F;
+  --bg-section:         #1C1915;
+  --bg-card:            #242019;
+  --bg-glass:           rgba(36, 32, 25, 0.65);
+  --bg-light:           #1C1915;
+  --text-primary:       #F3EBDD;
+  --text-secondary:     #D4C9B8;
+  --text-muted:         #9F9585;
+  --text-dark:          #F3EBDD;
+  --text-dark-secondary:#D4C9B8;
+  --accent-primary:     #C6A15B;
+  --accent-hover:       #E0C27A;
+  --border-dark:        rgba(198, 161, 91, 0.22);
+  --border-light:       rgba(255, 255, 255, 0.08);
+
+  --groot-accent:       #C6A15B;
+  --groot-accent-dark:  #E0C27A;
+  --groot-primary:      #12110F;
 }
 
-/* Theme 5: Obsidian Gold (Black + Metallic Gold) */
-[data-theme="obsidian-gold"] {
-  --groot-primary: #181818;
-  --groot-accent: #D4AF37;
-  --groot-accent-dark: #B59223;
-}
-
-/* Theme 6: Sage Champagne (Sage + Terracotta) */
-[data-theme="sage-champagne"] {
-  --groot-primary: #3D4A38;
-  --groot-accent: #C9825B;
-  --groot-accent-dark: #AA6540;
-}
-
-/* Targeted Element Accents (Active ONLY when data-theme attribute is present) */
+/* Targeted Element Accents */
 [data-theme] .btn-primary {
-  background: var(--groot-accent) !important;
+  background: var(--accent-primary) !important;
   color: var(--groot-primary) !important;
+  border-color: transparent !important;
 }
 [data-theme] .btn-primary:hover {
-  background: var(--groot-accent-dark) !important;
+  background: var(--accent-hover) !important;
 }
 
+
+
 [data-theme] .btn-ghost {
-  color: var(--groot-accent) !important;
-  border-color: var(--groot-accent) !important;
+  color: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
 }
 [data-theme] .btn-ghost:hover {
-  background: var(--groot-accent) !important;
+  background: var(--accent-primary) !important;
   color: var(--groot-primary) !important;
 }
 
 [data-theme] .room-card-cta {
-  color: var(--groot-accent) !important;
+  color: var(--accent-primary) !important;
 }
 
 [data-theme] .section-badge {
-  color: var(--groot-accent) !important;
+  color: var(--accent-primary) !important;
+  border-color: var(--border-dark) !important;
 }
