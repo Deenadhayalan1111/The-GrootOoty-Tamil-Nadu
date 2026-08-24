@@ -251,7 +251,7 @@
   --color-sage:         rgba(201, 164, 106, 0.22);
   --color-sage-light:   #C9A46A;
   --color-cream:        #F4E7D8;
-  --color-cream-warm:   #D8C8BC;
+  --color-cream-warm:   #351A22;
   --color-warm-white:   #281319;
   --color-beige:        #A99691;
   --color-beige-dark:   #7D6D68;
@@ -268,6 +268,10 @@
   --bg-dark:            #1B0F13;
   --bg-section:         #281319;
   --bg-card:            #351A22;
+  --card-bg:            #351A22;
+  --card-text:          #F4E7D8;
+  --card-text-muted:    #D8C8BC;
+  --card-border:        rgba(201, 164, 106, 0.22);
   --bg-glass:           rgba(53, 26, 34, 0.65);
   --bg-light:           #281319;
   --text-primary:       #F4E7D8;
@@ -293,7 +297,7 @@
   --color-sage:         #30342F;
   --color-sage-light:   #50544E;
   --color-cream:        #F4EFE5;
-  --color-cream-warm:   #D2CDC2;
+  --color-cream-warm:   #181B18;
   --color-warm-white:   #111311;
   --color-beige:        #92958F;
   --color-beige-dark:   #62655F;
@@ -310,6 +314,10 @@
   --bg-dark:            #090A09;
   --bg-section:         #111311;
   --bg-card:            #181B18;
+  --card-bg:            #181B18;
+  --card-text:          #F4EFE5;
+  --card-text-muted:    #D2CDC2;
+  --card-border:        #30342F;
   --bg-glass:           rgba(24, 27, 24, 0.6);
   --bg-light:           #111311;
   --text-primary:       #F4EFE5;
@@ -335,7 +343,7 @@
   --color-sage:         #355847;
   --color-sage-light:   #4A7360;
   --color-cream:        #F2EBDD;
-  --color-cream-warm:   #D8D4C8;
+  --color-cream-warm:   #204536;
   --color-warm-white:   #17352A;
   --color-beige:        #9EA89F;
   --color-beige-dark:   #6E786F;
@@ -352,6 +360,10 @@
   --bg-dark:            #10251C;
   --bg-section:         #17352A;
   --bg-card:            #204536;
+  --card-bg:            #204536;
+  --card-text:          #F2EBDD;
+  --card-text-muted:    #D8D4C8;
+  --card-border:        #355847;
   --bg-glass:           rgba(32, 69, 54, 0.6);
   --bg-light:           #17352A;
   --text-primary:       #F2EBDD;
@@ -377,7 +389,7 @@
   --color-sage:         rgba(198, 161, 91, 0.22);
   --color-sage-light:   #C6A15B;
   --color-cream:        #F3EBDD;
-  --color-cream-warm:   #D4C9B8;
+  --color-cream-warm:   #242019;
   --color-warm-white:   #1C1915;
   --color-beige:        #9F9585;
   --color-beige-dark:   #756C5D;
@@ -394,6 +406,10 @@
   --bg-dark:            #12110F;
   --bg-section:         #1C1915;
   --bg-card:            #242019;
+  --card-bg:            #242019;
+  --card-text:          #F3EBDD;
+  --card-text-muted:    #D4C9B8;
+  --card-border:        rgba(198, 161, 91, 0.22);
   --bg-glass:           rgba(36, 32, 25, 0.65);
   --bg-light:           #1C1915;
   --text-primary:       #F3EBDD;
@@ -421,8 +437,6 @@
   background: var(--accent-hover) !important;
 }
 
-
-
 [data-theme] .btn-ghost {
   color: var(--accent-primary) !important;
   border-color: var(--accent-primary) !important;
@@ -439,4 +453,41 @@
 [data-theme] .section-badge {
   color: var(--accent-primary) !important;
   border-color: var(--border-dark) !important;
+}
+
+/* Universal Card Surface & Text Contrast Safeguard */
+[data-theme] .card,
+[data-theme] .ooty-card,
+[data-theme] .exp-card,
+[data-theme] .review-card,
+[data-theme] .room-listing-card,
+[data-theme] .booking-card,
+[data-theme] .contact-card,
+[data-theme] .feature-card,
+[data-theme] .glass-card {
+  background: var(--card-bg, var(--bg-card)) !important;
+  border-color: var(--card-border, var(--border-dark)) !important;
+}
+
+[data-theme] .card h1, [data-theme] .card h2, [data-theme] .card h3, [data-theme] .card h4,
+[data-theme] .ooty-card h1, [data-theme] .ooty-card h2, [data-theme] .ooty-card h3, [data-theme] .ooty-card h4,
+[data-theme] .exp-card h1, [data-theme] .exp-card h2, [data-theme] .exp-card h3, [data-theme] .exp-card h4,
+[data-theme] .exp-card-title,
+[data-theme] .ooty-card-name,
+[data-theme] .review-author-name,
+[data-theme] .room-listing-name {
+  color: var(--card-text, var(--text-primary)) !important;
+}
+
+[data-theme] .card p,
+[data-theme] .ooty-card p,
+[data-theme] .exp-card p,
+[data-theme] .review-card p,
+[data-theme] .room-listing-card p,
+[data-theme] .exp-card-desc,
+[data-theme] .exp-card-text,
+[data-theme] .ooty-card-desc,
+[data-theme] .review-text,
+[data-theme] .room-listing-desc {
+  color: var(--card-text-muted, var(--text-secondary)) !important;
 }
