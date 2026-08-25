@@ -549,19 +549,20 @@
    FLOATING WHATSAPP BUTTON
    --------------------------------------------------------- */
 
-.fab-whatsapp {
-  position: fixed;
-  bottom: var(--whatsapp-bottom);
-  right: 20px;
-  z-index: 999;
+.floating-whatsapp, a[aria-label*="WhatsApp"], .fab-whatsapp {
+  position: fixed !important;
+  bottom: calc(75px + env(safe-area-inset-bottom, 0px)) !important;
+  right: 24px !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   width: 56px;
   height: 56px;
   border-radius: var(--radius-full);
   background: #25D366;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: 0 4px 20px rgba(37,211,102,0.45);
   cursor: pointer;
   transition: all var(--dur-base) var(--ease-out);
@@ -569,12 +570,14 @@
   border: none;
 }
 
-.fab-whatsapp:hover {
-  transform: scale(1.12);
+.floating-whatsapp:hover, a[aria-label*="WhatsApp"]:hover, .fab-whatsapp:hover {
+  transform: scale(1.12) !important;
   box-shadow: 0 8px 32px rgba(37,211,102,0.55);
 }
 
-.fab-whatsapp svg { width: 26px; height: 26px; }
+.floating-whatsapp svg, a[aria-label*="WhatsApp"] svg, .fab-whatsapp svg { 
+  width: 26px; height: 26px; 
+}
 
 
 
