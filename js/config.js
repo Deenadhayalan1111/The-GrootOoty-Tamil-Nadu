@@ -1,5 +1,5 @@
 /* =========================================================
-   THE GROOT OOTY � Centralized Configuration
+   THE GROOT OOTY — Centralized Configuration
    ========================================================= */
 
 const CONFIG = {
@@ -105,7 +105,7 @@ const ROOMS = [
   },
 ];
 
-// Reviews data (illustrative � replace with real reviews)
+// Reviews data (illustrative — replace with real reviews)
 const REVIEWS = [
   {
     name: 'Priya M.',
@@ -127,7 +127,7 @@ const REVIEWS = [
     name: 'Karthik S.',
     initial: 'K',
     rating: 5,
-    text: 'Budget-friendly and genuinely beautiful. The property is exactly like the photos. Home food was amazing � loved the authentic Tamil food. Will definitely come back!',
+    text: 'Budget-friendly and genuinely beautiful. The property is exactly like the photos. Home food was amazing — loved the authentic Tamil food. Will definitely come back!',
     source: 'Instagram',
     location: 'Coimbatore',
   },
@@ -143,7 +143,7 @@ const REVIEWS = [
     name: 'Aditya K.',
     initial: 'A',
     rating: 5,
-    text: 'Stayed in the Standard Room and it was so cozy. The Groot has a very personal feel � not a big resort, but a real place where you feel at home. The music system and campfire were great.',
+    text: 'Stayed in the Standard Room and it was so cozy. The Groot has a very personal feel — not a big resort, but a real place where you feel at home. The music system and campfire were great.',
     source: 'Google',
     location: 'Hyderabad',
   },
@@ -153,7 +153,7 @@ const REVIEWS = [
 const OOTY_ATTRACTIONS = [
   {
     name: 'Botanical Garden',
-    desc: 'The Government Botanical Garden is one of Ooty\'s finest attractions � a stunning 55-acre garden with rare plants and century-old trees.',
+    desc: 'The Government Botanical Garden is one of Ooty\'s finest attractions — a stunning 55-acre garden with rare plants and century-old trees.',
     image: 'assets/images/IMG-20260821-WA0039.jpg',
     category: 'Garden',
   },

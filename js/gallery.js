@@ -1,5 +1,5 @@
 /* =========================================================
-   THE GROOT OOTY � Gallery JS (Masonry, Filters, Lightbox)
+   THE GROOT OOTY — Gallery JS (Masonry, Filters, Lightbox)
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
