@@ -179,6 +179,6 @@
 /* Add padding to body for mobile action bar */
 @media (max-width: 1024px) {
   body {
-    padding-bottom: var(--mobile-bar);
+    padding-bottom: calc(var(--mobile-bar) + 40px);
   }
 }

@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rooms | The Groot Ooty</title>
-  <meta name="description" content="Choose your room at The Groot Ooty � Standard Room, A-Frame Room, Luxurious Suite, or Glass House. Book direct via WhatsApp." />
+  <meta name="description" content="Choose your room at The Groot Ooty — Standard Room, A-Frame Room, Luxurious Suite, or Glass House. Book direct via WhatsApp." />
   <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
+
+  <!-- Theme Initialization (Prevents flash) -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('groot-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'day' : 'night';
+        }
+        if (t === 'day') {
+          document.documentElement.setAttribute('data-theme', 'day');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/variables.css?v=1.7" />
@@ -48,21 +64,35 @@
       <a href="reviews.html" class="nav-link">Reviews</a>
       <a href="contact.html" class="nav-link">Contact</a>
     </nav>
-    <div class="header-cta"><a href="booking.html" class="btn btn-primary btn-sm">Book Now</a></div>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    <div class="header-actions">
+      <!-- Header CTA -->
+      <div class="header-cta">
+        <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
+      </div>
+      
+      <!-- Theme Toggle -->
+      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Day/Night Mode">
+        <div class="theme-toggle-indicator"></div>
+        <span class="theme-toggle-icon sun">☀️</span>
+        <span class="theme-toggle-icon moon">🌙</span>
+      </button>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    </div>
   </div>
 </header>
 
 <div id="mobile-menu" class="mobile-menu">
   <div class="mobile-menu-header"><a href="index.html" class="site-logo"><span class="logo-name">The Groot</span><span class="logo-location">Ooty, Tamil Nadu</span></a><button id="mobile-menu-close" class="hamburger open" aria-label="Close menu"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div>
-  <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <span class="arrow">?</span></a><a href="rooms.html" class="mobile-nav-link">Stay <span class="arrow">?</span></a><a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow">?</span></a><a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow">?</span></a><a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow">?</span></a><a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow">?</span></a><a href="contact.html" class="mobile-nav-link">Contact <span class="arrow">?</span></a></nav>
+  <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="rooms.html" class="mobile-nav-link">Stay <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="contact.html" class="mobile-nav-link">Contact <span class="arrow" aria-hidden="true">&rarr;</span></a></nav>
   <div class="mobile-menu-actions"><a href="booking.html" class="btn btn-primary btn-block">Check Availability</a><button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">WhatsApp The Groot</button></div>
 </div>
 
 <main class="rooms-page" role="main">
   <div class="container rooms-page-hero">
     <span class="section-overline" data-reveal="fade-up">Where You'll Stay</span>
-    <h1 style="font-family:var(--font-display);font-size:clamp(2.25rem,5vw,4rem);font-weight:700;color:var(--color-cream);margin-bottom:0.75rem;margin-top:0.5rem;" data-reveal="fade-up" data-delay="100">Find Your Stay</h1>
+    <h1 style="font-family:var(--font-display);font-size:clamp(2.25rem,5vw,4rem);font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;margin-top:0.5rem;" data-reveal="fade-up" data-delay="100">Find Your Stay</h1>
     <p style="font-size:1.1rem;color:var(--text-secondary);max-width:560px;font-weight:300;line-height:1.65;" data-reveal="fade-up" data-delay="200">Every room at The Groot has its own story. Choose the one that speaks to you.</p>
   </div>
 
@@ -167,7 +197,7 @@
     <div class="footer-col"><h3 class="footer-col-title">Navigate</h3><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="rooms.html" class="footer-link">Rooms</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li><li><a href="booking.html" class="footer-link">Book Now</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
     <div class="footer-col"><h3 class="footer-col-title">Contact</h3><a href="tel:6382316323" class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>6382316323</a><a href="tel:7395965006" class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>7395965006</a></div>
   </div>
-  <div class="container"><div class="footer-bottom"><p class="footer-copyright">� 2025 The Groot Ooty.</p></div></div>
+  <div class="container"><div class="footer-bottom"><p class="footer-copyright">© 2025 The Groot Ooty.</p></div></div>
 </footer>
 
 <button class="fab-whatsapp" onclick="quickWhatsApp()" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>

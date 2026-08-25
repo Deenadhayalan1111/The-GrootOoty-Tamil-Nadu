@@ -202,7 +202,7 @@
 .room-card-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(17,27,18,0.95) 0%, rgba(17,27,18,0.40) 55%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.40) 55%, transparent 100%);
   transition: opacity var(--dur-base) var(--ease-out);
 }
 
@@ -231,14 +231,16 @@
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2.5vw, 1.875rem);
   font-weight: 600;
-  color: var(--color-cream);
+  color: var(--text-on-image);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   margin-bottom: var(--space-2);
   line-height: 1.2;
 }
 
 .room-card-desc {
   font-size: var(--text-sm);
-  color: rgba(244,237,224,0.65);
+  color: var(--text-on-image-muted);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   line-height: 1.55;
   margin-bottom: var(--space-4);
   max-width: 340px;
@@ -345,13 +347,17 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to right, rgba(17,27,18,0.88) 0%, rgba(17,27,18,0.35) 55%, transparent 100%);
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, transparent 100%);
 }
 
 .aframe-content {
   position: relative;
   z-index: 5;
-  max-width: 560px;
+  max-width: 500px;
+}
+
+.aframe-content .display-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* ---------------------------------------------------------
@@ -385,14 +391,19 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to left, rgba(17,27,18,0.88) 0%, rgba(17,27,18,0.35) 55%, transparent 100%);
+  background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, transparent 100%);
 }
 
 .glasshouse-content {
   position: relative;
   z-index: 5;
-  max-width: 560px;
+  max-width: 500px;
+  margin-left: auto;
   text-align: right;
+}
+
+.glasshouse-content .display-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* ---------------------------------------------------------
@@ -436,6 +447,10 @@
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
+}
+
+.campfire-content .display-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .campfire-warm-text {
@@ -731,7 +746,7 @@
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
-  color: var(--text-primary, var(--color-charcoal));
+  color: var(--card-text);
   margin-bottom: var(--space-2);
   transition: color var(--dur-base) var(--ease-out);
 }
@@ -742,7 +757,7 @@
 
 .ooty-card-desc {
   font-size: var(--text-sm);
-  color: var(--text-secondary, var(--text-dark-secondary));
+  color: var(--card-text-muted);
   line-height: 1.65;
 }
 

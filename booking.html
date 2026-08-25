@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Check Availability | The Groot Ooty</title>
   <meta name="description" content="Check availability and book your stay at The Groot Ooty. A-Frame rooms, Glass House, Luxurious Suite and Standard Rooms. Book direct via WhatsApp." />
   <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
+
+  <!-- Theme Initialization (Prevents flash) -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('groot-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'day' : 'night';
+        }
+        if (t === 'day') {
+          document.documentElement.setAttribute('data-theme', 'day');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/variables.css?v=1.7" />
@@ -30,8 +46,22 @@
       <a href="reviews.html" class="nav-link">Reviews</a>
       <a href="contact.html" class="nav-link">Contact</a>
     </nav>
-    <div class="header-cta"><a href="booking.html" class="btn btn-primary btn-sm active">Book Now</a></div>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    <div class="header-actions">
+      <!-- Header CTA -->
+      <div class="header-cta">
+        <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
+      </div>
+      
+      <!-- Theme Toggle -->
+      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Day/Night Mode">
+        <div class="theme-toggle-indicator"></div>
+        <span class="theme-toggle-icon sun">☀️</span>
+        <span class="theme-toggle-icon moon">🌙</span>
+      </button>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    </div>
   </div>
 </header>
 
@@ -42,13 +72,13 @@
     <button id="mobile-menu-close" class="hamburger open" aria-label="Close menu"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
   </div>
   <nav class="mobile-menu-nav">
-    <a href="index.html" class="mobile-nav-link">Home <span class="arrow">?</span></a>
-    <a href="index.html#rooms" class="mobile-nav-link">Stay <span class="arrow">?</span></a>
-    <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow">?</span></a>
-    <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow">?</span></a>
-    <a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow">?</span></a>
-    <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow">?</span></a>
-    <a href="contact.html" class="mobile-nav-link">Contact <span class="arrow">?</span></a>
+    <a href="index.html" class="mobile-nav-link">Home <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="index.html#rooms" class="mobile-nav-link">Stay <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="contact.html" class="mobile-nav-link">Contact <span class="arrow" aria-hidden="true">&rarr;</span></a>
   </nav>
   <div class="mobile-menu-actions">
     <a href="booking.html" class="btn btn-primary btn-block">Check Availability</a>
@@ -425,7 +455,7 @@
         <div class="booking-success-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </div>
-        <h2 class="display-sm" style="color:var(--color-cream);margin-bottom:0.5rem;">Your Enquiry is Ready!</h2>
+        <h2 class="display-sm" style="color:var(--text-on-image);margin-bottom:0.5rem;">Your Enquiry is Ready!</h2>
         <div class="booking-success-id" id="review-id-display"></div>
         <p class="booking-success-note">
           Your booking details have been prepared in WhatsApp. Send the message to The Groot to confirm availability and receive pricing. They'll get back to you as soon as possible.
@@ -503,7 +533,7 @@
 <footer style="background:var(--color-forest-deep);border-top:1px solid var(--border-dark);padding:2rem 0;margin-top:2rem;">
   <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
     <div>
-      <div style="font-family:var(--font-display);font-weight:700;color:var(--color-cream);letter-spacing:0.08em;">The Groot Ooty</div>
+      <div style="font-family:var(--font-display);font-weight:700;color:var(--text-on-image);letter-spacing:0.08em;">The Groot Ooty</div>
       <div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">Pudumund, Ooty, Tamil Nadu 643001</div>
     </div>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;">

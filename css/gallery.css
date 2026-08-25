@@ -85,7 +85,7 @@
 .gallery-item-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(17,27,18,0.45);
+  background: rgba(0, 0, 0, 0.45);
   opacity: 0;
   transition: opacity var(--dur-base) var(--ease-out);
   display: flex;
@@ -96,9 +96,10 @@
 .gallery-item:hover .gallery-item-overlay { opacity: 1; }
 
 .gallery-item-overlay svg {
-  color: var(--color-cream);
+  color: var(--text-on-image);
   width: 32px;
   height: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
 }
 
 .gallery-item.hidden {

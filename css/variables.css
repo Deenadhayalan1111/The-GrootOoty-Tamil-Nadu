@@ -35,6 +35,14 @@
   --text-muted:         rgba(244, 237, 224, 0.45);
   --text-dark:          var(--color-charcoal);
   --text-dark-secondary:var(--color-stone);
+  --text-on-image:      #FFFFFF;
+  --text-on-image-muted: rgba(255, 255, 255, 0.85);
+  
+  --card-bg:            rgba(44, 74, 42, 0.25);
+  --card-border:        rgba(255,255,255,0.10);
+  --card-text:          var(--color-cream);
+  --card-text-muted:    rgba(244, 237, 224, 0.70);
+
   --accent-primary:     var(--color-bronze);
   --accent-hover:       var(--color-amber);
   --border-dark:        rgba(255,255,255,0.10);
@@ -115,379 +123,200 @@
 }
 
 /* =========================================================
-   ISOLATED THEME SELECTOR COMPONENT (PHASE 1)
-   Strictly scoped under .groot-theme-* prefix.
-   Zero impact on existing website CSS/HTML.
+   DAY THEME OVERRIDES
    ========================================================= */
 
-.groot-theme-container {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  width: 50px;
-  height: 50px;
-  z-index: 999999;
-  pointer-events: auto;
-}
+[data-theme="day"] {
+  /* --- Semantic Colors --- */
+  --bg-dark:            #F7F4EF;
+  --bg-section:         #EFEAE1;
+  --bg-card:            #FFFFFF;
+  --bg-glass:           rgba(255, 255, 255, 0.85);
+  --bg-light:           #FFFFFF;
+  --text-primary:       #2A3F2C;
+  --text-secondary:     #4A5E4C;
+  --text-muted:         #7A8B7C;
+  --text-dark:          #2A3F2C;
+  --text-dark-secondary:#4A5E4C;
+  --text-on-image:      #FFFFFF;
+  --text-on-image-muted: rgba(255, 255, 255, 0.85);
+  --accent-primary:     #B8835A;
+  --accent-hover:       #9E6B43;
+  --border-dark:        rgba(0, 0, 0, 0.10);
+  --border-light:       rgba(0, 0, 0, 0.05);
 
-@media (max-width: 768px) {
-  .groot-theme-container {
-    bottom: calc(24px + var(--mobile-bar, 64px));
-  }
-}
-
-.groot-theme-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--color-bronze, #B8935A);
-  color: var(--color-forest-deep, #111B12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-  cursor: pointer;
-  z-index: 2;
-  position: relative;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  outline: none;
-  padding: 0;
-  margin: 0;
-}
-
-.groot-theme-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
-}
-
-.groot-theme-btn.groot-theme-active {
-  background: var(--color-cream, #F4EDE0);
-  transform: rotate(90deg);
-}
-
-.groot-theme-swatch {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  z-index: 1;
-  opacity: 0;
-  cursor: pointer;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
-  transform: translate(0, 0) scale(0);
-  pointer-events: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.groot-theme-swatch::after {
-  content: attr(data-label);
-  position: absolute;
-  bottom: -26px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  font-family: system-ui, -apple-system, sans-serif;
-  white-space: nowrap;
-  background: rgba(17, 27, 18, 0.92);
-  color: #F4EDE0;
-  padding: 3px 8px;
-  border-radius: 4px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-.groot-theme-swatch:hover::after {
-  opacity: 1;
-}
-
-.groot-theme-container.groot-theme-open .groot-theme-swatch {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1);
-}
-
-.groot-theme-swatch:hover {
-  transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1.15) !important;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.45);
-}
-
-.groot-theme-swatch.groot-theme-selected {
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.8), 0 4px 14px rgba(0, 0, 0, 0.4);
+  /* --- Mapped Brand Colors for consistent Day Mode UI --- */
+  --color-forest:       #F7F4EF;
+  --color-forest-deep:  #EFEAE1;
+  --color-moss:         #E6DFD3;
+  --color-sage:         #7A8B7C;
+  --color-sage-light:   #92A394;
+  --color-cream:        #2A3F2C;
+  --color-cream-warm:   #FFFFFF;
+  --color-warm-white:   #F5F0E8;
+  --color-beige:        #D8CFC0;
+  --color-beige-dark:   #B8AD9C;
+  --color-brown:        #9E6B43;
+  --color-brown-light:  #B8835A;
+  --color-bronze:       #B8835A;
+  --color-bronze-dark:  #9E6B43;
+  --color-amber:        #9E6B43;
+  --color-charcoal:     #2A3F2C;
+  --color-charcoal-soft:#4A5E4C;
+  --color-stone:        #4A5E4C;
+  --color-mist:         rgba(0,0,0,0.04);
+  
+  /* Fallbacks for mapped components */
+  --card-bg:            #FFFFFF;
+  --card-border:        rgba(0, 0, 0, 0.08);
+  --card-text:          #2A3F2C;
+  --card-text-muted:    #4A5E4C;
+  --groot-accent:       #B8835A;
+  --groot-accent-dark:  #9E6B43;
+  --groot-primary:      #F7F4EF;
+  
+  /* Shadow adjustments for a softer premium feel */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:   0 8px 32px rgba(0,0,0,0.08);
+  --shadow-lg:   0 20px 60px rgba(0,0,0,0.12);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
 }
 
 /* =========================================================
-   PHASE 2: LIMITED ACCENT THEME APPLICATION
-   Applies theme accent colors ONLY to:
-   - .btn-primary
-   - .btn-ghost
-   - .room-card-cta
-   - .section-badge
-   Zero impact on layout, cards, backgrounds, fonts, or images.
+   TARGETED COMPONENT OVERRIDES FOR DAY MODE
    ========================================================= */
 
-/* =========================================================
-   FULL WEBSITE 3-THEME HARMONIZED COLOR SYSTEM
-   redefines base/semantic color tokens on data-theme attribute
-   Zero impact on layout, cards, backgrounds, fonts, or images.
-   ========================================================= */
-
-/* Theme 1: Royal Burgundy Luxury 🍷 (Heritage Deep Burgundy + Champagne Gold) */
-[data-theme="royal-burgundy"] {
-  --color-forest:       #1B0F13;
-  --color-forest-deep:  #281319;
-  --color-moss:         #351A22;
-  --color-sage:         rgba(201, 164, 106, 0.22);
-  --color-sage-light:   #C9A46A;
-  --color-cream:        #F4E7D8;
-  --color-cream-warm:   #351A22;
-  --color-warm-white:   #281319;
-  --color-beige:        #A99691;
-  --color-beige-dark:   #7D6D68;
-  --color-brown:        #8F6745;
-  --color-brown-light:  #C9A46A;
-  --color-bronze:       #C9A46A;
-  --color-bronze-dark:  #E2C58F;
-  --color-amber:        #E2C58F;
-  --color-charcoal:     #F4E7D8;
-  --color-charcoal-soft:#D8C8BC;
-  --color-stone:        rgba(201, 164, 106, 0.22);
-  --color-mist:         rgba(201, 164, 106, 0.08);
-
-  --bg-dark:            #1B0F13;
-  --bg-section:         #281319;
-  --bg-card:            #351A22;
-  --card-bg:            #351A22;
-  --card-text:          #F4E7D8;
-  --card-text-muted:    #D8C8BC;
-  --card-border:        rgba(201, 164, 106, 0.22);
-  --bg-glass:           rgba(53, 26, 34, 0.65);
-  --bg-light:           #281319;
-  --text-primary:       #F4E7D8;
-  --text-secondary:     #D8C8BC;
-  --text-muted:         #A99691;
-  --text-dark:          #F4E7D8;
-  --text-dark-secondary:#D8C8BC;
-  --accent-primary:     #C9A46A;
-  --accent-hover:       #E2C58F;
-  --border-dark:        rgba(201, 164, 106, 0.22);
-  --border-light:       rgba(255, 255, 255, 0.08);
-
-  --groot-accent:       #C9A46A;
-  --groot-accent-dark:  #E2C58F;
-  --groot-primary:      #1B0F13;
-}
-
-/* Theme 2: Obsidian Noir 🖤 (Deep Cinematic Black Luxury) */
-[data-theme="obsidian-noir"] {
-  --color-forest:       #090A09;
-  --color-forest-deep:  #111311;
-  --color-moss:         #181B18;
-  --color-sage:         #30342F;
-  --color-sage-light:   #50544E;
-  --color-cream:        #F4EFE5;
-  --color-cream-warm:   #181B18;
-  --color-warm-white:   #111311;
-  --color-beige:        #92958F;
-  --color-beige-dark:   #62655F;
-  --color-brown:        #8A703A;
-  --color-brown-light:  #A88A4E;
-  --color-bronze:       #C8A65B;
-  --color-bronze-dark:  #E5C378;
-  --color-amber:        #E5C378;
-  --color-charcoal:     #F4EFE5;
-  --color-charcoal-soft:#D2CDC2;
-  --color-stone:        #30342F;
-  --color-mist:         rgba(200, 166, 91, 0.08);
-
-  --bg-dark:            #090A09;
-  --bg-section:         #111311;
-  --bg-card:            #181B18;
-  --card-bg:            #181B18;
-  --card-text:          #F4EFE5;
-  --card-text-muted:    #D2CDC2;
-  --card-border:        #30342F;
-  --bg-glass:           rgba(24, 27, 24, 0.6);
-  --bg-light:           #111311;
-  --text-primary:       #F4EFE5;
-  --text-secondary:     #D2CDC2;
-  --text-muted:         #92958F;
-  --text-dark:          #F4EFE5;
-  --text-dark-secondary:#D2CDC2;
-  --accent-primary:     #C8A65B;
-  --accent-hover:       #E5C378;
-  --border-dark:        #30342F;
-  --border-light:       rgba(255, 255, 255, 0.10);
-
-  --groot-accent:       #C8A65B;
-  --groot-accent-dark:  #E5C378;
-  --groot-primary:      #090A09;
-}
-
-/* Theme 3: Ooty Forest 🌲 (Deep Premium Forest Green) */
-[data-theme="ooty-forest"] {
-  --color-forest:       #10251C;
-  --color-forest-deep:  #17352A;
-  --color-moss:         #204536;
-  --color-sage:         #355847;
-  --color-sage-light:   #4A7360;
-  --color-cream:        #F2EBDD;
-  --color-cream-warm:   #204536;
-  --color-warm-white:   #17352A;
-  --color-beige:        #9EA89F;
-  --color-beige-dark:   #6E786F;
-  --color-brown:        #8C7443;
-  --color-brown-light:  #A88E5B;
-  --color-bronze:       #C5A96A;
-  --color-bronze-dark:  #E0C485;
-  --color-amber:        #E0C485;
-  --color-charcoal:     #F2EBDD;
-  --color-charcoal-soft:#D8D4C8;
-  --color-stone:        #355847;
-  --color-mist:         rgba(197, 169, 106, 0.08);
-
-  --bg-dark:            #10251C;
-  --bg-section:         #17352A;
-  --bg-card:            #204536;
-  --card-bg:            #204536;
-  --card-text:          #F2EBDD;
-  --card-text-muted:    #D8D4C8;
-  --card-border:        #355847;
-  --bg-glass:           rgba(32, 69, 54, 0.6);
-  --bg-light:           #17352A;
-  --text-primary:       #F2EBDD;
-  --text-secondary:     #D8D4C8;
-  --text-muted:         #9EA89F;
-  --text-dark:          #F2EBDD;
-  --text-dark-secondary:#D8D4C8;
-  --accent-primary:     #C5A96A;
-  --accent-hover:       #E0C485;
-  --border-dark:        #355847;
-  --border-light:       rgba(255, 255, 255, 0.10);
-
-  --groot-accent:       #C5A96A;
-  --groot-accent-dark:  #E0C485;
-  --groot-primary:      #10251C;
-}
-
-/* Theme 4: Dark Golden Luxury 🏆 (Cinematic Warm Gold Luxury) */
-[data-theme="dark-golden"] {
-  --color-forest:       #12110F;
-  --color-forest-deep:  #1C1915;
-  --color-moss:         #242019;
-  --color-sage:         rgba(198, 161, 91, 0.22);
-  --color-sage-light:   #C6A15B;
-  --color-cream:        #F3EBDD;
-  --color-cream-warm:   #242019;
-  --color-warm-white:   #1C1915;
-  --color-beige:        #9F9585;
-  --color-beige-dark:   #756C5D;
-  --color-brown:        #8E6D35;
-  --color-brown-light:  #C6A15B;
-  --color-bronze:       #C6A15B;
-  --color-bronze-dark:  #E0C27A;
-  --color-amber:        #E0C27A;
-  --color-charcoal:     #F3EBDD;
-  --color-charcoal-soft:#D4C9B8;
-  --color-stone:        rgba(198, 161, 91, 0.22);
-  --color-mist:         rgba(198, 161, 91, 0.08);
-
-  --bg-dark:            #12110F;
-  --bg-section:         #1C1915;
-  --bg-card:            #242019;
-  --card-bg:            #242019;
-  --card-text:          #F3EBDD;
-  --card-text-muted:    #D4C9B8;
-  --card-border:        rgba(198, 161, 91, 0.22);
-  --bg-glass:           rgba(36, 32, 25, 0.65);
-  --bg-light:           #1C1915;
-  --text-primary:       #F3EBDD;
-  --text-secondary:     #D4C9B8;
-  --text-muted:         #9F9585;
-  --text-dark:          #F3EBDD;
-  --text-dark-secondary:#D4C9B8;
-  --accent-primary:     #C6A15B;
-  --accent-hover:       #E0C27A;
-  --border-dark:        rgba(198, 161, 91, 0.22);
-  --border-light:       rgba(255, 255, 255, 0.08);
-
-  --groot-accent:       #C6A15B;
-  --groot-accent-dark:  #E0C27A;
-  --groot-primary:      #12110F;
-}
-
-/* Targeted Element Accents */
-[data-theme] .btn-primary {
+[data-theme="day"] .btn-primary {
   background: var(--accent-primary) !important;
-  color: var(--groot-primary) !important;
+  color: var(--color-forest) !important;
   border-color: transparent !important;
 }
-[data-theme] .btn-primary:hover {
+[data-theme="day"] .btn-primary:hover {
   background: var(--accent-hover) !important;
 }
 
-[data-theme] .btn-ghost {
+[data-theme="day"] .btn-ghost {
   color: var(--accent-primary) !important;
   border-color: var(--accent-primary) !important;
 }
-[data-theme] .btn-ghost:hover {
+[data-theme="day"] .btn-ghost:hover {
   background: var(--accent-primary) !important;
-  color: var(--groot-primary) !important;
+  color: var(--color-forest) !important;
 }
 
-[data-theme] .room-card-cta {
+[data-theme="day"] .room-card-cta {
   color: var(--accent-primary) !important;
 }
 
-[data-theme] .section-badge {
+[data-theme="day"] .section-badge {
   color: var(--accent-primary) !important;
   border-color: var(--border-dark) !important;
 }
 
-/* Universal Card Surface & Text Contrast Safeguard */
-[data-theme] .card,
-[data-theme] .ooty-card,
-[data-theme] .exp-card,
-[data-theme] .review-card,
-[data-theme] .room-listing-card,
-[data-theme] .booking-card,
-[data-theme] .contact-card,
-[data-theme] .feature-card,
-[data-theme] .glass-card {
+[data-theme="day"] .card,
+[data-theme="day"] .ooty-card,
+[data-theme="day"] .exp-card,
+[data-theme="day"] .review-card,
+[data-theme="day"] .room-listing-card,
+[data-theme="day"] .booking-card,
+[data-theme="day"] .contact-card,
+[data-theme="day"] .feature-card,
+[data-theme="day"] .glass-card {
   background: var(--card-bg, var(--bg-card)) !important;
   border-color: var(--card-border, var(--border-dark)) !important;
 }
 
-[data-theme] .card h1, [data-theme] .card h2, [data-theme] .card h3, [data-theme] .card h4,
-[data-theme] .ooty-card h1, [data-theme] .ooty-card h2, [data-theme] .ooty-card h3, [data-theme] .ooty-card h4,
-[data-theme] .exp-card h1, [data-theme] .exp-card h2, [data-theme] .exp-card h3, [data-theme] .exp-card h4,
-[data-theme] .exp-card-title,
-[data-theme] .ooty-card-name,
-[data-theme] .review-author-name,
-[data-theme] .room-listing-name {
+[data-theme="day"] .card h1, [data-theme="day"] .card h2, [data-theme="day"] .card h3, [data-theme="day"] .card h4,
+[data-theme="day"] .ooty-card h1, [data-theme="day"] .ooty-card h2, [data-theme="day"] .ooty-card h3, [data-theme="day"] .ooty-card h4,
+[data-theme="day"] .exp-card h1, [data-theme="day"] .exp-card h2, [data-theme="day"] .exp-card h3, [data-theme="day"] .exp-card h4,
+[data-theme="day"] .exp-card-title,
+[data-theme="day"] .ooty-card-name,
+[data-theme="day"] .review-author-name,
+[data-theme="day"] .room-listing-name {
   color: var(--card-text, var(--text-primary)) !important;
 }
 
-[data-theme] .card p,
-[data-theme] .ooty-card p,
-[data-theme] .exp-card p,
-[data-theme] .review-card p,
-[data-theme] .room-listing-card p,
-[data-theme] .exp-card-desc,
-[data-theme] .exp-card-text,
-[data-theme] .ooty-card-desc,
-[data-theme] .review-text,
-[data-theme] .room-listing-desc {
+[data-theme="day"] .card p,
+[data-theme="day"] .ooty-card p,
+[data-theme="day"] .exp-card p,
+[data-theme="day"] .review-card p,
+[data-theme="day"] .room-listing-card p,
+[data-theme="day"] .exp-card-desc,
+[data-theme="day"] .exp-card-text,
+[data-theme="day"] .ooty-card-desc,
+[data-theme="day"] .review-text,
+[data-theme="day"] .room-listing-desc {
   color: var(--card-text-muted, var(--text-secondary)) !important;
+}
+
+/* =========================================================
+   THEME TOGGLE COMPONENT
+   ========================================================= */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-full);
+  padding: 2px;
+  position: relative;
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease-out);
+  width: 64px;
+  height: 32px;
+  margin-left: var(--space-4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.theme-toggle-indicator {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background: var(--color-bronze);
+  border-radius: var(--radius-full);
+  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+[data-theme="day"] .theme-toggle-indicator {
+  transform: translateX(32px);
+  background: var(--color-bronze);
+}
+
+.theme-toggle-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  font-size: 14px;
+  position: relative;
+}
+
+.theme-toggle-icon.sun {
+  opacity: 0.6;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.theme-toggle-icon.moon {
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+[data-theme="day"] .theme-toggle-icon.sun {
+  opacity: 1;
+}
+
+[data-theme="day"] .theme-toggle-icon.moon {
+  opacity: 0.6;
 }

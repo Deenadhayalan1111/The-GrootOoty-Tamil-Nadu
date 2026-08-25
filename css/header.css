@@ -54,9 +54,14 @@
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-cream);
+  color: var(--text-on-image);
   line-height: 1;
   text-transform: uppercase;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+#site-header.scrolled .logo-name {
+  color: var(--text-primary);
 }
 
 .logo-location {
@@ -88,11 +93,15 @@
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(244,237,224,0.75);
+  color: var(--text-on-image);
   text-decoration: none;
   padding: 0.5rem 0.875rem;
   border-radius: var(--radius-sm);
   transition: color var(--dur-fast) var(--ease-out);
+}
+
+#site-header.scrolled .nav-link {
+  color: var(--text-primary);
 }
 
 .nav-link::after {
@@ -109,12 +118,19 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-cream);
+  color: var(--color-bronze);
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
   transform: translateX(-50%) scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
 }
 
 .header-cta {
@@ -145,12 +161,17 @@
   display: block;
   width: 24px;
   height: 1.5px;
-  background: var(--color-cream);
+  background: var(--text-on-image);
   border-radius: 2px;
   transition: transform var(--dur-base) var(--ease-out),
               opacity var(--dur-base) var(--ease-out),
-              width var(--dur-base) var(--ease-out);
+              width var(--dur-base) var(--ease-out),
+              background var(--dur-base) var(--ease-out);
   transform-origin: center;
+}
+
+#site-header.scrolled .hamburger-line {
+  background: var(--text-primary);
 }
 
 .hamburger.open .hamburger-line:nth-child(1) {
@@ -330,7 +351,7 @@ body.menu-open {
 .mobile-action-btn:active { opacity: 0.7; }
 
 .mobile-action-btn.whatsapp { color: #25D366; }
-.mobile-action-btn.call     { color: var(--color-cream); }
+.mobile-action-btn.call     { color: var(--text-primary); }
 .mobile-action-btn.book     { color: var(--color-bronze); }
 
 .mobile-action-btn svg { width: 20px; height: 20px; }

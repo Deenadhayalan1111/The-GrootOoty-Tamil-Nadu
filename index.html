@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Groot Ooty | Cozy Stay in Ooty</title>
@@ -10,6 +11,21 @@
   <meta property="og:description" content="A cozy, memorable stay in the Nilgiri hills. Book your Ooty escape at The Groot." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
+
+  <!-- Theme Initialization (Prevents flash) -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('groot-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'day' : 'night';
+        }
+        if (t === 'day') {
+          document.documentElement.setAttribute('data-theme', 'day');
+        }
+      } catch(e) {}
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,17 +64,26 @@
       <a href="contact.html"          class="nav-link">Contact</a>
     </nav>
 
-    <!-- Header CTA -->
-    <div class="header-cta">
-      <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
-    </div>
+    <div class="header-actions">
+      <!-- Header CTA -->
+      <div class="header-cta">
+        <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
+      </div>
+      
+      <!-- Theme Toggle -->
+      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Day/Night Mode">
+        <div class="theme-toggle-indicator"></div>
+        <span class="theme-toggle-icon sun">☀️</span>
+        <span class="theme-toggle-icon moon">🌙</span>
+      </button>
 
-    <!-- Hamburger -->
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
     </button>
+    </div>
   </div>
 </header>
 
@@ -76,13 +101,13 @@
     </button>
   </div>
   <nav class="mobile-menu-nav" aria-label="Mobile navigation">
-    <a href="index.html"       class="mobile-nav-link">Home <span class="arrow">?</span></a>
-    <a href="index.html#rooms" class="mobile-nav-link">Stay <span class="arrow">?</span></a>
-    <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow">?</span></a>
-    <a href="gallery.html"     class="mobile-nav-link">Gallery <span class="arrow">?</span></a>
-    <a href="ooty.html"        class="mobile-nav-link">Ooty <span class="arrow">?</span></a>
-    <a href="reviews.html"     class="mobile-nav-link">Reviews <span class="arrow">?</span></a>
-    <a href="contact.html"     class="mobile-nav-link">Contact <span class="arrow">?</span></a>
+    <a href="index.html"       class="mobile-nav-link">Home <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="index.html#rooms" class="mobile-nav-link">Stay <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="gallery.html"     class="mobile-nav-link">Gallery <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="ooty.html"        class="mobile-nav-link">Ooty <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="reviews.html"     class="mobile-nav-link">Reviews <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="contact.html"     class="mobile-nav-link">Contact <span class="arrow" aria-hidden="true">&rarr;</span></a>
   </nav>
   <div class="mobile-menu-actions">
     <a href="booking.html" class="btn btn-primary btn-block" id="mobile-book-btn">Check Availability</a>
@@ -128,7 +153,7 @@
       Your Cozy <br class="hide-mobile" /><em>Escape</em> in Ooty
     </h1>
     <p class="hero-subtitle">
-      Nestled in the Nilgiri hills � discover warm rooms, campfire nights, home-cooked food, and the true spirit of Ooty at The Groot.
+      Nestled in the Nilgiri hills — discover warm rooms, campfire nights, home-cooked food, and the true spirit of Ooty at The Groot.
     </p>
     <div class="hero-actions">
       <a href="booking.html" class="btn btn-primary btn-lg btn-shimmer" id="hero-book-btn">
@@ -357,7 +382,7 @@
   <div class="container" style="position:relative;z-index:5;width:100%;">
     <div class="aframe-content">
       <span class="section-overline" data-reveal="fade-up">Signature Experience</span>
-      <h2 class="display-md" id="aframe-title" data-reveal="fade-up" data-delay="100" style="color:var(--color-cream);margin-bottom:1.75rem;">The A-Frame</h2>
+      <h2 class="display-md" id="aframe-title" data-reveal="fade-up" data-delay="100" style="color:var(--text-on-image);margin-bottom:1.75rem;">The A-Frame</h2>
       <div class="flex gap-4 flex-wrap" data-reveal="fade-up" data-delay="200">
         <a href="booking.html?room=aframe" class="btn btn-primary" id="aframe-book-btn">Check A-Frame Availability</a>
         <button onclick="roomEnquiryWhatsApp('A-Frame Room')" class="btn btn-outline" id="aframe-wa-btn">Ask About A-Frame</button>
@@ -378,7 +403,7 @@
   <div class="container" style="position:relative;z-index:5;width:100%;">
     <div class="campfire-content">
       <span class="section-overline" data-reveal="fade-up" style="display:block;text-align:center;">The Groot Experience</span>
-      <h2 class="display-md" id="campfire-title" data-reveal="fade-up" data-delay="100" style="color:var(--color-cream);text-align:center;margin-bottom:2rem;">
+      <h2 class="display-md" id="campfire-title" data-reveal="fade-up" data-delay="100" style="color:var(--text-on-image);text-align:center;margin-bottom:2rem;">
         Nights at The Groot
       </h2>
       <div data-reveal="fade-up" data-delay="200" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
@@ -401,7 +426,7 @@
   <div class="container" style="position:relative;z-index:5;width:100%;">
     <div class="glasshouse-content">
       <span class="section-overline" data-reveal="fade-right">Unique Accommodation</span>
-      <h2 class="display-md" id="glasshouse-title" data-reveal="fade-right" data-delay="100" style="color:var(--color-cream);margin-bottom:1.75rem;">The Glass House</h2>
+      <h2 class="display-md" id="glasshouse-title" data-reveal="fade-right" data-delay="100" style="color:var(--text-on-image);margin-bottom:1.75rem;">The Glass House</h2>
       <div class="flex gap-4 flex-wrap" style="justify-content:flex-end;" data-reveal="fade-right" data-delay="200">
         <a href="booking.html?room=glasshouse" class="btn btn-primary" id="glasshouse-book-btn">Check Availability</a>
         <a href="room-detail.html?room=glasshouse" class="btn btn-outline" id="glasshouse-explore-btn">Explore Glass House</a>
@@ -582,7 +607,7 @@
             <div class="review-author-avatar">P</div>
             <div>
               <div class="review-author-name">Priya M.</div>
-              <div class="review-author-source">Google Reviews � Chennai</div>
+              <div class="review-author-source">Google Reviews • Chennai</div>
             </div>
           </div>
         </div>
@@ -604,7 +629,7 @@
             <div class="review-author-avatar">K</div>
             <div>
               <div class="review-author-name">Karthik S.</div>
-              <div class="review-author-source">Instagram � Coimbatore</div>
+              <div class="review-author-source">Instagram • Coimbatore</div>
             </div>
           </div>
         </div>
@@ -707,7 +732,7 @@
   <div class="container" style="position:relative;z-index:5;width:100%;">
     <div class="final-cta-content">
       <span class="section-overline" data-reveal="fade-up" style="display:block;">Your Ooty Escape Awaits</span>
-      <h2 class="display-md" id="cta-title" data-reveal="fade-up" data-delay="100" style="color:var(--color-cream);margin-bottom:1rem;">
+      <h2 class="display-md" id="cta-title" data-reveal="fade-up" data-delay="100" style="color:var(--text-on-image);margin-bottom:1rem;">
         Ready for Your <br class="hide-mobile" />Ooty Escape?
       </h2>
       <p data-reveal="fade-up" data-delay="200" style="font-size:1.1rem;color:rgba(244,237,224,0.75);line-height:1.7;max-width:500px;margin:0 auto 0;font-weight:300;">
@@ -791,7 +816,7 @@
   <!-- Footer Bottom -->
   <div class="container">
     <div class="footer-bottom">
-      <p class="footer-copyright">� 2025 The Groot Ooty. All rights reserved.</p>
+      <p class="footer-copyright">© 2025 The Groot Ooty. All rights reserved.</p>
       <div class="footer-bottom-links">
         <a href="booking.html" class="footer-bottom-link">Book Now</a>
         <a href="contact.html" class="footer-bottom-link">Contact</a>

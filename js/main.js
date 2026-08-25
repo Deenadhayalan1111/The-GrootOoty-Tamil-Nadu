@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhoneLinks();
   initLazyImages();
   setActiveNavLink();
-  initGrootThemeSelector();
+  initDayNightToggle();
 });
 
 /* ---------------------------------------------------------
@@ -381,140 +381,57 @@ window.scrollToSection = function(id) {
 };
 
 /* ---------------------------------------------------------
-   ISOLATED THEME SELECTOR COMPONENT (PHASE 1 ONLY)
-   Strictly scoped under .groot-theme-* classes.
-   Operates only on its own floating button UI.
-   Zero impact on existing website CSS/HTML.
+   DAY/NIGHT THEME TOGGLE
    --------------------------------------------------------- */
-function initGrootThemeSelector() {
-  const themes = [
-    { id: "default", name: "Default Baseline 🌲", colors: ["#1A2B1C", "#111B12", "#B8935A"] },
-    { id: "royal-burgundy", name: "Royal Burgundy 🍷", colors: ["#1B0F13", "#281319", "#C9A46A"] },
-    { id: "obsidian-noir", name: "Obsidian Noir 🖤", colors: ["#090A09", "#111311", "#C8A65B"] },
-    { id: "ooty-forest", name: "Ooty Forest 🌲", colors: ["#10251C", "#17352A", "#C5A96A"] },
-    { id: "dark-golden", name: "Dark Golden 🏆", colors: ["#12110F", "#1C1915", "#C6A15B"] }
-  ];
+function initDayNightToggle() {
+  const toggle = document.getElementById('theme-toggle-btn');
+  if (!toggle) return;
 
-  let savedThemeId = null;
-  try {
-    savedThemeId = localStorage.getItem("groot-ooty-theme");
-  } catch (e) {
-    // Fail safe if localStorage disabled
-  }
-
-  const container = document.createElement("div");
-  container.className = "groot-theme-container";
-  container.setAttribute("aria-label", "Theme Selector");
-
-  // Floating Theme Button
-  const toggleBtn = document.createElement("button");
-  toggleBtn.className = "groot-theme-btn";
-  toggleBtn.setAttribute("type", "button");
-  toggleBtn.setAttribute("aria-label", "Open Theme Selector");
-  toggleBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>`;
-  container.appendChild(toggleBtn);
-
-  const swatches = [];
-
-  const updateButtonThemeAccent = (themeObj) => {
-    if (themeObj) {
-      toggleBtn.style.background = `linear-gradient(135deg, ${themeObj.colors[0]} 0%, ${themeObj.colors[1]} 100%)`;
-      toggleBtn.style.color = themeObj.colors[2];
-      toggleBtn.style.borderColor = themeObj.colors[2];
+  const THEME_KEY = 'groot-theme';
+  const getSavedTheme = () => {
+    try {
+      return localStorage.getItem(THEME_KEY);
+    } catch (e) {
+      return null;
     }
   };
 
-  // If a theme was previously saved, update the button UI accent & apply data-theme attribute
-  if (savedThemeId && savedThemeId !== "default") {
-    const match = themes.find(t => t.id === savedThemeId);
-    if (match) {
-      updateButtonThemeAccent(match);
-      document.documentElement.setAttribute("data-theme", savedThemeId);
-    }
-  } else {
-    updateButtonThemeAccent(themes[0]);
-  }
-
-  themes.forEach((t) => {
-    const swatch = document.createElement("div");
-    swatch.className = "groot-theme-swatch";
-    if (t.id === savedThemeId || (!savedThemeId && t.id === "default")) {
-      swatch.classList.add("groot-theme-selected");
-    }
-    swatch.setAttribute("data-label", t.name);
-    swatch.setAttribute("role", "button");
-    swatch.setAttribute("tabindex", "0");
-    swatch.setAttribute("aria-label", `Select theme ${t.name}`);
-    
-    // Scoped swatch styling
-    swatch.style.background = `linear-gradient(135deg, ${t.colors[0]} 0%, ${t.colors[1]} 50%, ${t.colors[2]} 100%)`;
-    
-    container.appendChild(swatch);
-    swatches.push({ element: swatch, theme: t });
-
-    const handleSelect = () => {
-      if (t.id === "default") {
-        document.documentElement.removeAttribute("data-theme");
-        try {
-          localStorage.removeItem("groot-ooty-theme");
-        } catch (e) {}
-      } else {
-        document.documentElement.setAttribute("data-theme", t.id);
-        try {
-          localStorage.setItem("groot-ooty-theme", t.id);
-        } catch (e) {}
-      }
-
-      swatches.forEach(s => s.element.classList.remove("groot-theme-selected"));
-      swatch.classList.add("groot-theme-selected");
-
-      updateButtonThemeAccent(t);
-
-      // Close popup
-      container.classList.remove("groot-theme-open");
-      toggleBtn.classList.remove("groot-theme-active");
-    };
-
-    swatch.addEventListener("click", handleSelect);
-    swatch.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        handleSelect();
-      }
-    });
-  });
-
-  document.body.appendChild(container);
-
-  // Position calculation for an adaptive 90-degree quadrant arc (Right to Top)
-  const updateRadialPositions = () => {
-    const radius = window.innerWidth <= 430 ? 110 : 130; 
-    const count = swatches.length;
-    swatches.forEach((item, i) => {
-      const angleDeg = (i / (count - 1)) * 90;
-      const angleRad = angleDeg * (Math.PI / 180);
-      const x = Math.cos(angleRad) * radius;
-      const y = -Math.sin(angleRad) * radius; // Negative Y moves UP in CSS translate
-      
-      item.element.style.setProperty('--tx', `${x}px`);
-      item.element.style.setProperty('--ty', `${y}px`);
-    });
+  const saveTheme = (theme) => {
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch (e) {}
   };
 
-  updateRadialPositions();
-  window.addEventListener('resize', updateRadialPositions);
+  const getSystemTheme = () => {
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'day' : 'night';
+  };
 
-  // Toggle Popup
-  toggleBtn.addEventListener("click", () => {
-    const isOpen = container.classList.toggle("groot-theme-open");
-    toggleBtn.classList.toggle("groot-theme-active", isOpen);
+  const applyTheme = (theme) => {
+    if (theme === 'day') {
+      document.documentElement.setAttribute('data-theme', 'day');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  };
+
+  // Check initial state (should already be applied by inline script, but just in case)
+  const currentTheme = getSavedTheme() || getSystemTheme();
+  applyTheme(currentTheme);
+
+  // Toggle on click
+  toggle.addEventListener('click', () => {
+    const isDay = document.documentElement.getAttribute('data-theme') === 'day';
+    const newTheme = isDay ? 'night' : 'day';
+    
+    applyTheme(newTheme);
+    saveTheme(newTheme);
   });
-
-  // Close on outside click
-  document.addEventListener("click", (e) => {
-    if (!container.contains(e.target) && container.classList.contains("groot-theme-open")) {
-      container.classList.remove("groot-theme-open");
-      toggleBtn.classList.remove("groot-theme-active");
+  
+  // Toggle on keyboard (accessibility)
+  toggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggle.click();
     }
   });
 }

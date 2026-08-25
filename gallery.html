@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | The Groot Ooty</title>
   <meta name="description" content="Explore the gallery of The Groot Ooty � rooms, campfire nights, home food, Ooty landscapes and more. See life at The Groot." />
   <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
+
+  <!-- Theme Initialization (Prevents flash) -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('groot-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'day' : 'night';
+        }
+        if (t === 'day') {
+          document.documentElement.setAttribute('data-theme', 'day');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/variables.css?v=1.7" />
@@ -30,8 +46,22 @@
       <a href="reviews.html" class="nav-link">Reviews</a>
       <a href="contact.html" class="nav-link">Contact</a>
     </nav>
-    <div class="header-cta"><a href="booking.html" class="btn btn-primary btn-sm">Book Now</a></div>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    <div class="header-actions">
+      <!-- Header CTA -->
+      <div class="header-cta">
+        <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
+      </div>
+      
+      <!-- Theme Toggle -->
+      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Day/Night Mode">
+        <div class="theme-toggle-indicator"></div>
+        <span class="theme-toggle-icon sun">☀️</span>
+        <span class="theme-toggle-icon moon">🌙</span>
+      </button>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    </div>
   </div>
 </header>
 
@@ -42,13 +72,13 @@
     <button id="mobile-menu-close" class="hamburger open" aria-label="Close menu"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
   </div>
   <nav class="mobile-menu-nav">
-    <a href="index.html" class="mobile-nav-link">Home <span class="arrow">?</span></a>
-    <a href="index.html#rooms" class="mobile-nav-link">Stay <span class="arrow">?</span></a>
-    <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow">?</span></a>
-    <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow">?</span></a>
-    <a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow">?</span></a>
-    <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow">?</span></a>
-    <a href="contact.html" class="mobile-nav-link">Contact <span class="arrow">?</span></a>
+    <a href="index.html" class="mobile-nav-link">Home <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="index.html#rooms" class="mobile-nav-link">Stay <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <a href="contact.html" class="mobile-nav-link">Contact <span class="arrow" aria-hidden="true">&rarr;</span></a>
   </nav>
   <div class="mobile-menu-actions">
     <a href="booking.html" class="btn btn-primary btn-block">Check Availability</a>
@@ -62,11 +92,11 @@
     <div class="gallery-hero">
       <div data-reveal="fade-up">
         <span class="section-overline">Visual Journey</span>
-        <h1 style="font-family:var(--font-display);font-size:clamp(2.25rem,5vw,4rem);font-weight:700;color:var(--color-cream);margin-bottom:0.75rem;margin-top:0.5rem;">
+        <h1 style="font-family:var(--font-display);font-size:clamp(2.25rem,5vw,4rem);font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;margin-top:0.5rem;">
           Life at The Groot
         </h1>
         <p style="font-size:1.1rem;color:var(--text-secondary);max-width:500px;font-weight:300;line-height:1.65;">
-          Every corner of The Groot tells a story. From morning mist to campfire nights � explore the beauty of our Ooty stay.
+          Every corner of The Groot tells a story. From morning mist to campfire nights  explore the beauty of our Ooty stay.
         </p>
       </div>
     </div>
@@ -122,7 +152,7 @@
       <a href="tel:7395965006" class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>7395965006</a>
     </div>
   </div>
-  <div class="container"><div class="footer-bottom"><p class="footer-copyright">� 2025 The Groot Ooty. All rights reserved.</p><a href="booking.html" class="footer-bottom-link">Book Now</a></div></div>
+  <div class="container"><div class="footer-bottom"><p class="footer-copyright">© 2025 The Groot Ooty. All rights reserved.</p><a href="booking.html" class="footer-bottom-link">Book Now</a></div></div>
 </footer>
 
 <!-- Floating WhatsApp -->
