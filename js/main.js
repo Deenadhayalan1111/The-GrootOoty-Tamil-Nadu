@@ -435,3 +435,49 @@ function initDayNightToggle() {
     }
   });
 }
+
+
+/* =========================================================
+   PREMIUM PAGE TRANSITION (JS)
+   ========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  // Wait a tiny bit to ensure CSS is applied, then fade in
+  requestAnimationFrame(() => {
+    document.documentElement.classList.remove('page-transitioning');
+  });
+});
+
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) {
+    document.documentElement.classList.remove('page-transitioning');
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (!link) return;
+  
+  const href = link.getAttribute('href');
+  if (!href) return;
+  
+  // Ignore external links, anchors, tel, mailto
+  if (href.startsWith('http') || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:')) return;
+  
+  // Ignore target blank
+  if (link.target === '_blank') return;
+  
+  // Ignore if modifier keys are pressed (new tab/window)
+  if (e.ctrlKey || e.shiftKey || e.metaKey || e.altKey) return;
+  
+  // Prevent default and fade out
+  e.preventDefault();
+  
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('page-transitioning');
+    setTimeout(() => {
+      window.location.href = href;
+    }, 400); // match CSS transition duration
+  } else {
+    window.location.href = href;
+  }
+});

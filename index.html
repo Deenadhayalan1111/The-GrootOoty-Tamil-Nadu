@@ -23,7 +23,12 @@
         if (t === 'day') {
           document.documentElement.setAttribute('data-theme', 'day');
         }
+
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('page-transitioning');
+        }
       } catch(e) {}
+
     })();
   </script>
 
@@ -32,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/variables.css?v=1.7" />
+  <link rel="stylesheet" href="css/variables.css?v=1.8" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/components.css" />
@@ -863,7 +868,7 @@
 <!-- JS -->
 <script src="js/config.js"></script>
 <script src="js/whatsapp.js"></script>
-<script src="js/main.js?v=1.7"></script>
+<script src="js/main.js?v=1.8"></script>
 <script>
   // Init reviews carousel after DOM ready
   document.addEventListener('DOMContentLoaded', () => {
