@@ -171,11 +171,15 @@
   .footer-main { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .footer-main {
     grid-template-columns: 1fr;
     gap: var(--space-8);
     text-align: center;
+  }
+  .footer-main ul {
+    padding-left: 0;
+    list-style-position: inside;
   }
   .footer-brand-desc {
     margin-left: auto;

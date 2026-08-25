@@ -1,6 +1,6 @@
 
 :root {
-  --whatsapp-bottom: calc(var(--space-6) + var(--mobile-bar) + env(safe-area-inset-bottom, 0px));
+  --whatsapp-bottom: calc(20px + var(--mobile-bar) + env(safe-area-inset-bottom, 0px));
 }
 
 @media (min-width: 1025px) {
@@ -552,8 +552,8 @@
 .fab-whatsapp {
   position: fixed;
   bottom: var(--whatsapp-bottom);
-  right: var(--space-6);
-  z-index: 900;
+  right: 20px;
+  z-index: 999;
   width: 56px;
   height: 56px;
   border-radius: var(--radius-full);
