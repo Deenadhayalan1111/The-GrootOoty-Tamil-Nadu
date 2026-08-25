@@ -360,9 +360,7 @@ body.menu-open {
   .mobile-action-bar { display: block; }
 }
 
-@media (min-width: 1025px) {
-  .fab-whatsapp { bottom: var(--space-8); }
-}
+
 
 /* ---------------------------------------------------------
    NARROW MOBILE FIX (Under 430px)
