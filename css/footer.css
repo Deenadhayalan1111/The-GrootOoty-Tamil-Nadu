@@ -175,28 +175,31 @@
   .footer-main {
     grid-template-columns: 1fr;
     gap: var(--space-8);
-    text-align: center;
   }
-  .footer-main ul {
-    padding-left: 0;
+  
+  footer, .footer-main, .footer-col, .footer-col ul, .footer-bottom, .footer-brand-desc {
+    text-align: center !important;
+  }
+  
+  .footer-col ul, .footer-links, .footer-main ul {
+    padding-left: 0 !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     list-style-position: inside;
   }
-  .footer-brand-desc {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+  
+  .footer-contact-item, .footer-col div, .footer-social {
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
   }
-  .footer-social {
-    justify-content: center;
+  
+  .footer-bottom { 
+    flex-direction: column; 
+    text-align: center !important; 
   }
-  .footer-links {
-    align-items: center;
-  }
-  .footer-contact-item {
-    justify-content: center;
-    text-align: center;
-  }
-  .footer-bottom { flex-direction: column; text-align: center; }
 }
 
 /* Add padding to body for mobile action bar */
