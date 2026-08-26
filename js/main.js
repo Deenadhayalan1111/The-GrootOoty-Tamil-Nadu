@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLazyImages();
   setActiveNavLink();
   initDayNightToggle();
+  initCinematicLoader();
 });
 
 /* ---------------------------------------------------------
@@ -481,3 +482,42 @@ document.addEventListener('click', (e) => {
     window.location.href = href;
   }
 });
+
+/* ---------------------------------------------------------
+   CINEMATIC LOADER
+   --------------------------------------------------------- */
+function initCinematicLoader() {
+  const loader = document.getElementById('cinematic-loader');
+  if (!loader) return;
+
+  // Do not play on internal normal navigation
+  const navEntries = performance.getEntriesByType('navigation');
+  const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+  const isInternal = document.referrer.includes(window.location.host) && document.referrer !== "";
+  
+  if (isInternal && !isReload) {
+    loader.style.display = 'none';
+    loader.remove();
+    return;
+  }
+
+  // Prevent scrolling during intro
+  document.documentElement.style.overflow = 'hidden';
+
+  // The CSS text reveal animations take about 1.8s to finish.
+  // We hold for a brief moment, making the total intro ~2.4s.
+  setTimeout(() => {
+    loader.classList.add('loader-exit');
+    
+    // After the dark overlay fades out (0.8s transition), clean up
+    setTimeout(() => {
+      document.documentElement.style.overflow = '';
+      loader.remove();
+      
+      // Force scroll reveal to re-check in case elements were hidden
+      if (typeof ScrollReveal !== 'undefined') {
+        ScrollReveal().sync();
+      }
+    }, 850);
+  }, 2400);
+}

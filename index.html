@@ -47,6 +47,20 @@
   <link rel="stylesheet" href="css/footer.css" />
 </head>
 <body>
+<!-- Cinematic Loader -->
+<div id="cinematic-loader" aria-hidden="true">
+  <div class="cinematic-text-wrapper">
+    <div class="cinematic-text-main" aria-label="The Groot">
+      <span class="c-char" style="--i:0">T</span><span class="c-char" style="--i:1">h</span><span class="c-char" style="--i:2">e</span><span class="c-space">&nbsp;</span><span class="c-char" style="--i:3">G</span><span class="c-char" style="--i:4">r</span><span class="c-char" style="--i:5">o</span><span class="c-char" style="--i:6">o</span><span class="c-char" style="--i:7">t</span>
+    </div>
+    <div class="cinematic-text-sub" aria-label="Ooty, Tamil Nadu">
+      <span class="c-sub-word" style="--w:0">Ooty,</span>
+      <span class="c-sub-word" style="--w:1">Tamil</span>
+      <span class="c-sub-word" style="--w:2">Nadu</span>
+    </div>
+  </div>
+  <div class="cinematic-light-sweep"></div>
+</div>
 
 <!-- =========================================================
      HEADER
@@ -523,25 +537,103 @@
     </div>
 
     <div class="ooty-grid">
+      <!-- 1 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
-        <img src="assets/images/1000032840_professional.webp" alt="Nilgiri mist and landscape" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/botanical_garden.png" alt="Government Botanical Garden" loading="lazy" class="ooty-card-img" />
         <div class="ooty-card-body">
-          <h3 class="ooty-card-name">Botanical Garden</h3>
-          <p class="ooty-card-desc">A 55-acre garden with rare plants, century-old trees and stunning floral diversity.</p>
+          <h3 class="ooty-card-name">Government Botanical Garden</h3>
+          <p class="ooty-card-desc">A 55-acre garden with rare plants and beautiful floral displays.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~5 km from The Groot</p>
         </div>
       </a>
+      <!-- 2 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
-        <img src="assets/images/1000032835_professional.webp" alt="Ooty Lake" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/st_stephens_church.png" alt="St. Stephen's Church" loading="lazy" class="ooty-card-img" />
         <div class="ooty-card-body">
-          <h3 class="ooty-card-name">Ooty Lake</h3>
-          <p class="ooty-card-desc">Scenic boating and beautiful waterfront walks with Nilgiri hill panoramas.</p>
+          <h3 class="ooty-card-name">St. Stephen's Church</h3>
+          <p class="ooty-card-desc">Historic 19th-century church with stunning wooden architecture.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~4 km from The Groot</p>
         </div>
       </a>
+      <!-- 3 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="200">
-        <img src="assets/images/1000032840_professional.webp" alt="Nilgiri tea estate" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/rose_garden.png" alt="Government Rose Garden" loading="lazy" class="ooty-card-img" />
         <div class="ooty-card-body">
-          <h3 class="ooty-card-name">Tea Estates</h3>
-          <p class="ooty-card-desc">Rolling hills of emerald green Nilgiri tea — taste the world-famous tea fresh from the source.</p>
+          <h3 class="ooty-card-name">Government Rose Garden</h3>
+          <p class="ooty-card-desc">Terraced garden featuring thousands of vibrant blooming rose varieties.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~6 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 4 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
+        <img src="assets/images/raj_bhavan.png" alt="Raj Bhavan" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Raj Bhavan</h3>
+          <p class="ooty-card-desc">Grand colonial heritage building surrounded by manicured lawns.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~4.5 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 5 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
+        <img src="assets/images/ooty_lake_boat_house.png" alt="Ooty Lake & Boat House" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Ooty Lake & Boat House</h3>
+          <p class="ooty-card-desc">Scenic boating and beautiful waterfront walks with hill panoramas.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~6 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 6 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="200">
+        <img src="assets/images/doddabetta_peak.png" alt="Doddabetta Peak" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Doddabetta Peak</h3>
+          <p class="ooty-card-desc">The highest point in the Nilgiris offering breathtaking panoramic views.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~9 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 7 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
+        <img src="assets/images/tea_factory.png" alt="Tea Factory & Tea Museum" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Tea Factory & Museum</h3>
+          <p class="ooty-card-desc">Learn the art of tea making and taste fresh Nilgiri tea at the source.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~8 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 8 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
+        <img src="assets/images/ketti_valley.png" alt="Ketti Valley View Point" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Ketti Valley View Point</h3>
+          <p class="ooty-card-desc">Stunning viewpoints overlooking one of the world's largest valleys.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~12 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 9 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="200">
+        <img src="assets/images/pykara_waterfalls.png" alt="Pykara Waterfalls" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Pykara Waterfalls</h3>
+          <p class="ooty-card-desc">Cascading water over rocky terrain surrounded by lush green forests.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~20 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 10 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
+        <img src="assets/images/emerald_lake.png" alt="Emerald Lake" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Emerald Lake</h3>
+          <p class="ooty-card-desc">Pristine, peaceful green waters nestled amidst beautiful tea plantations.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~22 km from The Groot</p>
+        </div>
+      </a>
+      <!-- 11 -->
+      <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
+        <img src="assets/images/avalanche_lake.png" alt="Avalanche Lake" loading="lazy" class="ooty-card-img" />
+        <div class="ooty-card-body">
+          <h3 class="ooty-card-name">Avalanche Lake</h3>
+          <p class="ooty-card-desc">A mesmerizing untouched lake offering a tranquil escape in nature.</p>
+          <p class="ooty-card-desc" style="margin-top: 0.5rem; font-size: 0.8rem; font-weight: 500; color: var(--color-bronze);">~25 km from The Groot</p>
         </div>
       </a>
     </div>
