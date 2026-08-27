@@ -699,11 +699,22 @@
    --------------------------------------------------------- */
 
 .ooty-section {
-  background: var(--bg-section-alt, var(--color-warm-white));
+  background-color: #0d1b14 !important;
+  background: #0d1b14 !important;
   position: relative;
 }
 
-.ooty-section .section-title { color: var(--text-primary, var(--color-charcoal)); }
+.ooty-section .section-title,
+.ooty-section h2,
+.ooty-section .section-title.dark {
+  color: #f4ede0 !important;
+}
+
+.ooty-section .section-subtitle,
+.ooty-section .section-subtitle.dark {
+  color: rgba(244, 237, 224, 0.85) !important;
+}
+
 .ooty-section .section-overline { color: var(--color-bronze, var(--color-sage)); }
 
 .ooty-grid {
@@ -713,14 +724,30 @@
 }
 
 .ooty-card {
-  background: var(--bg-card, var(--color-cream-warm));
+  background-color: #162a20 !important;
+  background: #162a20 !important;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--border-dark, var(--border-light));
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   transition: transform var(--dur-base) var(--ease-out),
               box-shadow var(--dur-base) var(--ease-out),
               border-color var(--dur-base) var(--ease-out);
   text-decoration: none;
+}
+
+.ooty-card-name,
+.ooty-card h3 {
+  color: #f4ede0 !important;
+}
+
+.ooty-card p,
+.ooty-card-desc {
+  color: rgba(244, 237, 224, 0.85) !important;
+}
+
+.ooty-card [style*="color"] {
+  color: #D4A853 !important;
+  font-weight: 600 !important;
 }
 
 .ooty-card:hover {
@@ -742,24 +769,6 @@
   padding: var(--space-5);
 }
 
-.ooty-card-name {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  color: var(--card-text);
-  margin-bottom: var(--space-2);
-  transition: color var(--dur-base) var(--ease-out);
-}
-
-.ooty-card:hover .ooty-card-name {
-  color: var(--color-bronze);
-}
-
-.ooty-card-desc {
-  font-size: var(--text-sm);
-  color: var(--card-text-muted);
-  line-height: 1.65;
-}
 
 @media (max-width: 1024px) {
   .ooty-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1211,4 +1220,45 @@
 
   .final-cta-actions { flex-direction: column; align-items: center; }
   .final-cta-actions .btn { width: 100%; max-width: 320px; }
+}
+
+/* =========================================================
+   LIGHT (DAY) THEME OVERRIDES — Ooty Section
+   Reverts the dark defaults when day theme is active
+   ========================================================= */
+[data-theme="day"] .ooty-section {
+  background-color: #EFEAE1 !important;
+  background: #EFEAE1 !important;
+}
+
+[data-theme="day"] .ooty-section .section-title,
+[data-theme="day"] .ooty-section h2,
+[data-theme="day"] .ooty-section .section-title.dark {
+  color: #2A3F2C !important;
+}
+
+[data-theme="day"] .ooty-section .section-subtitle,
+[data-theme="day"] .ooty-section .section-subtitle.dark {
+  color: #4A5E4C !important;
+}
+
+[data-theme="day"] .ooty-card {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="day"] .ooty-card-name,
+[data-theme="day"] .ooty-card h3 {
+  color: #2A3F2C !important;
+}
+
+[data-theme="day"] .ooty-card p,
+[data-theme="day"] .ooty-card-desc {
+  color: #4A5E4C !important;
+}
+
+[data-theme="day"] .ooty-card [style*="color"] {
+  color: #B8835A !important;
+  font-weight: 600 !important;
 }

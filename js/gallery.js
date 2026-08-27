@@ -24,8 +24,7 @@ const GALLERY_IMAGES = [
   { src: 'assets/images/1000032839_professional.webp', alt: 'Real 4K Standard Room cozy bedroom interior', category: 'rooms' },
   { src: 'assets/images/IMG-20260821-WA0035.jpg', alt: 'Cozy wooden reading nook inside the cabin', category: 'rooms' },
   // Campfire & Night
-  { src: 'assets/images/1000032841_professional.webp', alt: 'Real 4K campfire evening under Nilgiri stars', category: 'campfire' },
-  { src: 'assets/images/IMG-20260821-WA0036.jpg', alt: 'Outdoor campfire gathering with friends', category: 'campfire' },
+  { src: 'assets/images/IMG-20260821-WA0036.jpg', alt: 'Real 4K campfire evening under Nilgiri stars', category: 'campfire' },
   // Food & Dining
   { src: 'assets/images/IMG-20260821-WA0041.jpg', alt: 'Authentic South Indian home-cooked meal at The Groot', category: 'food' },
   // Experience & Nature
@@ -85,6 +84,7 @@ function renderGallery(images) {
         src="${img.src}"
         alt="${img.alt}"
         loading="lazy"
+        decoding="async"
       />
       <div class="gallery-item-overlay">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

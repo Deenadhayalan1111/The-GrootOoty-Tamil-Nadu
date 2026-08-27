@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/header.css" />
   <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/sections.css?v=2.0" />
   <link rel="stylesheet" href="css/footer.css" />
 </head>
 <body>
@@ -155,7 +155,7 @@
   <div class="hero-bg">
     <img
       class="hero-bg-img parallax-img"
-      src="assets/images/1000032834_professional.webp"
+      src="assets/images/IMG-20260821-WA0036.jpg"
       alt="The Groot Ooty property  a cozy boutique stay in the Nilgiri hills"
       fetchpriority="high"
     />
@@ -215,9 +215,10 @@
     <div class="intro-image-wrapper" data-reveal="fade-right">
       <img
         class="intro-image-main"
+        data-reveal="image"
         src="assets/images/1000032835_professional.webp"
         alt="The Groot property garden and outdoor area"
-        loading="lazy"
+        loading="lazy" decoding="async"
       />
       <div class="intro-badge-pill" aria-hidden="true">
         <span>🔥</span>
@@ -227,11 +228,15 @@
 
     <!-- Text side -->
     <div class="intro-text">
+      <div class="cinematic-word-bg">
+        <span class="scroll-linked scroll-linked-left" data-reveal="left-word">DISCOVER</span>
+        <span class="scroll-linked scroll-linked-right" data-reveal="right-word">OOTY</span>
+      </div>
       <span class="section-overline" data-reveal="fade-up">Welcome to The Groot</span>
-      <h2 class="section-title" id="intro-title" data-reveal="fade-up" data-delay="100">
+      <h2 class="section-title" id="intro-title" data-reveal="heading" data-delay="100">
         More Than Just a Stay
       </h2>
-      <p class="section-subtitle dark" data-reveal="fade-up" data-delay="200">
+      <p class="section-subtitle dark" data-reveal="text" data-delay="200">
         Tucked into the Nilgiri hills in Pudumund, Ooty — The Groot is a cozy, character-filled property where you can truly unwind. From our signature A-Frame rooms to the Glass House surrounded by forest, every corner has been crafted to make your Ooty stay unforgettable.
       </p>
 
@@ -331,7 +336,7 @@
   <div class="container">
     <div class="section-header center" data-reveal="fade-up">
       <span class="section-overline">Where You'll Stay</span>
-      <h2 class="section-title" id="rooms-title">Find Your Stay</h2>
+      <h2 class="section-title" id="rooms-title" data-reveal="heading">Find Your Stay</h2>
       <p class="section-subtitle center">
         From cozy standard rooms to our unique A-Frame and Glass House — every space at The Groot has its own character and charm.
       </p>
@@ -341,7 +346,7 @@
       <!-- A-Frame -->
       <a href="room-detail.html?room=aframe" class="room-card featured" data-reveal="fade-up" id="room-aframe">
         <div class="room-card-img-wrap">
-          <img src="assets/images/1000032836_professional.webp" alt="A-Frame Room exterior at The Groot Ooty" loading="lazy" />
+          <img src="assets/images/1000032836_professional.webp" alt="A-Frame Room exterior at The Groot Ooty" loading="lazy" decoding="async" />
           <div class="room-card-gradient" aria-hidden="true"></div>
         </div>
         <div class="room-card-info">
@@ -350,9 +355,9 @@
       </a>
 
       <!-- Glass House -->
-      <a href="room-detail.html?room=glasshouse" class="room-card" data-reveal="fade-up" data-delay="100" id="room-glasshouse">
+      <a href="room-detail.html?room=glasshouse" class="room-card" data-reveal="card" data-delay="100" id="room-glasshouse">
         <div class="room-card-img-wrap">
-          <img src="assets/images/1000032837_professional.webp" alt="Glass House at The Groot Ooty" loading="lazy" />
+          <img src="assets/images/1000032837_professional.webp" alt="Glass House at The Groot Ooty" loading="lazy" decoding="async" />
           <div class="room-card-gradient" aria-hidden="true"></div>
         </div>
         <div class="room-card-info">
@@ -361,9 +366,9 @@
       </a>
 
       <!-- Suite -->
-      <a href="room-detail.html?room=suite" class="room-card" data-reveal="fade-up" data-delay="200" id="room-suite">
+      <a href="room-detail.html?room=suite" class="room-card" data-reveal="card" data-delay="200" id="room-suite">
         <div class="room-card-img-wrap">
-          <img src="assets/images/1000032838_professional.webp" alt="Luxurious Suite at The Groot Ooty" loading="lazy" />
+          <img src="assets/images/1000032838_professional.webp" alt="Luxurious Suite at The Groot Ooty" loading="lazy" decoding="async" />
           <div class="room-card-gradient" aria-hidden="true"></div>
         </div>
         <div class="room-card-info">
@@ -372,9 +377,9 @@
       </a>
 
       <!-- Standard Room -->
-      <a href="room-detail.html?room=standard" class="room-card" data-reveal="fade-up" data-delay="300" id="room-standard">
+      <a href="room-detail.html?room=standard" class="room-card" data-reveal="card" data-delay="300" id="room-standard">
         <div class="room-card-img-wrap">
-          <img src="assets/images/1000032839_professional.webp" alt="Standard Room at The Groot Ooty" loading="lazy" />
+          <img src="assets/images/1000032839_professional.webp" alt="Standard Room at The Groot Ooty" loading="lazy" decoding="async" />
           <div class="room-card-gradient" aria-hidden="true"></div>
         </div>
         <div class="room-card-info">
@@ -394,7 +399,7 @@
      ========================================================= -->
 <section class="aframe-section parallax-wrapper" aria-labelledby="aframe-title">
   <div class="aframe-bg">
-    <img class="parallax-img" src="assets/images/1000032836_professional.webp" alt="A-Frame Room interior — cozy wooden cabin" loading="lazy" />
+    <img class="parallax-img" src="assets/images/1000032836_professional.webp" alt="A-Frame Room interior — cozy wooden cabin" loading="lazy" decoding="async" />
   </div>
   <div class="aframe-overlay" aria-hidden="true"></div>
 
@@ -415,7 +420,7 @@
      ========================================================= -->
 <section id="campfire" class="campfire-section parallax-wrapper" aria-labelledby="campfire-title">
   <div class="campfire-bg">
-    <img class="parallax-img" src="assets/images/1000032841_professional.webp" alt="Campfire at The Groot Ooty — evening fire under the stars" loading="lazy" />
+    <img class="parallax-img" src="assets/images/IMG-20260821-WA0036.jpg" alt="Campfire at The Groot Ooty — evening fire under the stars" loading="lazy" decoding="async" />
   </div>
   <div class="campfire-overlay" aria-hidden="true"></div>
 
@@ -438,7 +443,7 @@
      ========================================================= -->
 <section class="glasshouse-section parallax-wrapper" aria-labelledby="glasshouse-title">
   <div class="glasshouse-bg">
-    <img class="parallax-img" src="assets/images/1000032837_professional.webp" alt="Glass House interior at The Groot — forest views through glass" loading="lazy" />
+    <img class="parallax-img" src="assets/images/1000032837_professional.webp" alt="Glass House interior at The Groot — forest views through glass" loading="lazy" decoding="async" />
   </div>
   <div class="glasshouse-overlay" aria-hidden="true"></div>
 
@@ -460,14 +465,14 @@
 <section id="food" class="food-section section-pad" aria-labelledby="food-title">
   <div class="container food-layout">
     <div class="food-image-collage" data-reveal="fade-right">
-      <img class="food-img-main" src="assets/images/IMG-20260821-WA0041.jpg" alt="Authentic South Indian home-cooked food at The Groot" loading="lazy" />
+      <img class="food-img-main" src="assets/images/IMG-20260821-WA0041.jpg" alt="Authentic South Indian home-cooked food at The Groot" loading="lazy" decoding="async" />
     </div>
     <div class="food-text">
       <span class="section-overline" data-reveal="fade-up">Home Cooking</span>
-      <h2 class="section-title" id="food-title" data-reveal="fade-up" data-delay="100">
+      <h2 class="section-title" id="food-title" data-reveal="heading" data-delay="100">
         Good Food.<br class="hide-mobile" /> Warm Moments.
       </h2>
-      <p class="section-subtitle" data-reveal="fade-up" data-delay="200">
+      <p class="section-subtitle" data-reveal="text" data-delay="200">
         At The Groot, food isn't just sustenance  it's part of the experience. Authentic, home-cooked Tamil meals made with care. The kind that makes you feel at home even when you're away.
       </p>
       <div class="food-note" data-reveal="fade-up" data-delay="300">
@@ -488,35 +493,35 @@
   <div class="container">
     <div class="section-header center" data-reveal="fade-up">
       <span class="section-overline">The Groot Experience</span>
-      <h2 class="section-title" id="day-title">A Day at The Groot</h2>
+      <h2 class="section-title" id="day-title" data-reveal="heading">A Day at The Groot</h2>
       <p class="section-subtitle center">From misty morning to starlit night  every part of your day here has its own magic.</p>
     </div>
 
     <div class="day-timeline">
       <div class="day-item" data-reveal="fade-up">
         <div class="day-time-badge" aria-hidden="true">🌅</div>
-        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="Morning mist in Ooty" loading="lazy" class="day-image" />
+        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="Morning mist in Ooty" loading="lazy" decoding="async" class="day-image" />
         <span class="day-time-label">Morning</span>
         <h3 class="day-title" style="font-size:1.2rem;">Rise with the Mist</h3>
         <p class="day-text">Step out to cool Ooty air and the gentle sounds of the forest. A warm cup of filter coffee to start the day.</p>
       </div>
       <div class="day-item" data-reveal="fade-up" data-delay="150">
         <div class="day-time-badge" aria-hidden="true">☀️</div>
-        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="Exploring Ooty during the day" loading="lazy" class="day-image" />
+        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="Exploring Ooty during the day" loading="lazy" decoding="async" class="day-image" />
         <span class="day-time-label">Day</span>
         <h3 class="day-title" style="font-size:1.2rem;">Explore Ooty</h3>
         <p class="day-text">Visit the lake, tea estates, botanical gardens or simply wander through the Nilgiri hills at your own pace.</p>
       </div>
       <div class="day-item" data-reveal="fade-up" data-delay="300">
         <div class="day-time-badge" aria-hidden="true">🌤</div>
-        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="The Groot garden at dusk" loading="lazy" class="day-image" />
+        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="The Groot garden at dusk" loading="lazy" decoding="async" class="day-image" />
         <span class="day-time-label">Evening</span>
         <h3 class="day-title" style="font-size:1.2rem;">Return & Unwind</h3>
         <p class="day-text">Come back to the calm of The Groot. Home-cooked dinner, fresh air and the warmth of your room waiting for you.</p>
       </div>
       <div class="day-item" data-reveal="fade-up" data-delay="450">
         <div class="day-time-badge" aria-hidden="true">🔥</div>
-        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Campfire night at The Groot" loading="lazy" class="day-image" />
+        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Campfire night at The Groot" loading="lazy" decoding="async" class="day-image" />
         <span class="day-time-label">Night</span>
         <h3 class="day-title" style="font-size:1.2rem;">Fire & Stars</h3>
         <p class="day-text">Gather around the campfire under a sky full of stars. Music, warmth and the magic of an Ooty night.</p>
@@ -532,14 +537,14 @@
   <div class="container">
     <div class="section-header center" data-reveal="fade-up">
       <span class="section-overline">Explore</span>
-      <h2 class="section-title dark" id="ooty-title">Your Ooty Adventure</h2>
+      <h2 class="section-title dark" id="ooty-title" data-reveal="heading">Your Ooty Adventure</h2>
       <p class="section-subtitle dark center">The Groot is your base for exploring all that the Nilgiris have to offer.</p>
     </div>
 
     <div class="ooty-grid">
       <!-- 1 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
-        <img src="assets/images/botanical_garden.png" alt="Government Botanical Garden" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/botanical_garden.png" alt="Government Botanical Garden" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Government Botanical Garden</h3>
           <p class="ooty-card-desc">A 55-acre garden with rare plants and beautiful floral displays.</p>
@@ -548,7 +553,7 @@
       </a>
       <!-- 2 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
-        <img src="assets/images/st_stephens_church.png" alt="St. Stephen's Church" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/st_stephens_church.png" alt="St. Stephen's Church" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">St. Stephen's Church</h3>
           <p class="ooty-card-desc">Historic 19th-century church with stunning wooden architecture.</p>
@@ -557,7 +562,7 @@
       </a>
       <!-- 3 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="200">
-        <img src="assets/images/rose_garden.png" alt="Government Rose Garden" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/rose_garden.png" alt="Government Rose Garden" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Government Rose Garden</h3>
           <p class="ooty-card-desc">Terraced garden featuring thousands of vibrant blooming rose varieties.</p>
@@ -566,7 +571,7 @@
       </a>
       <!-- 4 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
-        <img src="assets/images/raj_bhavan.png" alt="Raj Bhavan" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/raj_bhavan.png" alt="Raj Bhavan" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Raj Bhavan</h3>
           <p class="ooty-card-desc">Grand colonial heritage building surrounded by manicured lawns.</p>
@@ -575,7 +580,7 @@
       </a>
       <!-- 5 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
-        <img src="assets/images/ooty_lake_boat_house.png" alt="Ooty Lake & Boat House" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/ooty_lake_boat_house.png" alt="Ooty Lake & Boat House" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Ooty Lake & Boat House</h3>
           <p class="ooty-card-desc">Scenic boating and beautiful waterfront walks with hill panoramas.</p>
@@ -584,7 +589,7 @@
       </a>
       <!-- 6 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="200">
-        <img src="assets/images/doddabetta_peak.png" alt="Doddabetta Peak" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/doddabetta_peak.png" alt="Doddabetta Peak" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Doddabetta Peak</h3>
           <p class="ooty-card-desc">The highest point in the Nilgiris offering breathtaking panoramic views.</p>
@@ -593,7 +598,7 @@
       </a>
       <!-- 7 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
-        <img src="assets/images/tea_factory.png" alt="Tea Factory & Tea Museum" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/tea_factory.png" alt="Tea Factory & Tea Museum" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Tea Factory & Museum</h3>
           <p class="ooty-card-desc">Learn the art of tea making and taste fresh Nilgiri tea at the source.</p>
@@ -602,7 +607,7 @@
       </a>
       <!-- 8 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
-        <img src="assets/images/ketti_valley.png" alt="Ketti Valley View Point" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/ketti_valley.png" alt="Ketti Valley View Point" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Ketti Valley View Point</h3>
           <p class="ooty-card-desc">Stunning viewpoints overlooking one of the world's largest valleys.</p>
@@ -611,7 +616,7 @@
       </a>
       <!-- 9 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="200">
-        <img src="assets/images/pykara_waterfalls.png" alt="Pykara Waterfalls" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/pykara_waterfalls.png" alt="Pykara Waterfalls" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Pykara Waterfalls</h3>
           <p class="ooty-card-desc">Cascading water over rocky terrain surrounded by lush green forests.</p>
@@ -620,7 +625,7 @@
       </a>
       <!-- 10 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up">
-        <img src="assets/images/emerald_lake.png" alt="Emerald Lake" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/emerald_lake.png" alt="Emerald Lake" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Emerald Lake</h3>
           <p class="ooty-card-desc">Pristine, peaceful green waters nestled amidst beautiful tea plantations.</p>
@@ -629,7 +634,7 @@
       </a>
       <!-- 11 -->
       <a href="ooty.html" class="ooty-card" data-reveal="fade-up" data-delay="100">
-        <img src="assets/images/avalanche_lake.png" alt="Avalanche Lake" loading="lazy" class="ooty-card-img" />
+        <img src="assets/images/avalanche_lake.png" alt="Avalanche Lake" loading="lazy" decoding="async" class="ooty-card-img" />
         <div class="ooty-card-body">
           <h3 class="ooty-card-name">Avalanche Lake</h3>
           <p class="ooty-card-desc">A mesmerizing untouched lake offering a tranquil escape in nature.</p>
@@ -651,30 +656,30 @@
   <div class="container">
     <div class="section-header center" data-reveal="fade-up">
       <span class="section-overline">Visual Journey</span>
-      <h2 class="section-title" id="gallery-title">Life at The Groot</h2>
+      <h2 class="section-title" id="gallery-title" data-reveal="heading">Life at The Groot</h2>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;" data-reveal="fade-up" data-delay="100">
       <div style="grid-row:span 2;border-radius:var(--radius-lg);overflow:hidden;">
-        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="A-Frame exterior" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="A-Frame exterior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Campfire night" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Campfire night" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0035.jpg" alt="A-Frame interior" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="assets/images/IMG-20260821-WA0035.jpg" alt="A-Frame interior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0041.jpg" alt="Home food" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="assets/images/IMG-20260821-WA0041.jpg" alt="Home food" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0038.jpg" alt="Cozy room interior" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="assets/images/IMG-20260821-WA0038.jpg" alt="Cozy room interior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0042.jpg" alt="Property interior" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="assets/images/IMG-20260821-WA0042.jpg" alt="Property interior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="Property exterior" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="Property exterior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
       </div>
     </div>
 
@@ -691,7 +696,7 @@
   <div class="container">
     <div class="section-header center" data-reveal="fade-up">
       <span class="section-overline">Guest Reviews</span>
-      <h2 class="section-title" id="reviews-title">What Our Guests Say</h2>
+      <h2 class="section-title" id="reviews-title" data-reveal="heading">What Our Guests Say</h2>
     </div>
 
     <div class="reviews-carousel">
@@ -787,24 +792,24 @@
     </div>
 
     <div class="instagram-grid" data-reveal="fade-up" data-delay="100">
-      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" id="ig-1">
-        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="The Groot on Instagram" loading="lazy" />
+      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" aria-label="View on Instagram" id="ig-1">
+        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="The Groot on Instagram" loading="lazy" decoding="async" />
         <div class="instagram-item-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
       </a>
-      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" id="ig-2">
-        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Property night at The Groot" loading="lazy" />
+      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" aria-label="View on Instagram" id="ig-2">
+        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Property night at The Groot" loading="lazy" decoding="async" />
         <div class="instagram-item-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
       </a>
-      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" id="ig-3">
-        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="Glass House at The Groot" loading="lazy" />
+      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" aria-label="View on Instagram" id="ig-3">
+        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="Glass House at The Groot" loading="lazy" decoding="async" />
         <div class="instagram-item-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
       </a>
-      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" id="ig-4">
-        <img src="assets/images/IMG-20260821-WA0038.jpg" alt="Ooty forest views" loading="lazy" />
+      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" aria-label="View on Instagram" id="ig-4">
+        <img src="assets/images/IMG-20260821-WA0038.jpg" alt="Ooty forest views" loading="lazy" decoding="async" />
         <div class="instagram-item-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
       </a>
-      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" id="ig-5">
-        <img src="assets/images/IMG-20260821-WA0041.jpg" alt="Home food at The Groot" loading="lazy" />
+      <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="instagram-item" aria-label="View on Instagram" id="ig-5">
+        <img src="assets/images/IMG-20260821-WA0041.jpg" alt="Home food at The Groot" loading="lazy" decoding="async" />
         <div class="instagram-item-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
       </a>
     </div>
@@ -822,7 +827,7 @@
      ========================================================= -->
 <section class="final-cta-section parallax-wrapper" aria-labelledby="cta-title">
   <div class="final-cta-bg">
-    <img class="parallax-img" src="assets/images/IMG-20260821-WA0037.jpg" alt="The Groot Ooty — ready for your escape" loading="lazy" />
+    <img class="parallax-img" src="assets/images/IMG-20260821-WA0037.jpg" alt="The Groot Ooty — ready for your escape" loading="lazy" decoding="async" />
   </div>
   <div class="final-cta-overlay" aria-hidden="true"></div>
 

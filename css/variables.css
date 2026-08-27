@@ -31,8 +31,8 @@
   --bg-glass:           rgba(255, 255, 255, 0.06);
   --bg-light:           var(--color-warm-white);
   --text-primary:       var(--color-cream);
-  --text-secondary:     rgba(244, 237, 224, 0.70);
-  --text-muted:         rgba(244, 237, 224, 0.45);
+  --text-secondary:     rgba(244, 237, 224, 0.85);
+  --text-muted:         rgba(244, 237, 224, 0.65);
   --text-dark:          var(--color-charcoal);
   --text-dark-secondary:var(--color-stone);
   --text-on-image:      #FFFFFF;
@@ -41,7 +41,7 @@
   --card-bg:            rgba(44, 74, 42, 0.25);
   --card-border:        rgba(255,255,255,0.10);
   --card-text:          var(--color-cream);
-  --card-text-muted:    rgba(244, 237, 224, 0.70);
+  --card-text-muted:    rgba(244, 237, 224, 0.85);
 
   --accent-primary:     var(--color-bronze);
   --accent-hover:       var(--color-amber);

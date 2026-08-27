@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setActiveNavLink();
   initDayNightToggle();
   initCinematicLoader();
+  initWordReveal();
+  initMagneticButtons();
 });
 
 /* ---------------------------------------------------------
@@ -133,25 +135,52 @@ function initParallax() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const parallaxEls = document.querySelectorAll('.parallax-img');
-  if (!parallaxEls.length) return;
+  const scrollLinkedEls = document.querySelectorAll('.scroll-linked');
+  
+  if (!parallaxEls.length && !scrollLinkedEls.length) return;
 
   let ticking = false;
 
   const onScroll = () => {
     const viewH = window.innerHeight;
     
+    // Image Parallax
     parallaxEls.forEach(img => {
       const wrapper = img.closest('.parallax-wrapper') || img.closest('[class*="section"]');
       if (!wrapper) return;
 
       const rect = wrapper.getBoundingClientRect();
-
       if (rect.bottom < 0 || rect.top > viewH) return;
 
       const scrollFrac = (viewH - rect.top) / (viewH + rect.height);
-      const offset = (scrollFrac - 0.5) * 80;
+      const offset = (scrollFrac - 0.5) * (window.innerWidth <= 768 ? 30 : 80);
 
-      img.style.transform = `translate3d(0, ${offset}px, 0)`; // Use translate3d for hardware acceleration
+      img.style.transform = `translate3d(0, ${offset}px, 0) scale(1)`; 
+    });
+
+    // Scroll-Linked Typography
+    scrollLinkedEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > viewH) return;
+
+      const scrollFrac = (viewH - rect.top) / (viewH + rect.height);
+      const isLeft = el.classList.contains('scroll-linked-left');
+      const isRight = el.classList.contains('scroll-linked-right');
+      
+      let xOffset = 0;
+      const isMobile = window.innerWidth <= 768;
+      const distance = isMobile ? 20 : 60;
+      
+      if (isLeft) {
+        // Moves from left to center to slightly right
+        xOffset = (scrollFrac - 0.5) * distance; 
+      } else if (isRight) {
+        // Moves from right to center to slightly left
+        xOffset = (0.5 - scrollFrac) * distance;
+      }
+
+      // Respect the revealed transform, just append the translation
+      el.style.transform = `translate3d(${xOffset}px, 0, 0)`;
     });
     
     ticking = false;

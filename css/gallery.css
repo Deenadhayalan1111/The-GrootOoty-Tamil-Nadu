@@ -37,11 +37,17 @@
   cursor: pointer;
   transition: all var(--dur-fast) var(--ease-out);
   font-family: var(--font-body);
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gallery-filter-btn:hover {
   border-color: var(--color-bronze);
   color: var(--color-cream);
+  transform: translateY(-2px);
 }
 
 .gallery-filter-btn.active {
