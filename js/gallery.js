@@ -32,7 +32,20 @@ const GALLERY_IMAGES = [
   { src: 'assets/images/IMG-20260821-WA0034.jpg', alt: 'Guided tea estate walk and mountain views', category: 'experience' },
   // Ooty Attractions & Views
   { src: 'assets/images/IMG-20260821-WA0039.jpg', alt: 'Ooty Lake and misty Nilgiri mountain panorama', category: 'ooty' },
-  { src: 'assets/images/1000032835_professional.webp', alt: 'Real 4K scenic Nilgiri mountain viewpoint', category: 'ooty' }
+  { src: 'assets/images/1000032835_professional.webp', alt: 'Real 4K scenic Nilgiri mountain viewpoint', category: 'ooty' },
+  // New WhatsApp Imports
+  { src: 'assets/images/gallery-new-img-1.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-2.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-3.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-4.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-5.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-6.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-7.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-8.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-9.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-10.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-11.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' },
+  { src: 'assets/images/gallery-new-img-12.jpeg', alt: 'The Groot Ooty property highlight', category: 'property' }
 ];
 
 let currentIndex = 0;

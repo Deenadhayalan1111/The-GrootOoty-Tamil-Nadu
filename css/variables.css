@@ -128,60 +128,59 @@
 
 [data-theme="day"] {
   /* --- Semantic Colors --- */
-  --bg-dark:            #F7F4EF;
-  --bg-section:         #EFEAE1;
+  --bg-dark:            #F7FBF3;
+  --bg-section:         #EEF7E8;
   --bg-card:            #FFFFFF;
-  --bg-glass:           rgba(255, 255, 255, 0.85);
+  --bg-glass:           rgba(255, 255, 255, 0.9);
   --bg-light:           #FFFFFF;
-  --text-primary:       #2A3F2C;
-  --text-secondary:     #4A5E4C;
-  --text-muted:         #7A8B7C;
-  --text-dark:          #2A3F2C;
-  --text-dark-secondary:#4A5E4C;
+  --text-primary:       #263A20;
+  --text-secondary:     #64715D;
+  --text-muted:         #8ea395;
+  --text-dark:          #263A20;
+  --text-dark-secondary:#64715D;
   --text-on-image:      #FFFFFF;
   --text-on-image-muted: rgba(255, 255, 255, 0.85);
-  --accent-primary:     #B8835A;
-  --accent-hover:       #9E6B43;
-  --border-dark:        rgba(0, 0, 0, 0.10);
-  --border-light:       rgba(0, 0, 0, 0.05);
+  --accent-primary:     #6FAF45;
+  --accent-hover:       #4F8730;
+  --border-dark:        rgba(92, 150, 56, 0.15);
+  --border-light:       rgba(92, 150, 56, 0.08);
 
   /* --- Mapped Brand Colors for consistent Day Mode UI --- */
-  --color-forest:       #F7F4EF;
-  --color-forest-deep:  #EFEAE1;
-  --color-moss:         #E6DFD3;
-  --color-sage:         #7A8B7C;
-  --color-sage-light:   #92A394;
-  --color-cream:        #2A3F2C;
+  --color-forest:       #F7FBF3;
+  --color-forest-deep:  #EEF7E8;
+  --color-moss:         #E3F0D9;
+  --color-sage:         #809675;
+  --color-sage-light:   #A1B795;
+  --color-cream:        #263A20;
   --color-cream-warm:   #FFFFFF;
-  --color-warm-white:   #F5F0E8;
-  --color-beige:        #D8CFC0;
-  --color-beige-dark:   #B8AD9C;
-  --color-brown:        #9E6B43;
-  --color-brown-light:  #B8835A;
-  --color-bronze:       #B8835A;
-  --color-bronze-dark:  #9E6B43;
-  --color-amber:        #9E6B43;
-  --color-charcoal:     #2A3F2C;
-  --color-charcoal-soft:#4A5E4C;
-  --color-stone:        #4A5E4C;
-  --color-mist:         rgba(0,0,0,0.04);
+  --color-warm-white:   #EEF7E8;
+  --color-beige:        #E3F0D9;
+  --color-beige-dark:   #CDE4C0;
+  --color-brown:        #4F8730;
+  --color-brown-light:  #6FAF45;
+  --color-bronze:       #5C9638;
+  --color-bronze-dark:  #4F8730;
+  --color-amber:        #5C9638;
+  --color-charcoal:     #263A20;
+  --color-charcoal-soft:#64715D;
+  --color-stone:        #64715D;
+  --color-mist:         rgba(92, 150, 56, 0.04);
   
   /* Fallbacks for mapped components */
   --card-bg:            #FFFFFF;
-  --card-border:        rgba(0, 0, 0, 0.08);
-  --card-text:          #2A3F2C;
-  --card-text-muted:    #4A5E4C;
-  --groot-accent:       #B8835A;
-  --groot-accent-dark:  #9E6B43;
-  --groot-primary:      #F7F4EF;
+  --card-border:        rgba(92, 150, 56, 0.12);
+  --card-text:          #263A20;
+  --card-text-muted:    #64715D;
+  --groot-accent:       #6FAF45;
+  --groot-accent-dark:  #5C9638;
+  --groot-primary:      #F7FBF3;
   
   /* Shadow adjustments for a softer premium feel */
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md:   0 8px 32px rgba(0,0,0,0.08);
-  --shadow-lg:   0 20px 60px rgba(0,0,0,0.12);
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-sm:   0 2px 8px rgba(38, 58, 32, 0.03);
+  --shadow-md:   0 8px 32px rgba(38, 58, 32, 0.05);
+  --shadow-lg:   0 20px 60px rgba(38, 58, 32, 0.06);
+  --shadow-card: 0 4px 24px rgba(38, 58, 32, 0.04), 0 1px 4px rgba(38, 58, 32, 0.02);
 }
-
 /* =========================================================
    TARGETED COMPONENT OVERRIDES FOR DAY MODE
    ========================================================= */

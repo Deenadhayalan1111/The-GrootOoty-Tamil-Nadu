@@ -445,7 +445,7 @@ function initDayNightToggle() {
   };
 
   // Check initial state (should already be applied by inline script, but just in case)
-  const currentTheme = getSavedTheme() || getSystemTheme();
+  const currentTheme = getSavedTheme() || 'night';
   applyTheme(currentTheme);
 
   // Toggle on click
