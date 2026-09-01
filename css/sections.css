@@ -182,13 +182,14 @@
   position: relative;
   aspect-ratio: 4/3;
   overflow: hidden;
+  background: #050806;
 }
 
 .room-card-img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
   transition: transform var(--dur-slow) var(--ease-out);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;

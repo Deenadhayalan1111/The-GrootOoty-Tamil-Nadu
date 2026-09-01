@@ -18,10 +18,10 @@ const GALLERY_IMAGES = [
   { src: 'assets/images/1000032841_professional.webp', alt: 'Real 4K illuminated property at night', category: 'property' },
   { src: 'assets/images/IMG-20260821-WA0037.jpg', alt: 'Glass House outdoor view deck', category: 'property' },
   // Rooms & Interiors
-  { src: 'assets/images/1000032836_professional.webp', alt: 'Real 4K A-Frame cabin exterior and wooden interior', category: 'rooms' },
-  { src: 'assets/images/1000032837_professional.webp', alt: 'Real 4K Glass House panoramic room experience', category: 'rooms' },
-  { src: 'assets/images/1000032838_professional.webp', alt: 'Real 4K Luxurious Suite bedroom interior', category: 'rooms' },
-  { src: 'assets/images/1000032839_professional.webp', alt: 'Real 4K Standard Room cozy bedroom interior', category: 'rooms' },
+  { src: 'assets/images/1000032836_professional_4k.webp', alt: 'Real 4K A-Frame cabin exterior and wooden interior', category: 'rooms' },
+  { src: 'assets/images/1000032837_professional_4k.webp', alt: 'Real 4K Glass House panoramic room experience', category: 'rooms' },
+  { src: 'assets/images/1000032838_professional_4k.webp', alt: 'Real 4K Luxurious Suite bedroom interior', category: 'rooms' },
+  { src: 'assets/images/1000032839_professional_4k.webp', alt: 'Real 4K Standard Room cozy bedroom interior', category: 'rooms' },
   { src: 'assets/images/IMG-20260821-WA0035.jpg', alt: 'Cozy wooden reading nook inside the cabin', category: 'rooms' },
   // Campfire & Night
   { src: 'assets/images/IMG-20260821-WA0036.jpg', alt: 'Real 4K campfire evening under Nilgiri stars', category: 'campfire' },

@@ -43,8 +43,8 @@
     .room-listing-card { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-dark); border-radius: var(--radius-2xl); overflow: hidden; }
     .room-listing-card:nth-child(even) .room-listing-img { order: 2; }
     .room-listing-card:nth-child(even) .room-listing-info { order: 1; }
-    .room-listing-img { position: relative; aspect-ratio: 4/3; overflow: hidden; }
-    .room-listing-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .room-listing-img { position: relative; overflow: hidden; display: flex; }
+    .room-listing-img img { width: 100%; height: auto; display: block; object-fit: contain; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
     .room-listing-card:hover .room-listing-img img { transform: scale(1.05); }
     .room-listing-info { padding: 2.5rem; }
     .room-listing-tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-bronze); margin-bottom: 0.75rem; }
@@ -120,7 +120,7 @@
     <!-- A-Frame -->
     <div class="room-listing-card" data-reveal="fade-up">
       <div class="room-listing-img">
-        <img src="assets/images/1000032836_professional.webp" alt="A-Frame Room exterior" loading="lazy" />
+        <img src="assets/images/1000032836_professional_4k.webp" alt="A-Frame Room exterior" loading="lazy" />
       </div>
       <div class="room-listing-info">
         <div class="room-listing-tag">Signature Room</div>
@@ -143,7 +143,7 @@
     <!-- Glass House -->
     <div class="room-listing-card" data-reveal="fade-up" data-delay="100">
       <div class="room-listing-img">
-        <img src="assets/images/1000032837_professional.webp" alt="Glass House" loading="lazy" />
+        <img src="assets/images/1000032837_professional_4k.webp" alt="Glass House" loading="lazy" />
       </div>
       <div class="room-listing-info">
         <div class="room-listing-tag">Unique Experience</div>
@@ -165,7 +165,7 @@
     <!-- Suite -->
     <div class="room-listing-card" data-reveal="fade-up" data-delay="200">
       <div class="room-listing-img">
-        <img src="assets/images/1000032838_professional.webp" alt="Luxurious Suite" loading="lazy" />
+        <img src="assets/images/1000032838_professional_4k.webp" alt="Luxurious Suite" loading="lazy" />
       </div>
       <div class="room-listing-info">
         <div class="room-listing-tag">Premium Stay</div>
@@ -188,7 +188,7 @@
     <!-- Standard -->
     <div class="room-listing-card" data-reveal="fade-up" data-delay="300">
       <div class="room-listing-img">
-        <img src="assets/images/1000032839_professional.webp" alt="Standard Room" loading="lazy" />
+        <img src="assets/images/1000032839_professional_4k.webp" alt="Standard Room" loading="lazy" />
       </div>
       <div class="room-listing-info">
         <div class="room-listing-tag">Cozy & Comfortable</div>
