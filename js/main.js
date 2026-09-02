@@ -26,7 +26,8 @@ function initHeader() {
 
   const onScroll = () => {
     const scroll = window.scrollY;
-    if (scroll > 60) {
+    const hasHero = document.querySelector('.hero-section, .room-hero, .exp-hero, .ooty-page-hero');
+    if (!hasHero || scroll > 40) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');

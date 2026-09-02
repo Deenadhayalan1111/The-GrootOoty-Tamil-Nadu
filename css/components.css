@@ -50,41 +50,44 @@
 }
 .btn:hover::before { opacity: 1; }
 
-/* Primary — Bronze */
+/* Primary — High contrast dark on Mantis Green */
 .btn-primary {
-  background: var(--color-bronze);
-  color: var(--color-forest-deep);
+  background: #111B12;
+  color: #FFFFFF;
+  border: 1.5px solid #111B12;
 }
 .btn-primary:hover {
-  background: var(--color-amber);
+  background: #1A2B1C;
+  color: #74C365;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(184,147,90,0.40);
+  box-shadow: 0 8px 24px rgba(17,27,18,0.30);
 }
 .btn-primary:active { transform: translateY(0); }
 
-/* Secondary — Outline light */
+/* Secondary — Outline dark */
 .btn-outline {
   background: transparent;
-  color: var(--color-cream);
-  border: 1.5px solid rgba(244,237,224,0.50);
+  color: #111B12;
+  border: 1.5px solid #111B12;
 }
 .btn-outline:hover {
-  border-color: var(--color-cream);
-  background: rgba(244,237,224,0.08);
+  border-color: #111B12;
+  background: #111B12;
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
-/* Ghost — Outline bronze */
+/* Ghost — Outline */
 .btn-ghost {
   background: transparent;
-  color: var(--color-bronze);
-  border: 1.5px solid var(--color-bronze);
+  color: #111B12;
+  border: 1.5px solid #111B12;
 }
 .btn-ghost:hover {
-  background: var(--color-bronze);
-  color: var(--color-forest-deep);
+  background: #111B12;
+  color: #74C365;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(184,147,90,0.35);
+  box-shadow: 0 8px 24px rgba(17,27,18,0.25);
 }
 
 /* Dark context */
@@ -284,10 +287,10 @@
 .section-overline {
   display: block;
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: var(--color-bronze);
+  color: #111B12;
   margin-bottom: var(--space-4);
 }
 
@@ -296,18 +299,18 @@
   font-size: clamp(1.875rem, 4.5vw, 3.5rem);
   line-height: 1.1;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #111B12;
   margin-bottom: var(--space-4);
 }
 
-.section-title.dark { color: var(--color-charcoal); }
+.section-title.dark { color: #111B12; }
 
 .section-subtitle {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: var(--text-secondary);
+  color: rgba(17, 27, 18, 0.85);
   max-width: 600px;
   line-height: 1.65;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .section-subtitle.dark { color: var(--text-dark-secondary); }

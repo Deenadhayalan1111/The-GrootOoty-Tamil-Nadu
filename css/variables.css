@@ -25,28 +25,29 @@
   --color-mist:         rgba(255,255,255,0.08);
 
   /* --- Semantic Colors --- */
-  --bg-dark:            var(--color-forest);
-  --bg-section:         var(--color-forest-deep);
-  --bg-card:            rgba(44, 74, 42, 0.25);
-  --bg-glass:           rgba(255, 255, 255, 0.06);
-  --bg-light:           var(--color-warm-white);
-  --text-primary:       var(--color-cream);
-  --text-secondary:     rgba(244, 237, 224, 0.85);
-  --text-muted:         rgba(244, 237, 224, 0.65);
-  --text-dark:          var(--color-charcoal);
-  --text-dark-secondary:var(--color-stone);
+  --bg-dark:            #74C365;
+  --bg-section:         #74C365;
+  --bg-page:            #74C365;
+  --bg-card:            #111B12;
+  --bg-glass:           rgba(17, 27, 18, 0.88);
+  --bg-light:           #74C365;
+  --text-primary:       #111B12;
+  --text-secondary:     rgba(17, 27, 18, 0.85);
+  --text-muted:         rgba(17, 27, 18, 0.65);
+  --text-dark:          #111B12;
+  --text-dark-secondary:rgba(17, 27, 18, 0.75);
   --text-on-image:      #FFFFFF;
   --text-on-image-muted: rgba(255, 255, 255, 0.85);
   
-  --card-bg:            rgba(44, 74, 42, 0.25);
-  --card-border:        rgba(255,255,255,0.10);
+  --card-bg:            #111B12;
+  --card-border:        rgba(17, 27, 18, 0.20);
   --card-text:          var(--color-cream);
   --card-text-muted:    rgba(244, 237, 224, 0.85);
 
-  --accent-primary:     var(--color-bronze);
-  --accent-hover:       var(--color-amber);
-  --border-dark:        rgba(255,255,255,0.10);
-  --border-light:       rgba(0,0,0,0.10);
+  --accent-primary:     #111B12;
+  --accent-hover:       #1A2B1C;
+  --border-dark:        rgba(17, 27, 18, 0.20);
+  --border-light:       rgba(0,0,0,0.15);
 
   /* --- Typography --- */
   --font-display:       'Playfair Display', Georgia, serif;

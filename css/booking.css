@@ -3,7 +3,7 @@
    ========================================================= */
 
 .booking-page {
-  background: var(--color-forest-deep);
+  background: #74C365;
   min-height: 100vh;
   padding-top: var(--nav-height);
 }
@@ -38,18 +38,19 @@
   align-items: center;
   gap: var(--space-2);
   font-size: var(--text-sm);
-  color: var(--text-muted);
+  color: #111B12;
   margin-bottom: var(--space-6);
 }
 
 .booking-breadcrumb a {
-  color: var(--text-muted);
+  color: #111B12;
   text-decoration: none;
+  font-weight: 500;
   transition: color var(--dur-fast);
 }
 
-.booking-breadcrumb a:hover { color: var(--color-bronze); }
-.booking-breadcrumb span { color: var(--color-cream); }
+.booking-breadcrumb a:hover { color: #000000; }
+.booking-breadcrumb span { color: #111B12; font-weight: 600; }
 
 /* ---------------------------------------------------------
    STEP PROGRESS BAR
@@ -135,11 +136,12 @@
    --------------------------------------------------------- */
 
 .booking-panel {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-dark);
+  background: #111B12;
+  border: 1px solid rgba(17,27,18,0.25);
   border-radius: var(--radius-xl);
   padding: clamp(1.5rem, 4vw, 2.5rem);
   min-height: 500px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
 }
 
 .booking-step {
@@ -499,10 +501,11 @@
 }
 
 .booking-summary-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-dark);
+  background: #111B12;
+  border: 1px solid rgba(17,27,18,0.25);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
 }
 
 .booking-summary-title {
