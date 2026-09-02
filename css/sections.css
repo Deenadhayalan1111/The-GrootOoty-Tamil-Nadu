@@ -165,8 +165,9 @@
 
 .rooms-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
+  align-items: start;
 }
 
 .room-card {
@@ -180,16 +181,19 @@
 
 .room-card-img-wrap {
   position: relative;
-  aspect-ratio: 4/3;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #050806;
+  width: 100%;
 }
 
 .room-card-img-wrap img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: contain;
-  object-position: center;
   transition: transform var(--dur-slow) var(--ease-out);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -301,19 +305,14 @@
   transform: translateX(5px);
 }
 
-/* Featured room (large) */
+/* Featured room */
 .room-card.featured {
-  grid-column: span 2;
-}
-
-.room-card.featured .room-card-img-wrap {
-  aspect-ratio: 21/9;
+  grid-column: span 1;
 }
 
 @media (max-width: 768px) {
   .rooms-grid { grid-template-columns: 1fr; }
   .room-card.featured { grid-column: span 1; }
-  .room-card.featured .room-card-img-wrap { aspect-ratio: 4/3; }
   .room-card-desc { opacity: 1; transform: none; }
   .room-card-cta  { opacity: 1; transform: none; }
 }
@@ -496,16 +495,11 @@
 
 .exp-card-img {
   width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
   transition: transform var(--dur-slow) var(--ease-out);
 }
-
-.exp-card-1 .exp-card-img { aspect-ratio: 16/9; }
-.exp-card-2 .exp-card-img { aspect-ratio: 4/3; }
-.exp-card-3 .exp-card-img,
-.exp-card-4 .exp-card-img,
-.exp-card-5 .exp-card-img { aspect-ratio: 4/3; }
 
 .exp-card:hover .exp-card-img { transform: scale(1.04); }
 
@@ -610,8 +604,9 @@
 
 .day-image {
   width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
 }
@@ -671,8 +666,9 @@
 
 .food-img-main {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
 }
@@ -718,6 +714,13 @@
 
 .ooty-section .section-overline { color: var(--color-bronze, var(--color-sage)); }
 
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
 .ooty-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -759,8 +762,9 @@
 
 .ooty-card-img {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
   transition: transform var(--dur-slow) var(--ease-out);
 }
 
@@ -1223,43 +1227,3 @@
   .final-cta-actions .btn { width: 100%; max-width: 320px; }
 }
 
-/* =========================================================
-   LIGHT (DAY) THEME OVERRIDES — Ooty Section
-   Reverts the dark defaults when day theme is active
-   ========================================================= */
-[data-theme="day"] .ooty-section {
-  background-color: #EFEAE1 !important;
-  background: #EFEAE1 !important;
-}
-
-[data-theme="day"] .ooty-section .section-title,
-[data-theme="day"] .ooty-section h2,
-[data-theme="day"] .ooty-section .section-title.dark {
-  color: #2A3F2C !important;
-}
-
-[data-theme="day"] .ooty-section .section-subtitle,
-[data-theme="day"] .ooty-section .section-subtitle.dark {
-  color: #4A5E4C !important;
-}
-
-[data-theme="day"] .ooty-card {
-  background-color: #FFFFFF !important;
-  background: #FFFFFF !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-}
-
-[data-theme="day"] .ooty-card-name,
-[data-theme="day"] .ooty-card h3 {
-  color: #2A3F2C !important;
-}
-
-[data-theme="day"] .ooty-card p,
-[data-theme="day"] .ooty-card-desc {
-  color: #4A5E4C !important;
-}
-
-[data-theme="day"] .ooty-card [style*="color"] {
-  color: #B8835A !important;
-  font-weight: 600 !important;
-}

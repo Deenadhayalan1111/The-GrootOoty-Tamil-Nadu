@@ -8,34 +8,25 @@
   <meta name="description" content="Explore the gallery of The Groot Ooty — rooms, campfire nights, home food, Ooty landscapes and more. See life at The Groot." />
   <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
 
-  <!-- Theme Initialization (Prevents flash) -->
+  <!-- Page Transition Initialization -->
   <script>
     (function(){
       try {
-        var t = localStorage.getItem('groot-theme');
-        if (!t) {
-          t = 'night';
-        }
-        if (t === 'day') {
-          document.documentElement.setAttribute('data-theme', 'day');
-        }
-
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           document.documentElement.classList.add('page-transitioning');
         }
       } catch(e) {}
-
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/variables.css?v=1.9" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/gallery.css" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/variables.css?v=2.2" />
+  <link rel="stylesheet" href="css/base.css?v=2.2" />
+  <link rel="stylesheet" href="css/animations.css?v=2.2" />
+  <link rel="stylesheet" href="css/components.css?v=2.2" />
+  <link rel="stylesheet" href="css/header.css?v=2.2" />
+  <link rel="stylesheet" href="css/gallery.css?v=2.2" />
+  <link rel="stylesheet" href="css/footer.css?v=2.2" />
 </head>
 <body>
 <!-- Cinematic Loader -->
@@ -70,13 +61,7 @@
       <div class="header-cta">
         <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
       </div>
-      
-      <!-- Theme Toggle -->
-      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Day/Night Mode">
-        <div class="theme-toggle-indicator"></div>
-        <span class="theme-toggle-icon sun">☀️</span>
-        <span class="theme-toggle-icon moon">🌙</span>
-      </button>
+
 
       <!-- Hamburger -->
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
@@ -188,9 +173,9 @@
   </div>
 </div>
 
-<script src="js/config.js"></script>
-<script src="js/whatsapp.js"></script>
-<script src="js/main.js?v=1.8"></script>
-<script src="js/gallery.js"></script>
+<script src="js/config.js?v=2.2"></script>
+<script src="js/whatsapp.js?v=2.2"></script>
+<script src="js/main.js?v=2.2"></script>
+<script src="js/gallery.js?v=2.2"></script>
 </body>
 </html>

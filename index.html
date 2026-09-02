@@ -12,23 +12,14 @@
   <meta property="og:type" content="website" />
   <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
 
-  <!-- Theme Initialization (Prevents flash) -->
+  <!-- Page Transition Initialization -->
   <script>
     (function(){
       try {
-        var t = localStorage.getItem('groot-theme');
-        if (!t) {
-          t = 'night';
-        }
-        if (t === 'day') {
-          document.documentElement.setAttribute('data-theme', 'day');
-        }
-
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           document.documentElement.classList.add('page-transitioning');
         }
       } catch(e) {}
-
     })();
   </script>
 
@@ -37,14 +28,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/variables.css?v=1.9" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/sections.css?v=2.0" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/variables.css?v=2.2" />
+  <link rel="stylesheet" href="css/base.css?v=2.2" />
+  <link rel="stylesheet" href="css/animations.css?v=2.2" />
+  <link rel="stylesheet" href="css/components.css?v=2.2" />
+  <link rel="stylesheet" href="css/header.css?v=2.2" />
+  <link rel="stylesheet" href="css/hero.css?v=2.2" />
+  <link rel="stylesheet" href="css/sections.css?v=2.2" />
+  <link rel="stylesheet" href="css/footer.css?v=2.2" />
 </head>
 <body>
 <!-- Cinematic Loader -->
@@ -88,13 +79,7 @@
       <div class="header-cta">
         <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
       </div>
-      
-      <!-- Theme Toggle -->
-      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Day/Night Mode">
-        <div class="theme-toggle-indicator"></div>
-        <span class="theme-toggle-icon sun">☀️</span>
-        <span class="theme-toggle-icon moon">🌙</span>
-      </button>
+
 
       <!-- Hamburger -->
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -660,26 +645,26 @@
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;" data-reveal="fade-up" data-delay="100">
-      <div style="grid-row:span 2;border-radius:var(--radius-lg);overflow:hidden;">
-        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="A-Frame exterior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="grid-row:span 2;border-radius:var(--radius-lg);overflow:hidden;background:#050806;">
+        <img src="assets/images/IMG-20260821-WA0039.jpg" alt="A-Frame exterior" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;" />
       </div>
-      <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Campfire night" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="border-radius:var(--radius-lg);overflow:hidden;background:#050806;">
+        <img src="assets/images/IMG-20260821-WA0036.jpg" alt="Campfire night" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;" />
       </div>
-      <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0035.jpg" alt="A-Frame interior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="border-radius:var(--radius-lg);overflow:hidden;background:#050806;">
+        <img src="assets/images/IMG-20260821-WA0035.jpg" alt="A-Frame interior" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;" />
       </div>
-      <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0041.jpg" alt="Home food" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="border-radius:var(--radius-lg);overflow:hidden;background:#050806;">
+        <img src="assets/images/IMG-20260821-WA0041.jpg" alt="Home food" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;" />
       </div>
-      <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0038.jpg" alt="Cozy room interior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="border-radius:var(--radius-lg);overflow:hidden;background:#050806;">
+        <img src="assets/images/IMG-20260821-WA0038.jpg" alt="Cozy room interior" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;" />
       </div>
-      <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0042.jpg" alt="Property interior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="border-radius:var(--radius-lg);overflow:hidden;background:#050806;">
+        <img src="assets/images/IMG-20260821-WA0042.jpg" alt="Property interior" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;" />
       </div>
-      <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;">
-        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="Property exterior" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="border-radius:var(--radius-lg);overflow:hidden;background:#050806;">
+        <img src="assets/images/IMG-20260821-WA0037.jpg" alt="Property exterior" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;" />
       </div>
     </div>
 
@@ -963,9 +948,9 @@
 </div>
 
 <!-- JS -->
-<script src="js/config.js"></script>
-<script src="js/whatsapp.js"></script>
-<script src="js/main.js?v=1.8"></script>
+<script src="js/config.js?v=2.2"></script>
+<script src="js/whatsapp.js?v=2.2"></script>
+<script src="js/main.js?v=2.2"></script>
 <script>
   // Init reviews carousel after DOM ready
   document.addEventListener('DOMContentLoaded', () => {

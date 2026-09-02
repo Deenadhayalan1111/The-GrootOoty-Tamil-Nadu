@@ -11,10 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhoneLinks();
   initLazyImages();
   setActiveNavLink();
-  initDayNightToggle();
   initCinematicLoader();
-  initWordReveal();
-  initMagneticButtons();
 });
 
 /* ---------------------------------------------------------
@@ -410,63 +407,6 @@ window.scrollToSection = function(id) {
   }
 };
 
-/* ---------------------------------------------------------
-   DAY/NIGHT THEME TOGGLE
-   --------------------------------------------------------- */
-function initDayNightToggle() {
-  const toggle = document.getElementById('theme-toggle-btn');
-  if (!toggle) return;
-
-  const THEME_KEY = 'groot-theme';
-  const getSavedTheme = () => {
-    try {
-      return localStorage.getItem(THEME_KEY);
-    } catch (e) {
-      return null;
-    }
-  };
-
-  const saveTheme = (theme) => {
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-    } catch (e) {}
-  };
-
-  const getSystemTheme = () => {
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'day' : 'night';
-  };
-
-  const applyTheme = (theme) => {
-    if (theme === 'day') {
-      document.documentElement.setAttribute('data-theme', 'day');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-    }
-  };
-
-  // Check initial state (should already be applied by inline script, but just in case)
-  const currentTheme = getSavedTheme() || 'night';
-  applyTheme(currentTheme);
-
-  // Toggle on click
-  toggle.addEventListener('click', () => {
-    const isDay = document.documentElement.getAttribute('data-theme') === 'day';
-    const newTheme = isDay ? 'night' : 'day';
-    
-    applyTheme(newTheme);
-    saveTheme(newTheme);
-  });
-  
-  // Toggle on keyboard (accessibility)
-  toggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggle.click();
-    }
-  });
-}
-
-
 /* =========================================================
    PREMIUM PAGE TRANSITION (JS)
    ========================================================= */
@@ -502,6 +442,10 @@ document.addEventListener('click', (e) => {
   // Prevent default and fade out
   e.preventDefault();
   
+  try {
+    sessionStorage.setItem('groot_navigating', 'true');
+  } catch (err) {}
+
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('page-transitioning');
     setTimeout(() => {
@@ -519,12 +463,26 @@ function initCinematicLoader() {
   const loader = document.getElementById('cinematic-loader');
   if (!loader) return;
 
-  // Do not play on internal normal navigation
-  const navEntries = performance.getEntriesByType('navigation');
-  const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
-  const isInternal = document.referrer.includes(window.location.host) && document.referrer !== "";
-  
-  if (isInternal && !isReload) {
+  // Detect reload reliably across desktop/mobile/browsers
+  let isReload = false;
+  try {
+    const navEntries = performance.getEntriesByType('navigation');
+    if (navEntries && navEntries.length > 0) {
+      isReload = navEntries[0].type === 'reload';
+    } else if (window.performance && window.performance.navigation) {
+      isReload = window.performance.navigation.type === 1;
+    }
+  } catch (e) {}
+
+  // Check if navigation was a direct link click within the site
+  let wasInternalClick = false;
+  try {
+    wasInternalClick = sessionStorage.getItem('groot_navigating') === 'true';
+    sessionStorage.removeItem('groot_navigating');
+  } catch (e) {}
+
+  // Only skip on internal normal navigation transitions when NOT a reload
+  if (wasInternalClick && !isReload) {
     loader.style.display = 'none';
     loader.remove();
     return;
