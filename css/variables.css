@@ -1,57 +1,80 @@
 /* =========================================================
-   THE GROOT OOTY — Design Tokens / Variables
+   THE GROOT OOTY — Design Tokens & Variables
+   Theme: Mantis Green (#74C365) with Premium High-Contrast Boutique Styling
    ========================================================= */
 
 :root {
-  /* --- Brand Colors --- */
-  --color-forest:       #1A2B1C;
-  --color-forest-deep:  #111B12;
-  --color-moss:         #2C4A2A;
-  --color-sage:         #4A6741;
-  --color-sage-light:   #5D8058;
-  --color-cream:        #F4EDE0;
-  --color-cream-warm:   #FAF6EF;
-  --color-warm-white:   #FDFAF5;
-  --color-beige:        #E5D9C3;
-  --color-beige-dark:   #C9B99A;
-  --color-brown:        #8B6E52;
-  --color-brown-light:  #A88E72;
-  --color-bronze:       #74C365;
-  --color-bronze-dark:  #5EA850;
-  --color-amber:        #85D476;
-  --color-charcoal:     #2A2A28;
-  --color-charcoal-soft:#3D3D3A;
-  --color-stone:        #6B6560;
-  --color-mist:         rgba(255,255,255,0.08);
+  /* --- Primary Brand Color (Exact Mandatory Requirement) --- */
+  --color-mantis:          #74C365;
+  --bg-primary:            #74C365;
+  --bg-page:               #74C365;
+  --bg-section:            #74C365;
+  --bg-light:              #74C365;
+  --bg-dark:               #74C365;
 
-  /* --- Semantic Colors --- */
-  --bg-dark:            #74C365;
-  --bg-section:         #74C365;
-  --bg-page:            #74C365;
-  --bg-card:            #111B12;
-  --bg-glass:           rgba(17, 27, 18, 0.88);
-  --bg-light:           #74C365;
-  --text-primary:       #111B12;
-  --text-secondary:     rgba(17, 27, 18, 0.85);
-  --text-muted:         rgba(17, 27, 18, 0.65);
-  --text-dark:          #111B12;
-  --text-dark-secondary:rgba(17, 27, 18, 0.75);
-  --text-on-image:      #FFFFFF;
-  --text-on-image-muted: rgba(255, 255, 255, 0.85);
-  
-  --card-bg:            #111B12;
-  --card-border:        rgba(17, 27, 18, 0.20);
-  --card-text:          var(--color-cream);
-  --card-text-muted:    rgba(244, 237, 224, 0.85);
+  /* --- Premium Contrast Darks (For Cards, Navigation, Overlays) --- */
+  --color-obsidian:        #111B12;
+  --color-forest-deep:     #111B12;
+  --color-forest:          #18291B;
+  --color-forest-card:     #132015;
+  --color-forest-surface:  #1A2C1D;
+  --color-charcoal:        #111B12;
+  --color-charcoal-soft:   #253828;
 
-  --accent-primary:     #111B12;
-  --accent-hover:       #1A2B1C;
-  --border-dark:        rgba(17, 27, 18, 0.20);
-  --border-light:       rgba(0,0,0,0.15);
+  /* --- Luxury Neutrals & Accents --- */
+  --color-cream:           #FAF7F2;
+  --color-cream-warm:      #F5EFE6;
+  --color-warm-white:      #FFFFFF;
+  --color-linen:           #EDE4D8;
+  --color-bronze:          #111B12;
+  --color-bronze-light:    #C8A36E;
+  --color-gold:            #D4AF37;
+  --color-whatsapp:        #25D366;
+  --color-whatsapp-hover:  #1EBE5D;
+
+  /* --- Text Tokens (Maximum Contrast & Legibility) --- */
+  /* On #74C365 Background */
+  --text-primary:          #111B12;
+  --text-secondary:        rgba(17, 27, 18, 0.88);
+  --text-muted:            rgba(17, 27, 18, 0.68);
+  --text-dark:             #111B12;
+  --text-dark-secondary:   rgba(17, 27, 18, 0.80);
+
+  /* On Dark Cards & Overlays */
+  --card-bg:               #111B12;
+  --card-bg-elevated:      #18291B;
+  --card-border:           rgba(17, 27, 18, 0.20);
+  --card-border-subtle:    rgba(255, 255, 255, 0.14);
+  --card-text:             #FAF7F2;
+  --card-text-muted:       rgba(250, 247, 242, 0.82);
+
+  /* On Full-bleed Photography / Parallax */
+  --text-on-image:         #FFFFFF;
+  --text-on-image-muted:   rgba(255, 255, 255, 0.88);
+
+  /* --- Interactive Buttons --- */
+  --btn-primary-bg:        #111B12;
+  --btn-primary-text:      #FAF7F2;
+  --btn-primary-hover:     #1F3523;
+  --btn-outline-border:    #111B12;
+  --btn-outline-text:      #111B12;
+  --btn-outline-hover-bg:  #111B12;
+  --btn-outline-hover-text:#FAF7F2;
+
+  /* --- Borders & Shadows --- */
+  --border-dark:           rgba(17, 27, 18, 0.22);
+  --border-light:          rgba(255, 255, 255, 0.20);
+  --border-glow:           rgba(17, 27, 18, 0.35);
+
+  --shadow-sm:             0 2px 8px rgba(17, 27, 18, 0.12);
+  --shadow-md:             0 8px 24px rgba(17, 27, 18, 0.16);
+  --shadow-lg:             0 18px 45px rgba(17, 27, 18, 0.24);
+  --shadow-card:           0 12px 36px rgba(17, 27, 18, 0.20), 0 2px 6px rgba(17, 27, 18, 0.12);
+  --shadow-floating:       0 20px 50px rgba(17, 27, 18, 0.30);
 
   /* --- Typography --- */
-  --font-display:       'Playfair Display', Georgia, serif;
-  --font-body:          'Inter', system-ui, -apple-system, sans-serif;
+  --font-display:          'Playfair Display', Georgia, serif;
+  --font-body:             'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --text-xs:    0.75rem;   /* 12px */
   --text-sm:    0.875rem;  /* 14px */
@@ -64,7 +87,6 @@
   --text-4xl:   3rem;      /* 48px */
   --text-5xl:   3.75rem;   /* 60px */
   --text-6xl:   4.5rem;    /* 72px */
-  --text-7xl:   5.5rem;    /* 88px */
 
   /* --- Spacing --- */
   --space-1:    0.25rem;
@@ -80,46 +102,33 @@
   --space-20:   5rem;
   --space-24:   6rem;
   --space-32:   8rem;
-  --space-40:   10rem;
 
-  /* --- Borders & Radius --- */
-  --radius-sm:  4px;
-  --radius-md:  8px;
-  --radius-lg:  16px;
-  --radius-xl:  24px;
-  --radius-2xl: 32px;
-  --radius-full: 9999px;
-
-  /* --- Shadows --- */
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.18);
-  --shadow-md:   0 8px 32px rgba(0,0,0,0.28);
-  --shadow-lg:   0 20px 60px rgba(0,0,0,0.40);
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.15);
-  --shadow-glow: 0 0 40px rgba(116, 195, 101, 0.25);
-
-  /* --- Transitions --- */
-  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast:   200ms;
-  --dur-base:   350ms;
-  --dur-slow:   600ms;
-  --dur-xslow:  900ms;
+  /* --- Radii --- */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-full:9999px;
 
   /* --- Layout --- */
-  --container-max:  1320px;
-  --container-pad:  clamp(1rem, 5vw, 4rem);
+  --container-max:  1280px;
+  --container-pad:  clamp(1.25rem, 5vw, 3.5rem);
   --nav-height:     76px;
-  --section-pad:    clamp(4rem, 10vw, 8rem);
-  --mobile-bar:     64px;
+  --section-pad:    clamp(4rem, 8vw, 7rem);
+
+  /* --- Transitions & Motion --- */
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --dur-fast:    200ms;
+  --dur-base:    400ms;
+  --dur-slow:    700ms;
 }
 
-/* Reduced motion overrides */
+/* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --dur-fast:   0ms;
-    --dur-base:   0ms;
-    --dur-slow:   0ms;
-    --dur-xslow:  0ms;
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
   }
 }
-

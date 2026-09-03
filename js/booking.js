@@ -1,5 +1,6 @@
 /* =========================================================
    THE GROOT OOTY — Booking Wizard JS
+   Integrated with GrootStore for live dynamic room pricing & availability
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,8 +50,8 @@ function initBookingWizard() {
   // Init guest counters
   initGuestCounters();
 
-  // Init room selection
-  initRoomSelection();
+  // Render & Init dynamic room selection from GrootStore
+  renderRoomOptions();
 
   // Init guest details form
   initGuestDetailsForm();
@@ -67,12 +68,11 @@ function initBookingWizard() {
   // Update sidebar
   updateSidebar();
 
-  // If room pre-selected, show it
-  if (bookingState.room) {
-    document.querySelectorAll('.room-option').forEach(opt => {
-      if (opt.dataset.room === bookingState.room) {
-        opt.classList.add('selected');
-      }
+  if (window.GrootStore) {
+    window.GrootStore.subscribe(() => {
+      renderRoomOptions();
+      updateSidebar();
+      if (bookingState.step === 5) renderReview();
     });
   }
 }
@@ -114,7 +114,7 @@ function renderCalendar() {
   const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const DAYS   = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
-  monthLabel.textContent = `${MONTHS[calViewMonth]} ${calViewYear}`;
+  if (monthLabel) monthLabel.textContent = `${MONTHS[calViewMonth]} ${calViewYear}`;
 
   const today = new Date();
   today.setHours(0,0,0,0);
@@ -124,12 +124,10 @@ function renderCalendar() {
 
   let html = DAYS.map(d => `<span class="calendar-day-label">${d}</span>`).join('');
 
-  // Empty cells
   for (let i = 0; i < firstDay; i++) {
     html += `<button class="calendar-day empty" disabled></button>`;
   }
 
-  // Day cells
   for (let d = 1; d <= daysInMonth; d++) {
     const date = new Date(calViewYear, calViewMonth, d);
     date.setHours(0,0,0,0);
@@ -148,24 +146,23 @@ function renderCalendar() {
     if (checkout && date.getTime() === checkout.getTime()) cls += ' selected';
     if (checkin && checkout && date > checkin && date < checkout) cls += ' in-range';
 
-    html += `<button class="${cls}" data-date="${dateStr}" ${isPast ? 'disabled' : ''} aria-label="${dateStr}">${d}</button>`;
+    html += `<button class="${cls}" data-date="${dateStr}" ${isPast ? 'disabled' : ''}>${d}</button>`;
   }
 
   grid.innerHTML = html;
 
-  // Add click handlers
   grid.querySelectorAll('.calendar-day:not(.disabled):not(.empty)').forEach(btn => {
-    btn.addEventListener('click', () => onCalendarDayClick(btn.dataset.date));
+    btn.addEventListener('click', () => handleDateClick(btn.dataset.date));
   });
 
   updateDateSummary();
 }
 
-function onCalendarDayClick(dateStr) {
+function handleDateClick(dateStr) {
   const clicked = new Date(dateStr);
+  clicked.setHours(0,0,0,0);
 
   if (!bookingState.checkin || (bookingState.checkin && bookingState.checkout)) {
-    // Start new selection
     bookingState.checkin = dateStr;
     bookingState.checkout = null;
   } else {
@@ -238,19 +235,110 @@ function setupCounter(countId, minusId, plusId, field, min, max) {
 }
 
 /* ---------------------------------------------------------
-   ROOM SELECTION
+   ROOM SELECTION (DYNAMIC FROM GROOT STORE)
    --------------------------------------------------------- */
 
-function initRoomSelection() {
-  const options = document.querySelectorAll('.room-option');
-  options.forEach(opt => {
-    opt.addEventListener('click', () => {
-      options.forEach(o => o.classList.remove('selected'));
-      opt.classList.add('selected');
-      bookingState.room = opt.dataset.room;
+function renderRoomOptions() {
+  const container = document.querySelector('.room-options');
+  if (!container) return;
+
+  const rooms = (window.GrootStore ? window.GrootStore.getRooms() : null) || getRoomsData();
+  container.innerHTML = '';
+
+  rooms.forEach(r => {
+    const isSelected = bookingState.room === r.id;
+    const isAvail = r.status !== 'unavailable';
+
+    const card = document.createElement('div');
+    card.className = `room-option ${isSelected ? 'selected' : ''}`;
+    card.dataset.room = r.id;
+    card.setAttribute('role', 'radio');
+    card.setAttribute('tabindex', '0');
+
+    card.innerHTML = `
+      <img class="room-option-img" src="${r.image}" alt="${r.name}" loading="lazy" decoding="async" />
+      <div class="room-option-body">
+        <div class="room-option-header">
+          <div class="room-option-name">${r.name}</div>
+          <div class="room-option-price">₹${r.price.toLocaleString()} <span class="room-option-per-night">/ night</span></div>
+        </div>
+        <div style="margin-bottom:6px;">
+          <span style="font-size:0.7rem; font-weight:700; text-transform:uppercase; color:${isAvail ? '#25D366' : '#FF5252'}; background:${isAvail ? 'rgba(37,211,102,0.14)' : 'rgba(255,82,82,0.14)'}; padding:2px 8px; border-radius:4px;">
+            ${isAvail ? 'Available' : 'Sold Out / Unavailable'}
+          </span>
+        </div>
+        <div class="room-option-desc">${r.shortDescription || r.description}</div>
+        <div class="room-option-check">
+          <div class="room-option-check-circle">${isSelected ? '✓' : ''}</div>
+          <span>${isSelected ? 'Selected' : 'Select Room'}</span>
+        </div>
+      </div>
+    `;
+
+    card.addEventListener('click', () => {
+      container.querySelectorAll('.room-option').forEach(o => {
+        o.classList.remove('selected');
+        const check = o.querySelector('.room-option-check-circle');
+        const txt = o.querySelector('.room-option-check span');
+        if (check) check.textContent = '';
+        if (txt) txt.textContent = 'Select Room';
+      });
+
+      card.classList.add('selected');
+      const check = card.querySelector('.room-option-check-circle');
+      const txt = card.querySelector('.room-option-check span');
+      if (check) check.textContent = '✓';
+      if (txt) txt.textContent = 'Selected';
+
+      bookingState.room = r.id;
       updateSidebar();
     });
+
+    container.appendChild(card);
   });
+
+  // Not sure option
+  const notSureSelected = bookingState.room === 'not-sure';
+  const notSureCard = document.createElement('div');
+  notSureCard.className = `room-option ${notSureSelected ? 'selected' : ''}`;
+  notSureCard.dataset.room = 'not-sure';
+  notSureCard.style.gridColumn = '1 / -1';
+  notSureCard.style.display = 'flex';
+  notSureCard.style.alignItems = 'center';
+  notSureCard.style.gap = '1rem';
+  notSureCard.style.padding = '1.25rem';
+  notSureCard.innerHTML = `
+    <div style="font-size:2rem;">🌲</div>
+    <div>
+      <div class="room-option-name">Not Sure — Recommend a Room</div>
+      <div class="room-option-desc" style="margin-bottom:0.25rem;">Tell us your group size and preferences, and our caretakers will recommend the best fit.</div>
+      <div class="room-option-check">
+        <div class="room-option-check-circle">${notSureSelected ? '✓' : ''}</div>
+        <span>${notSureSelected ? 'Selected' : 'Select Recommendation'}</span>
+      </div>
+    </div>
+  `;
+
+  notSureCard.addEventListener('click', () => {
+    container.querySelectorAll('.room-option').forEach(o => {
+      o.classList.remove('selected');
+      const check = o.querySelector('.room-option-check-circle');
+      const txt = o.querySelector('.room-option-check span');
+      if (check) check.textContent = '';
+      if (txt) txt.textContent = 'Select Room';
+    });
+
+    notSureCard.classList.add('selected');
+    const check = notSureCard.querySelector('.room-option-check-circle');
+    const txt = notSureCard.querySelector('.room-option-check span');
+    if (check) check.textContent = '✓';
+    if (txt) txt.textContent = 'Selected';
+
+    bookingState.room = 'not-sure';
+    updateSidebar();
+  });
+
+  container.appendChild(notSureCard);
 }
 
 /* ---------------------------------------------------------
@@ -299,33 +387,28 @@ function initGuestDetailsForm() {
 function initPreferences() {
   document.querySelectorAll('[data-pref-group]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const group = btn.dataset.prefGroup;
-      const val   = btn.dataset.prefVal;
-
-      document.querySelectorAll(`[data-pref-group="${group}"]`).forEach(b => {
-        b.classList.remove('selected');
-      });
+      const grp = btn.dataset.prefGroup;
+      const val = btn.dataset.prefVal;
+      document.querySelectorAll(`[data-pref-group="${grp}"]`).forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
-
-      bookingState[group] = val;
-      updateSidebar();
+      bookingState[grp] = val;
     });
   });
 
-  const srEl = document.getElementById('special-request');
-  if (srEl) srEl.addEventListener('input', () => { bookingState.specialRequest = srEl.value; });
+  const specialEl = document.getElementById('special-request');
+  if (specialEl) {
+    specialEl.addEventListener('input', () => {
+      bookingState.specialRequest = specialEl.value;
+    });
+  }
 }
 
 /* ---------------------------------------------------------
-   NAVIGATION
+   NAV BUTTONS
    --------------------------------------------------------- */
 
 function initNavButtons() {
-  const nextBtns = document.querySelectorAll('[data-booking-next]');
-  const prevBtns = document.querySelectorAll('[data-booking-prev]');
-  const submitBtn = document.getElementById('booking-submit');
-
-  nextBtns.forEach(btn => {
+  document.querySelectorAll('[data-booking-next]').forEach(btn => {
     btn.addEventListener('click', () => {
       if (validateStep(bookingState.step)) {
         goToStep(bookingState.step + 1);
@@ -333,12 +416,13 @@ function initNavButtons() {
     });
   });
 
-  prevBtns.forEach(btn => {
+  document.querySelectorAll('[data-booking-prev]').forEach(btn => {
     btn.addEventListener('click', () => {
       goToStep(bookingState.step - 1);
     });
   });
 
+  const submitBtn = document.getElementById('booking-submit');
   if (submitBtn) {
     submitBtn.addEventListener('click', submitBooking);
   }
@@ -347,19 +431,16 @@ function initNavButtons() {
 function goToStep(step) {
   if (step < 1 || step > bookingState.totalSteps) return;
 
-  document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.booking-step').forEach(el => el.classList.remove('active'));
   const target = document.getElementById(`step-${step}`);
-  if (target) {
-    target.classList.add('active');
-    // Scroll to top of panel
-    target.closest('.booking-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  if (target) target.classList.add('active');
 
   bookingState.step = step;
   renderProgress();
 
-  // Populate review step
-  if (step === 5) populateReview();
+  if (step === 5) renderReview();
+
+  window.scrollTo({ top: document.getElementById('booking-wizard').offsetTop - 80, behavior: 'smooth' });
 }
 
 /* ---------------------------------------------------------
@@ -367,85 +448,74 @@ function goToStep(step) {
    --------------------------------------------------------- */
 
 function validateStep(step) {
-  clearErrors();
-
   if (step === 1) {
+    const err = document.getElementById('cal-error');
     if (!bookingState.checkin) {
-      showError('Please select a check-in date.', 'cal-error');
+      if (err) err.textContent = 'Please select a check-in date.';
       return false;
     }
     if (!bookingState.checkout) {
-      showError('Please select a check-out date.', 'cal-error');
+      if (err) err.textContent = 'Please select a check-out date.';
       return false;
     }
+    if (err) err.textContent = '';
+    return true;
   }
 
   if (step === 2) {
+    const err = document.getElementById('guests-error');
     if (bookingState.adults < 1) {
-      showError('At least 1 adult is required.', 'guests-error');
+      if (err) err.textContent = 'At least 1 adult is required.';
       return false;
     }
+    if (err) err.textContent = '';
+    return true;
+  }
+
+  if (step === 3) {
+    if (!bookingState.room) {
+      alert('Please select a preferred room (or select "Not Sure" to get a recommendation).');
+      return false;
+    }
+    return true;
   }
 
   if (step === 4) {
-    if (!bookingState.name.trim()) {
-      showFieldError('guest-name', 'Name is required.');
+    const nameEl = document.getElementById('guest-name');
+    const mobEl  = document.getElementById('guest-mobile');
+    if (!nameEl.value.trim()) {
+      alert('Please enter your full name.');
+      nameEl.focus();
       return false;
     }
-    if (!bookingState.mobile.trim()) {
-      showFieldError('guest-mobile', 'Mobile number is required.');
+    if (!mobEl.value.trim()) {
+      alert('Please enter your mobile number.');
+      mobEl.focus();
       return false;
     }
-    if (bookingState.email && !isValidEmail(bookingState.email)) {
-      showFieldError('guest-email', 'Please enter a valid email address.');
-      return false;
-    }
+    return true;
   }
 
   return true;
 }
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function showError(msg, targetId) {
-  const el = document.getElementById(targetId);
-  if (!el) return;
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-
-function showFieldError(fieldId, msg) {
-  const field = document.getElementById(fieldId);
-  if (field) field.classList.add('error');
-
-  const errId = fieldId + '-error';
-  let errEl = document.getElementById(errId);
-  if (!errEl) {
-    errEl = document.createElement('span');
-    errEl.id = errId;
-    errEl.className = 'form-error';
-    field?.parentNode?.appendChild(errEl);
-  }
-  errEl.textContent = msg;
-}
-
-function clearErrors() {
-  document.querySelectorAll('.form-error').forEach(el => { el.textContent = ''; });
-  document.querySelectorAll('.form-input.error, .form-select.error, .form-textarea.error').forEach(el => {
-    el.classList.remove('error');
-  });
-  const calErr = document.getElementById('cal-error');
-  if (calErr) calErr.textContent = '';
-}
-
 /* ---------------------------------------------------------
-   REVIEW STEP
+   REVIEW SCREEN
    --------------------------------------------------------- */
 
-function populateReview() {
-  bookingState.enquiryId = generateEnquiryId();
+function generateEnquiryId() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let result = 'GROOT-';
+  for (let i = 0; i < 6; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function renderReview() {
+  if (!bookingState.enquiryId) {
+    bookingState.enquiryId = generateEnquiryId();
+  }
 
   const set = (id, val) => {
     const el = document.getElementById(id);
@@ -469,20 +539,17 @@ function populateReview() {
 
   set('review-guests', guests || '1 Adult');
 
-  const roomNames = {
-    standard:   'Standard Room',
-    aframe:     'A-Frame Room',
-    suite:      'Luxurious Suite',
-    glasshouse: 'Glass House',
-    'not-sure': 'Open to recommendation',
-  };
-  set('review-room', bookingState.room ? (roomNames[bookingState.room] || bookingState.room) : 'Not selected');
+  const rooms = (window.GrootStore ? window.GrootStore.getRooms() : null) || getRoomsData();
+  const selectedRoomObj = rooms.find(r => r.id === bookingState.room);
+  const roomDisplay = selectedRoomObj ? `${selectedRoomObj.name} (₹${selectedRoomObj.price.toLocaleString()}/night)` : (bookingState.room === 'not-sure' ? 'Open to recommendation' : 'Not selected');
+
+  set('review-room', roomDisplay);
   set('review-name',   bookingState.name   || '—');
   set('review-mobile', bookingState.mobile || '—');
   set('review-email',  bookingState.email  || '—');
 
-  const campfireMap = { yes: 'Interested', no: 'Not interested', more: 'Would like more info' };
-  const mealMap     = { yes: 'Interested', no: 'Not interested', more: 'Would like more info' };
+  const campfireMap = { yes: 'Interested', no: 'Not interested', more: 'Would like info' };
+  const mealMap     = { yes: 'Interested', no: 'Not interested', more: 'Would like info' };
 
   set('review-campfire', bookingState.campfire ? (campfireMap[bookingState.campfire] || bookingState.campfire) : '—');
   set('review-meals',    bookingState.meals    ? (mealMap[bookingState.meals]       || bookingState.meals)    : '—');
@@ -494,6 +561,10 @@ function populateReview() {
    --------------------------------------------------------- */
 
 function submitBooking() {
+  const rooms = (window.GrootStore ? window.GrootStore.getRooms() : null) || getRoomsData();
+  const selectedRoomObj = rooms.find(r => r.id === bookingState.room);
+  const roomNameFormatted = selectedRoomObj ? `${selectedRoomObj.name} (₹${selectedRoomObj.price.toLocaleString()}/night)` : (bookingState.room === 'not-sure' ? 'Open to recommendation' : bookingState.room);
+
   openWhatsApp({
     enquiryId: bookingState.enquiryId || generateEnquiryId(),
     name:          bookingState.name,
@@ -504,25 +575,20 @@ function submitBooking() {
     checkout:      bookingState.checkout,
     adults:        bookingState.adults,
     children:      bookingState.children,
-    room:          bookingState.room,
+    room:          roomNameFormatted,
     campfire:      bookingState.campfire,
     meals:         bookingState.meals,
     specialRequest: bookingState.specialRequest,
   });
 
-  // Show success state
-  const panel = document.querySelector('.booking-panel');
+  const panel = document.querySelector('.booking-form-panel');
   const success = document.getElementById('booking-success');
 
   if (panel && success) {
-    panel.style.opacity = '0';
-    panel.style.transition = 'opacity 0.3s ease';
-    setTimeout(() => {
-      panel.style.display = 'none';
-      success.classList.add('show');
-      const progressEl = document.querySelector('.booking-progress');
-      if (progressEl) progressEl.style.display = 'none';
-    }, 300);
+    panel.style.display = 'none';
+    success.classList.add('show');
+    const progressEl = document.querySelector('.booking-progress');
+    if (progressEl) progressEl.style.display = 'none';
   }
 }
 
@@ -533,13 +599,9 @@ function submitBooking() {
 function renderProgress() {
   document.querySelectorAll('.progress-step').forEach((step, i) => {
     const n = i + 1;
-    step.classList.remove('active', 'done');
-    if (n < bookingState.step)  step.classList.add('done');
+    step.classList.remove('active', 'completed');
+    if (n < bookingState.step)  step.classList.add('completed');
     if (n === bookingState.step) step.classList.add('active');
-  });
-
-  document.querySelectorAll('.progress-line').forEach((line, i) => {
-    line.classList.toggle('done', i + 1 < bookingState.step);
   });
 }
 
@@ -566,13 +628,10 @@ function updateSidebar() {
   ].filter(Boolean).join(', ');
   set('sb-guests', guests || '1 Adult');
 
-  const roomNames = {
-    standard:   'Standard Room',
-    aframe:     'A-Frame Room',
-    suite:      'Luxurious Suite',
-    glasshouse: 'Glass House',
-    'not-sure': 'Open recommendation',
-  };
-  set('sb-room', bookingState.room ? (roomNames[bookingState.room] || bookingState.room) : null);
+  const rooms = (window.GrootStore ? window.GrootStore.getRooms() : null) || getRoomsData();
+  const selectedRoomObj = rooms.find(r => r.id === bookingState.room);
+  const roomDisplay = selectedRoomObj ? `${selectedRoomObj.name} — ₹${selectedRoomObj.price.toLocaleString()}` : (bookingState.room === 'not-sure' ? 'Recommendation' : null);
+
+  set('sb-room', roomDisplay);
   set('sb-name', bookingState.name || null);
 }

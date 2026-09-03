@@ -1,259 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | The Groot Ooty</title>
-  <meta name="description" content="Contact The Groot Ooty — call, WhatsApp or visit us in Pudumund, Ooty, Tamil Nadu." />
-  <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
+  <title>Contact Us | The Groot Ooty</title>
+  <meta name="description" content="Contact The Groot Ooty — Call, WhatsApp or locate our boutique property in Pudumund, Ooty, Tamil Nadu." />
+  <link rel="icon" href="assets/images/IMG-20260821-WA0039_4k.webp" type="image/jpeg" />
 
-  <!-- Page Transition Initialization -->
-  <script>
-    (function(){
-      try {
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          document.documentElement.classList.add('page-transitioning');
-        }
-      } catch(e) {}
-    })();
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/variables.css?v=3.0" />
-  <link rel="stylesheet" href="css/base.css?v=3.0" />
-  <link rel="stylesheet" href="css/animations.css?v=3.0" />
-  <link rel="stylesheet" href="css/components.css?v=3.0" />
-  <link rel="stylesheet" href="css/header.css?v=3.0" />
-  <link rel="stylesheet" href="css/sections.css?v=3.0" />
-  <link rel="stylesheet" href="css/footer.css?v=3.0" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+
   <style>
-    .contact-page { padding-top: var(--nav-height); background: #74C365; min-height: 100vh; }
-    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: var(--container-max); margin: 0 auto; padding: clamp(3rem,6vw,5rem) var(--container-pad) 6rem; align-items: start; }
-    .contact-info-card { background: #111B12; border: 1px solid rgba(17,27,18,0.25); border-radius: var(--radius-xl); padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-    .contact-method { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; border-radius: var(--radius-lg); transition: background 0.2s; text-decoration: none; margin-bottom: 0.75rem; }
-    .contact-method:hover { background: rgba(255,255,255,0.06); }
-    .contact-method-icon { width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .contact-method-icon.phone { background: rgba(116,195,101,0.18); color: #74C365; }
-    .contact-method-icon.whatsapp { background: rgba(37,211,102,0.18); color: #25D366; }
-    .contact-method-icon.location { background: rgba(116,195,101,0.18); color: #74C365; }
-    .contact-method-icon.instagram { background: rgba(225,48,108,0.15); color: #E1306C; }
-    .contact-method-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(244,237,224,0.70); margin-bottom: 3px; }
-    .contact-method-value { font-size: 1rem; font-weight: 600; color: #FFFFFF; }
-    .contact-method-sub { font-size: 0.8rem; color: #74C365; margin-top: 2px; }
-    .map-embed { border-radius: var(--radius-xl); overflow: hidden; border: 1px solid rgba(17,27,18,0.25); aspect-ratio: 4/3; }
-    .map-embed iframe { width: 100%; height: 100%; border: none; display: block; }
-    .contact-form-section { padding: 2rem; background: #111B12; border: 1px solid rgba(17,27,18,0.25); border-radius: var(--radius-xl); margin-top: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-    .contact-form-section h3 { color: #FFFFFF; }
-    .contact-form-section p { color: rgba(244,237,224,0.85); }
-    .contact-form-section .form-label { color: #FFFFFF; font-size: 0.85rem; font-weight: 600; }
-    @media(max-width:1024px){ .contact-layout{grid-template-columns:1fr;gap:2.5rem;} }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(2.5rem, 5vw, 4.5rem);
+      align-items: start;
+    }
+    .contact-method-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      color: var(--color-cream);
+      transition: all 0.2s ease;
+      margin-bottom: 0.85rem;
+    }
+    .contact-method-card:hover {
+      background: rgba(255, 255, 255, 0.10);
+      transform: translateX(4px);
+    }
+    .contact-method-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-method-icon.whatsapp {
+      background: rgba(37, 211, 102, 0.2);
+      color: var(--color-whatsapp);
+    }
+    .contact-method-icon.phone {
+      background: rgba(137, 217, 123, 0.2);
+      color: #89D97B;
+    }
+    .contact-method-icon.instagram {
+      background: rgba(225, 48, 108, 0.2);
+      color: #E1306C;
+    }
+    .contact-method-icon.location {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--color-cream);
+    }
+    .map-frame {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      aspect-ratio: 16/10;
+      box-shadow: var(--shadow-card);
+      background: var(--color-obsidian);
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    @media(max-width:900px){
+      .contact-layout { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<body>
-<!-- Cinematic Loader -->
-<div id="cinematic-loader" aria-hidden="true">
-  <div class="cinematic-text-wrapper">
-    <div class="cinematic-text-main" aria-label="The Groot">
-      <span class="c-char" style="--i:0">T</span><span class="c-char" style="--i:1">h</span><span class="c-char" style="--i:2">e</span><span class="c-space">&nbsp;</span><span class="c-char" style="--i:3">G</span><span class="c-char" style="--i:4">r</span><span class="c-char" style="--i:5">o</span><span class="c-char" style="--i:6">o</span><span class="c-char" style="--i:7">t</span>
-    </div>
-    <div class="cinematic-text-sub" aria-label="Ooty, Tamil Nadu">
-      <span class="c-sub-word" style="--w:0">Ooty,</span>
-      <span class="c-sub-word" style="--w:1">Tamil</span>
-      <span class="c-sub-word" style="--w:2">Nadu</span>
-    </div>
-  </div>
-  <div class="cinematic-light-sweep"></div>
-</div>
+<body style="background:var(--color-mantis);">
 
-<header id="site-header" class="scrolled" role="banner">
-  <div class="container header-inner">
-    <a href="index.html" class="site-logo"><span class="logo-name">The Groot</span><span class="logo-location">Ooty, Tamil Nadu</span></a>
-    <nav class="desktop-nav">
-      <a href="index.html#rooms" class="nav-link">Stay</a>
-      <a href="experiences.html" class="nav-link">Experiences</a>
-      <a href="gallery.html" class="nav-link">Gallery</a>
-      <a href="ooty.html" class="nav-link">Ooty</a>
-      <a href="reviews.html" class="nav-link">Reviews</a>
-      <a href="contact.html" class="nav-link active">Contact</a>
+  <!-- Header -->
+  <header id="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <span class="logo-name">The Groot</span>
+        <span class="logo-location">Ooty, Tamil Nadu</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="rooms.html" class="nav-link">Stay</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="ooty.html" class="nav-link">Ooty</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="mobile-menu" role="dialog">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="site-logo">
+        <span class="logo-name">The Groot</span>
+        <span class="logo-location">Ooty, Tamil Nadu</span>
+      </a>
+      <button id="mobile-menu-close" class="hamburger open" aria-label="Close menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+    <nav class="mobile-menu-nav">
+      <a href="index.html" class="mobile-nav-link">Home <span class="arrow">&rarr;</span></a>
+      <a href="rooms.html" class="mobile-nav-link">Stay & Rooms <span class="arrow">&rarr;</span></a>
+      <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow">&rarr;</span></a>
+      <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow">&rarr;</span></a>
+      <a href="ooty.html" class="mobile-nav-link">Ooty Guide <span class="arrow">&rarr;</span></a>
+      <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow">&rarr;</span></a>
+      <a href="contact.html" class="mobile-nav-link active">Contact <span class="arrow">&rarr;</span></a>
     </nav>
-    <div class="header-actions">
-      <!-- Header CTA -->
-      <div class="header-cta">
-        <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
-      </div>
-
-
-      <!-- Hamburger -->
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    <div class="mobile-menu-actions">
+      <a href="booking.html" class="btn btn-primary btn-block">Check Availability</a>
+      <button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">WhatsApp Direct</button>
     </div>
   </div>
-</header>
 
-<div id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header"><a href="index.html" class="site-logo"><span class="logo-name">The Groot</span><span class="logo-location">Ooty, Tamil Nadu</span></a><button id="mobile-menu-close" class="hamburger open"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div>
-  <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="rooms.html" class="mobile-nav-link">Stay <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="contact.html" class="mobile-nav-link">Contact <span class="arrow" aria-hidden="true">&rarr;</span></a></nav>
-  <div class="mobile-menu-actions"><a href="booking.html" class="btn btn-primary btn-block">Check Availability</a><button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">WhatsApp</button></div>
-</div>
-
-<main class="contact-page" role="main">
-  <div class="contact-layout">
-
-    <!-- Left: Contact info -->
-    <div>
-      <div data-reveal="fade-up">
-        <span class="section-overline">Get in Touch</span>
-        <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;margin-top:0.5rem;line-height:1.1;">Contact<br>The Groot</h1>
-        <p style="font-size:1rem;color:var(--text-secondary);line-height:1.7;font-weight:300;margin-bottom:2rem;max-width:440px;">We're always happy to help. The easiest way to reach us is via WhatsApp — we respond quickly.</p>
+  <!-- Contact Page Main -->
+  <main class="section-pad-sm" style="padding-top: calc(var(--nav-height) + 3rem);">
+    <div class="container">
+      <div class="section-header" data-reveal="fade-up">
+        <span class="section-overline">Get In Touch</span>
+        <h1 class="display-lg" style="color:var(--color-obsidian); margin-bottom: 0.5rem;">Contact The Groot</h1>
+        <p class="section-subtitle">We are always happy to help. Reach out directly via WhatsApp, phone, or view our location in Ooty.</p>
       </div>
 
-      <div class="contact-info-card" data-reveal="fade-up" data-delay="100">
-        <!-- WhatsApp -->
-        <button onclick="quickWhatsApp()" class="contact-method" style="width:100%;text-align:left;background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.15);cursor:pointer;border-radius:var(--radius-lg);">
-          <div class="contact-method-icon whatsapp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">WhatsApp (Fastest)</div>
-            <div class="contact-method-value">+91 6382316323</div>
-            <div class="contact-method-sub">Click to open WhatsApp ↗</div>
-          </div>
-        </button>
+      <div class="contact-layout">
+        <!-- Left: Contact Details & Quick Message -->
+        <div>
+          <div class="card-dark" data-reveal="fade-up" style="margin-bottom: 1.75rem;">
+            <!-- WhatsApp -->
+            <button onclick="quickWhatsApp()" class="contact-method-card" style="width:100%; text-align:left; cursor:pointer;">
+              <div class="contact-method-icon whatsapp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:#89D97B; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">WhatsApp (Fastest Response)</div>
+                <div style="font-size:1.1rem; font-weight:700; color:var(--color-cream); margin:2px 0;">+91 6382316323</div>
+                <div style="font-size:0.8rem; color:var(--card-text-muted);">Click to chat directly &rarr;</div>
+              </div>
+            </button>
 
-        <!-- Phone 1 -->
-        <a href="tel:6382316323" class="contact-method">
-          <div class="contact-method-icon phone">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">Phone</div>
-            <div class="contact-method-value">6382316323</div>
-          </div>
-        </a>
+            <!-- Phone 1 -->
+            <a href="tel:6382316323" class="contact-method-card" data-phone="1">
+              <div class="contact-method-icon phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:rgba(250,247,242,0.6); font-weight:700; text-transform:uppercase;">Primary Phone</div>
+                <div style="font-size:1.05rem; font-weight:600; color:var(--color-cream);">6382316323</div>
+              </div>
+            </a>
 
-        <!-- Phone 2 -->
-        <a href="tel:7395965006" class="contact-method">
-          <div class="contact-method-icon phone">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">Alternate Phone</div>
-            <div class="contact-method-value">7395965006</div>
-          </div>
-        </a>
+            <!-- Phone 2 -->
+            <a href="tel:7395965006" class="contact-method-card" data-phone="2">
+              <div class="contact-method-icon phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:rgba(250,247,242,0.6); font-weight:700; text-transform:uppercase;">Alternate Phone</div>
+                <div style="font-size:1.05rem; font-weight:600; color:var(--color-cream);">7395965006</div>
+              </div>
+            </a>
 
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="contact-method">
-          <div class="contact-method-icon instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </div>
-          <div>
-            <div class="contact-method-label">Instagram</div>
-            <div class="contact-method-value">@the_groot_ooty</div>
-            <div class="contact-method-sub">Follow us for photos & updates</div>
-          </div>
-        </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/the_groot_ooty/" target="_blank" rel="noopener noreferrer" class="contact-method-card">
+              <div class="contact-method-icon instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:rgba(250,247,242,0.6); font-weight:700; text-transform:uppercase;">Instagram</div>
+                <div style="font-size:1.05rem; font-weight:600; color:var(--color-cream);">@the_groot_ooty</div>
+              </div>
+            </a>
 
-        <!-- Address -->
-        <div class="contact-method" style="cursor:default;">
-          <div class="contact-method-icon location">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <!-- Address -->
+            <div class="contact-method-card" style="cursor:default;">
+              <div class="contact-method-icon location">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.75rem; color:rgba(250,247,242,0.6); font-weight:700; text-transform:uppercase;">Property Address</div>
+                <div style="font-size:0.95rem; font-weight:500; color:var(--color-cream); line-height:1.5;">
+                  204, Showdown Road, Mellakshminarayanapuram, Pudumund, Ooty, Tamil Nadu 643001
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <div class="contact-method-label">Address</div>
-            <div class="contact-method-value" style="font-size:0.9rem;line-height:1.5;">204, Showdown Road,<br>Mellakshminarayanapuram,<br>Pudumund, Ooty,<br>Tamil Nadu 643001</div>
+
+          <!-- Quick Message Box -->
+          <div class="card-dark" data-reveal="fade-up" data-delay="100">
+            <h3 style="font-family:var(--font-display); font-size:1.35rem; color:var(--color-cream); margin-bottom:0.5rem;">
+              Send a Direct Message
+            </h3>
+            <p style="font-size:0.85rem; color:var(--card-text-muted); margin-bottom:1.25rem;">
+              Enter your name and note below to instantly open WhatsApp with your message pre-formatted.
+            </p>
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Name</label>
+              <input type="text" class="form-control" id="contact-name" placeholder="Enter your name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message</label>
+              <textarea class="form-control" id="contact-message" rows="3" placeholder="Hi, I would like to enquire about..."></textarea>
+            </div>
+            <button class="btn btn-whatsapp btn-block btn-lg" onclick="sendContactMessage()">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Send on WhatsApp
+            </button>
           </div>
         </div>
-      </div>
 
-      <!-- Quick message form -->
-      <div class="contact-form-section" data-reveal="fade-up" data-delay="200">
-        <h3 style="font-family:var(--font-display);font-size:1.25rem;color:var(--text-on-image);margin-bottom:0.5rem;">Send a Quick Message</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.6;">Fill in your details and we'll open a pre-filled WhatsApp message for you.</p>
-        <div class="form-group">
-          <label class="form-label" for="contact-name">Your Name</label>
-          <input type="text" class="form-input" id="contact-name" placeholder="Your name" autocomplete="name" />
+        <!-- Right: Map Embed & Directions -->
+        <div>
+          <div data-reveal="fade-left">
+            <h2 style="font-family:var(--font-display); font-size:1.6rem; color:var(--color-obsidian); margin-bottom:1rem;">
+              Find Us in Pudumund, Ooty
+            </h2>
+            <div class="map-frame" style="margin-bottom:1.5rem;">
+              <iframe
+                src="https://maps.google.com/maps?q=11.4067,76.7032&z=15&output=embed"
+                title="The Groot Ooty location map"
+                loading="lazy"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <!-- Check-in Cards -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+              <div class="card-dark" style="text-align:center; padding:1.25rem;">
+                <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#89D97B; margin-bottom:0.25rem;">Check-in</div>
+                <div style="font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:var(--color-cream);">12:00 PM</div>
+                <div style="font-size:0.75rem; color:var(--card-text-muted); margin-top:2px;">Early arrival on request</div>
+              </div>
+
+              <div class="card-dark" style="text-align:center; padding:1.25rem;">
+                <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#89D97B; margin-bottom:0.25rem;">Check-out</div>
+                <div style="font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:var(--color-cream);">11:00 AM</div>
+                <div style="font-size:0.75rem; color:var(--card-text-muted); margin-top:2px;">Late departure on request</div>
+              </div>
+            </div>
+
+            <a href="booking.html" class="btn btn-primary btn-block btn-lg">Check Room Availability</a>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="contact-message">Message</label>
-          <textarea class="form-textarea" id="contact-message" placeholder="Hi, I'd like to know about..."></textarea>
-        </div>
-        <button class="btn btn-whatsapp btn-block" onclick="sendContactMessage()" id="contact-send-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Send via WhatsApp
-        </button>
       </div>
     </div>
+  </main>
 
-    <!-- Right: Map + info -->
-    <div data-reveal="fade-left">
-      <h2 style="font-family:var(--font-display);font-size:1.75rem;color:#111B12;margin-bottom:1.25rem;">Find Us in Ooty</h2>
-      <div class="map-embed">
-        <iframe
-          src="https://maps.google.com/maps?q=11.4067,76.7032&z=15&output=embed"
-          title="The Groot Ooty location map"
-          loading="lazy"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div style="margin-top:1.25rem;padding:1.25rem;background:rgba(17,27,18,0.08);border:1px solid rgba(17,27,18,0.20);border-radius:var(--radius-lg);">
-        <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#111B12;margin-bottom:0.75rem;">Getting Here</div>
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:0.5rem 1rem;font-size:0.875rem;color:#111B12;line-height:1.6;">
-          <span style="color:#111B12;font-weight:700;">Bus</span><span>Ooty bus stand ? Pudumund route (ask for Showdown Road)</span>
-          <span style="color:#111B12;font-weight:700;">Auto</span><span>Auto-rickshaws available from Ooty town (~15 min)</span>
-          <span style="color:#111B12;font-weight:700;">Car</span><span>Ample parking available on-site</span>
-          <span style="color:#111B12;font-weight:700;">Taxi</span><span>Ooty to The Groot: 20–30 min depending on traffic</span>
+  <!-- Footer -->
+  <footer id="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo">
+            <span class="logo-name">The Groot</span>
+            <span class="logo-location">Ooty, Tamil Nadu</span>
+          </a>
+          <p class="footer-brand-desc">A cozy boutique stay in the Nilgiri hills. Featuring A-Frame cabins, Glass House, campfire evenings, and warm hospitality.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <nav class="footer-nav">
+            <a href="index.html#rooms" class="footer-link">Rooms & Cabins</a>
+            <a href="experiences.html" class="footer-link">Experiences</a>
+            <a href="gallery.html" class="footer-link">Photo Gallery</a>
+            <a href="ooty.html" class="footer-link">Ooty Attractions</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Booking</h4>
+          <nav class="footer-nav">
+            <a href="booking.html" class="footer-link">Check Availability</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="admin.html" class="footer-link" style="opacity:0.75;">Admin Portal</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <div class="footer-nav">
+            <a href="tel:6382316323" class="footer-contact-item" data-phone="1">📞 6382316323</a>
+            <a href="tel:7395965006" class="footer-contact-item" data-phone="2">📞 7395965006</a>
+            <div class="footer-contact-item">📍 Pudumund, Ooty, Tamil Nadu 643001</div>
+          </div>
         </div>
       </div>
-
-      <div style="margin-top:1.5rem;">
-        <h3 style="font-family:var(--font-display);font-size:1.25rem;color:#111B12;margin-bottom:1rem;">Check-in / Check-out</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div style="padding:1.25rem;background:#111B12;border:1px solid rgba(17,27,18,0.25);border-radius:var(--radius-lg);text-align:center;box-shadow:0 8px 24px rgba(0,0,0,0.12);">
-            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#74C365;margin-bottom:0.5rem;">Check-in</div>
-            <div style="font-family:var(--font-display);font-size:1.5rem;color:#FFFFFF;font-weight:700;">12:00 PM</div>
-            <div style="font-size:0.75rem;color:rgba(244,237,224,0.80);margin-top:3px;">Early check-in on request</div>
-          </div>
-          <div style="padding:1.25rem;background:#111B12;border:1px solid rgba(17,27,18,0.25);border-radius:var(--radius-lg);text-align:center;box-shadow:0 8px 24px rgba(0,0,0,0.12);">
-            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#74C365;margin-bottom:0.5rem;">Check-out</div>
-            <div style="font-family:var(--font-display);font-size:1.5rem;color:#FFFFFF;font-weight:700;">11:00 AM</div>
-            <div style="font-size:0.75rem;color:rgba(244,237,224,0.80);margin-top:3px;">Late check-out on request</div>
-          </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Groot Ooty. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="contact.html" class="footer-bottom-link">Contact</a>
+          <a href="booking.html" class="footer-bottom-link">Book Direct</a>
+          <a href="admin.html" class="footer-bottom-link" style="opacity:0.7;">Admin</a>
         </div>
-      </div>
-
-      <div style="margin-top:2rem;">
-        <a href="booking.html" class="btn btn-primary btn-block">Check Availability</a>
       </div>
     </div>
+  </footer>
 
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-main">
-    <div class="footer-brand"><div class="footer-logo-name">The Groot</div><span class="footer-logo-location">Ooty, Tamil Nadu</span><p class="footer-brand-desc">A cozy stay in the Nilgiri hills.</p></div>
-    <div class="footer-col"><h3 class="footer-col-title">Navigate</h3><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="rooms.html" class="footer-link">Rooms</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li><li><a href="booking.html" class="footer-link">Book Now</a></li></ul></div>
-    <div class="footer-col"><h3 class="footer-col-title">Contact</h3><a href="tel:6382316323" class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>6382316323</a></div>
-  </div>
-  <div class="container"><div class="footer-bottom"><p class="footer-copyright">© 2025 The Groot Ooty.</p></div></div>
-</footer>
-
-<button class="fab-whatsapp" onclick="quickWhatsApp()" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
-
-<div class="mobile-action-bar"><div class="mobile-action-bar-inner"><button onclick="quickWhatsApp()" class="mobile-action-btn whatsapp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</button><a href="tel:6382316323" class="mobile-action-btn call"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call</a><a href="booking.html" class="mobile-action-btn book"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a></div></div>
-
-<script src="js/config.js?v=3.0"></script>
-<script src="js/whatsapp.js?v=3.0"></script>
-<script src="js/main.js?v=3.0"></script>
-<script>
-function sendContactMessage() {
-  const name = document.getElementById('contact-name').value.trim();
-  const msg  = document.getElementById('contact-message').value.trim();
-  if (!msg) { alert('Please write a message first.'); return; }
-  const full = name ? `Hi, I'm ${name}.\n\n${msg}` : msg;
-  window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(full)}`, '_blank');
-}
-</script>
+  <script src="js/store.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/whatsapp.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function sendContactMessage() {
+      const name = document.getElementById('contact-name').value.trim();
+      const msg = document.getElementById('contact-message').value.trim();
+      if (!msg) {
+        alert('Please write your message first.');
+        return;
+      }
+      const full = name ? `Hi The Groot! I'm ${name}.\n\n${msg}` : `Hi The Groot!\n\n${msg}`;
+      window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(full)}`, '_blank');
+    }
+  </script>
 </body>
 </html>

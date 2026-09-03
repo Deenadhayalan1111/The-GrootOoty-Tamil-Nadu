@@ -28,10 +28,10 @@ files.forEach(file => {
   // Let's just do a manual targeted replace.
   if (file === 'index.html') {
     // Hero image (line ~114)
-    content = content.replace(/class="hero-bg-img parallax-img"(\s*)src="assets\/images\/IMG-20260821-WA0034.jpg"/, 'class="hero-bg-img parallax-img"$1src="assets/images/IMG-20260821-WA0037.jpg"');
+    content = content.replace(/class="hero-bg-img parallax-img"(\s*)src="assets\/images\/IMG-20260821-WA0034_4k.webp"/, 'class="hero-bg-img parallax-img"$1src="assets/images/IMG-20260821-WA0037_4k.webp"');
     
     // "Property night at The Groot" (line ~715) -> Change to WA0036 (Campfire night)
-    content = content.replace(/src="assets\/images\/IMG-20260821-WA0037.jpg" alt="Property night at The Groot"/, 'src="assets/images/IMG-20260821-WA0036.jpg" alt="Property night at The Groot"');
+    content = content.replace(/src="assets\/images\/IMG-20260821-WA0037_4k.webp" alt="Property night at The Groot"/, 'src="assets/images/IMG-20260821-WA0036_4k.webp" alt="Property night at The Groot"');
 
     // "Campfire evening" (line ~something) -> Keep it WA0036, or maybe use WA0041 (if indoors night?)
     // Actually let's just make the old Hero (WA0034) go somewhere that makes sense: "Glass House at The Groot Ooty" or "Exploring Ooty during the day" or "Property exterior".

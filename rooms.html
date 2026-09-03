@@ -1,235 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rooms | The Groot Ooty</title>
-  <meta name="description" content="Choose your room at The Groot Ooty — Standard Room, A-Frame Room, Luxurious Suite, or Glass House. Book direct via WhatsApp." />
-  <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
+  <title>Rooms & Stays | The Groot Ooty</title>
+  <meta name="description" content="Explore our cozy accommodations in Ooty — A-frame Cabins, Glass house with forest panoramas, Luxurious suit, and Standard rooms at The Groot Ooty." />
+  <link rel="icon" href="assets/images/IMG-20260821-WA0039_4k.webp" type="image/jpeg" />
 
-  <!-- Page Transition Initialization -->
-  <script>
-    (function(){
-      try {
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          document.documentElement.classList.add('page-transitioning');
-        }
-      } catch(e) {}
-    })();
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/variables.css?v=3.0" />
-  <link rel="stylesheet" href="css/base.css?v=3.0" />
-  <link rel="stylesheet" href="css/animations.css?v=3.0" />
-  <link rel="stylesheet" href="css/components.css?v=3.0" />
-  <link rel="stylesheet" href="css/header.css?v=3.0" />
-  <link rel="stylesheet" href="css/sections.css?v=3.0" />
-  <link rel="stylesheet" href="css/footer.css?v=3.0" />
-  <style>
-    .rooms-page { padding-top: var(--nav-height); background: #74C365; min-height: 100vh; }
-    .rooms-page-hero { padding: clamp(3rem,6vw,5rem) 0 clamp(2rem,4vw,3rem); }    .rooms-listing { display: flex; flex-direction: column; gap: 3rem; padding-bottom: 5rem; }
-    .room-listing-card {
-      display: grid;
-      gap: 2.5rem;
-      align-items: center;
-      background: #111B12;
-      border: 1px solid rgba(17, 27, 18, 0.25);
-      border-radius: var(--radius-2xl);
-      overflow: hidden;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.18);
-    }
-    .room-listing-card--portrait { grid-template-columns: 315px 1fr; }
-    .room-listing-card--landscape { grid-template-columns: 500px 1fr; }
-    .room-listing-card--tall-portrait { grid-template-columns: 270px 1fr; }
 
-    .room-listing-card:nth-child(even) .room-listing-img { order: 2; }
-    .room-listing-card:nth-child(even) .room-listing-info { order: 1; }
-    .room-listing-img { position: relative; overflow: hidden; display: block; width: 100%; background: transparent; }
-    .room-listing-img img { width: 100%; height: auto; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-    .room-listing-card:hover .room-listing-img img { transform: scale(1.04); }
-    .room-listing-info { padding: 1.75rem 2.5rem 1.75rem 0; }
-    .room-listing-card:nth-child(even) .room-listing-info { padding: 1.75rem 0 1.75rem 2.5rem; }
-    .room-listing-tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #74C365; margin-bottom: 0.75rem; }
-    .room-listing-name { font-family: var(--font-display); font-size: clamp(1.75rem,3vw,2.5rem); font-weight: 700; color: #FFFFFF; margin-bottom: 1rem; line-height: 1.15; }
-    .room-listing-desc { font-size: 1rem; color: rgba(244, 237, 224, 0.88); line-height: 1.7; margin-bottom: 1.5rem; font-weight: 300; }
-    .room-listing-features { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
-    .room-listing-feature { font-size: 0.75rem; font-weight: 500; color: #F4EDE0; background: rgba(255,255,255,0.08); padding: 0.35rem 0.875rem; border-radius: 99px; border: 1px solid rgba(255,255,255,0.15); }
-    .room-listing-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    @media (max-width: 900px) {
-      .room-listing-card,
-      .room-listing-card--portrait,
-      .room-listing-card--landscape,
-      .room-listing-card--tall-portrait { grid-template-columns: 1fr; gap: 0; }
-      .room-listing-card:nth-child(even) .room-listing-img, .room-listing-card:nth-child(even) .room-listing-info { order: unset; }
-      .room-listing-info, .room-listing-card:nth-child(even) .room-listing-info { padding: 1.5rem; }
-    } 
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    .rooms-catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .room-price-tag {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #89D97B;
+    }
+    .room-price-sub {
+      font-size: 0.75rem;
+      color: var(--card-text-muted);
+      font-weight: 400;
+    }
+    .room-status-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      display: inline-block;
+    }
+    .room-status-badge.available {
+      background: rgba(37, 211, 102, 0.18);
+      color: #25D366;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+    }
+    .room-status-badge.unavailable {
+      background: rgba(255, 82, 82, 0.18);
+      color: #FF5252;
+      border: 1px solid rgba(255, 82, 82, 0.3);
+    }
+    @media (max-width: 800px) {
+      .rooms-catalog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
-<body>
-<!-- Cinematic Loader -->
-<div id="cinematic-loader" aria-hidden="true">
-  <div class="cinematic-text-wrapper">
-    <div class="cinematic-text-main" aria-label="The Groot">
-      <span class="c-char" style="--i:0">T</span><span class="c-char" style="--i:1">h</span><span class="c-char" style="--i:2">e</span><span class="c-space">&nbsp;</span><span class="c-char" style="--i:3">G</span><span class="c-char" style="--i:4">r</span><span class="c-char" style="--i:5">o</span><span class="c-char" style="--i:6">o</span><span class="c-char" style="--i:7">t</span>
-    </div>
-    <div class="cinematic-text-sub" aria-label="Ooty, Tamil Nadu">
-      <span class="c-sub-word" style="--w:0">Ooty,</span>
-      <span class="c-sub-word" style="--w:1">Tamil</span>
-      <span class="c-sub-word" style="--w:2">Nadu</span>
-    </div>
-  </div>
-  <div class="cinematic-light-sweep"></div>
-</div>
+<body class="rooms-page">
 
-<header id="site-header" class="scrolled" role="banner">
-  <div class="container header-inner">
-    <a href="index.html" class="site-logo"><span class="logo-name">The Groot</span><span class="logo-location">Ooty, Tamil Nadu</span></a>
-    <nav class="desktop-nav">
-      <a href="index.html#rooms" class="nav-link active">Stay</a>
-      <a href="experiences.html" class="nav-link">Experiences</a>
-      <a href="gallery.html" class="nav-link">Gallery</a>
-      <a href="ooty.html" class="nav-link">Ooty</a>
-      <a href="reviews.html" class="nav-link">Reviews</a>
-      <a href="contact.html" class="nav-link">Contact</a>
+  <!-- Header -->
+  <header id="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <span class="logo-name">The Groot</span>
+        <span class="logo-location">Ooty, Tamil Nadu</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="rooms.html" class="nav-link active">Stay</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="ooty.html" class="nav-link">Ooty</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="mobile-menu" role="dialog">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="site-logo">
+        <span class="logo-name">The Groot</span>
+        <span class="logo-location">Ooty, Tamil Nadu</span>
+      </a>
+      <button id="mobile-menu-close" class="hamburger open" aria-label="Close menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+    <nav class="mobile-menu-nav">
+      <a href="index.html" class="mobile-nav-link">Home <span class="arrow">&rarr;</span></a>
+      <a href="rooms.html" class="mobile-nav-link active">Stay & Rooms <span class="arrow">&rarr;</span></a>
+      <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow">&rarr;</span></a>
+      <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow">&rarr;</span></a>
+      <a href="ooty.html" class="mobile-nav-link">Ooty Guide <span class="arrow">&rarr;</span></a>
+      <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow">&rarr;</span></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <span class="arrow">&rarr;</span></a>
     </nav>
-    <div class="header-actions">
-      <!-- Header CTA -->
-      <div class="header-cta">
-        <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
-      </div>
-
-
-      <!-- Hamburger -->
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+    <div class="mobile-menu-actions">
+      <a href="booking.html" class="btn btn-primary btn-block">Check Availability</a>
+      <button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">WhatsApp Direct</button>
     </div>
   </div>
-</header>
 
-<div id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header"><a href="index.html" class="site-logo"><span class="logo-name">The Groot</span><span class="logo-location">Ooty, Tamil Nadu</span></a><button id="mobile-menu-close" class="hamburger open" aria-label="Close menu"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div>
-  <nav class="mobile-menu-nav"><a href="index.html" class="mobile-nav-link">Home <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="rooms.html" class="mobile-nav-link">Stay <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow" aria-hidden="true">&rarr;</span></a><a href="contact.html" class="mobile-nav-link">Contact <span class="arrow" aria-hidden="true">&rarr;</span></a></nav>
-  <div class="mobile-menu-actions"><a href="booking.html" class="btn btn-primary btn-block">Check Availability</a><button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">WhatsApp The Groot</button></div>
-</div>
-
-<main class="rooms-page" role="main">
-  <div class="container rooms-page-hero">
-    <span class="section-overline" data-reveal="fade-up">Where You'll Stay</span>
-    <h1 style="font-family:var(--font-display);font-size:clamp(2.25rem,5vw,4rem);font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;margin-top:0.5rem;" data-reveal="fade-up" data-delay="100">Find Your Stay</h1>
-    <p style="font-size:1.1rem;color:var(--text-secondary);max-width:560px;font-weight:300;line-height:1.65;" data-reveal="fade-up" data-delay="200">Every room at The Groot has its own story. Choose the one that speaks to you.</p>
-  </div>
-
-  <div class="container rooms-listing">
-
-    <!-- A-Frame -->
-    <div class="room-listing-card room-listing-card--portrait" data-reveal="fade-up">
-      <div class="room-listing-img">
-        <img src="assets/images/1000032836_professional_4k.webp" alt="A-Frame Room exterior" loading="lazy" />
+  <!-- Hero Section -->
+  <section class="section-pad-sm" style="padding-top: calc(var(--nav-height) + 3rem); background: var(--color-mantis);">
+    <div class="container">
+      <div class="section-header" data-reveal="fade-up">
+        <span class="section-overline">Accommodations</span>
+        <h1 class="display-lg" style="color:var(--color-obsidian); margin-bottom: 0.75rem;">
+          Our Rooms & Cabins
+        </h1>
+        <p class="section-subtitle">
+          From our signature timber A-frame to the panoramic Glass house and spacious Luxurious suit, explore boutique stays nestled in the Nilgiri hills.
+        </p>
       </div>
-      <div class="room-listing-info">
-        <div class="room-listing-tag">Signature Room</div>
-        <h2 class="room-listing-name">A-Frame Room</h2>
-        <p class="room-listing-desc">Our signature architectural retreat — a distinctive triangular cabin with high wooden ceilings, exposed beams, and forest views that make every morning feel cinematic. This is The Groot's most iconic stay.</p>
-        <div class="room-listing-features">
-          <span class="room-listing-feature">Forest Views</span>
-          <span class="room-listing-feature">High Ceilings</span>
-          <span class="room-listing-feature">Hot Water</span>
-          <span class="room-listing-feature">Wi-Fi</span>
-          <span class="room-listing-feature">Music System</span>
-        </div>
-        <div class="room-listing-actions">
-          <a href="room-detail.html?room=aframe" class="btn btn-outline btn-sm">Explore Room</a>
-          <a href="booking.html?room=aframe" class="btn btn-primary btn-sm">Check Availability</a>
+
+      <!-- Dynamic Rooms Grid -->
+      <div class="rooms-catalog-grid" id="rooms-catalog-grid">
+        <!-- Rendered dynamically by JS from GrootStore -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box" data-reveal="scale">
+        <h2 class="cta-title">Ready for Your Mountain Getaway?</h2>
+        <p class="cta-subtitle">Check real-time availability or contact us directly on WhatsApp to reserve your room.</p>
+        <div class="cta-actions">
+          <a href="booking.html" class="btn btn-primary btn-xl">Check Availability</a>
+          <button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-xl">WhatsApp Direct</button>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Glass House -->
-    <div class="room-listing-card room-listing-card--portrait" data-reveal="fade-up" data-delay="100">
-      <div class="room-listing-img">
-        <img src="assets/images/1000032837_professional_4k.webp" alt="Glass House" loading="lazy" />
-      </div>
-      <div class="room-listing-info">
-        <div class="room-listing-tag">Unique Experience</div>
-        <h2 class="room-listing-name">Glass House</h2>
-        <p class="room-listing-desc">Unlike anything else in Ooty — glass panels replace traditional walls, immersing you completely in the Nilgiri forest. Fall asleep watching the trees move, wake up to the forest light at dawn.</p>
-        <div class="room-listing-features">
-          <span class="room-listing-feature">Glass Walls</span>
-          <span class="room-listing-feature">Forest Panorama</span>
-          <span class="room-listing-feature">Hot Water</span>
-          <span class="room-listing-feature">Wi-Fi</span>
+  <!-- Footer -->
+  <footer id="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo">
+            <span class="logo-name">The Groot</span>
+            <span class="logo-location">Ooty, Tamil Nadu</span>
+          </a>
+          <p class="footer-brand-desc">A cozy boutique stay in the Nilgiri hills. Featuring A-frame cabins, Glass house, campfire evenings, and warm hospitality.</p>
         </div>
-        <div class="room-listing-actions">
-          <a href="room-detail.html?room=glasshouse" class="btn btn-outline btn-sm">Explore Room</a>
-          <a href="booking.html?room=glasshouse" class="btn btn-primary btn-sm">Check Availability</a>
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <nav class="footer-nav">
+            <a href="index.html#rooms" class="footer-link">Rooms & Cabins</a>
+            <a href="experiences.html" class="footer-link">Experiences</a>
+            <a href="gallery.html" class="footer-link">Photo Gallery</a>
+            <a href="ooty.html" class="footer-link">Ooty Attractions</a>
+          </nav>
         </div>
-      </div>
-    </div>
-
-    <!-- Suite -->
-    <div class="room-listing-card room-listing-card--landscape" data-reveal="fade-up" data-delay="200">
-      <div class="room-listing-img">
-        <img src="assets/images/1000032838_professional_4k.webp" alt="Luxurious Suite" loading="lazy" />
-      </div>
-      <div class="room-listing-info">
-        <div class="room-listing-tag">Premium Stay</div>
-        <h2 class="room-listing-name">Luxurious Suite</h2>
-        <p class="room-listing-desc">Our most premium room offers generous space, refined furnishings and an atmosphere that balances Ooty's mountain character with elevated comfort. For those who want that little extra on their escape.</p>
-        <div class="room-listing-features">
-          <span class="room-listing-feature">Spacious</span>
-          <span class="room-listing-feature">Hill Views</span>
-          <span class="room-listing-feature">Hot Water</span>
-          <span class="room-listing-feature">Wi-Fi</span>
-          <span class="room-listing-feature">Music System</span>
+        <div>
+          <h4 class="footer-title">Booking</h4>
+          <nav class="footer-nav">
+            <a href="booking.html" class="footer-link">Check Availability</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="admin.html" class="footer-link" style="opacity:0.75;">Admin Portal</a>
+          </nav>
         </div>
-        <div class="room-listing-actions">
-          <a href="room-detail.html?room=suite" class="btn btn-outline btn-sm">Explore Room</a>
-          <a href="booking.html?room=suite" class="btn btn-primary btn-sm">Check Availability</a>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <div class="footer-nav">
+            <a href="tel:6382316323" class="footer-contact-item" data-phone="1">📞 6382316323</a>
+            <a href="tel:7395965006" class="footer-contact-item" data-phone="2">📞 7395965006</a>
+            <div class="footer-contact-item">📍 Pudumund, Ooty, Tamil Nadu 643001</div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Standard -->
-    <div class="room-listing-card room-listing-card--tall-portrait" data-reveal="fade-up" data-delay="300">
-      <div class="room-listing-img">
-        <img src="assets/images/1000032839_professional_4k.webp" alt="Standard Room" loading="lazy" />
-      </div>
-      <div class="room-listing-info">
-        <div class="room-listing-tag">Cozy & Comfortable</div>
-        <h2 class="room-listing-name">Standard Room</h2>
-        <p class="room-listing-desc">Warm, well-appointed and welcoming — the ideal base for couples or solo travellers wanting to experience the best of Ooty. Everything you need, nothing you don't.</p>
-        <div class="room-listing-features">
-          <span class="room-listing-feature">Double Bed</span>
-          <span class="room-listing-feature">Hot Water</span>
-          <span class="room-listing-feature">Wi-Fi</span>
-          <span class="room-listing-feature">TV</span>
-        </div>
-        <div class="room-listing-actions">
-          <a href="room-detail.html?room=standard" class="btn btn-outline btn-sm">Explore Room</a>
-          <a href="booking.html?room=standard" class="btn btn-primary btn-sm">Check Availability</a>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Groot Ooty. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="contact.html" class="footer-bottom-link">Contact</a>
+          <a href="booking.html" class="footer-bottom-link">Book Direct</a>
+          <a href="admin.html" class="footer-bottom-link" style="opacity:0.7;">Admin</a>
         </div>
       </div>
     </div>
+  </footer>
 
-  </div>
-</main>
+  <script src="js/store.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/whatsapp.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('rooms-catalog-grid');
+      if (!container || !window.GrootStore) return;
 
-<footer class="site-footer">
-  <div class="container footer-main">
-    <div class="footer-brand"><div class="footer-logo-name">The Groot</div><span class="footer-logo-location">Ooty, Tamil Nadu</span><p class="footer-brand-desc">A cozy stay in the Nilgiri hills.</p></div>
-    <div class="footer-col"><h3 class="footer-col-title">Navigate</h3><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="rooms.html" class="footer-link">Rooms</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li><li><a href="booking.html" class="footer-link">Book Now</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
-    <div class="footer-col"><h3 class="footer-col-title">Contact</h3><a href="tel:6382316323" class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>6382316323</a><a href="tel:7395965006" class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>7395965006</a></div>
-  </div>
-  <div class="container"><div class="footer-bottom"><p class="footer-copyright">© 2025 The Groot Ooty.</p></div></div>
-</footer>
+      function renderRooms() {
+        const rooms = window.GrootStore.getRooms();
+        container.innerHTML = '';
 
-<button class="fab-whatsapp" onclick="quickWhatsApp()" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+        rooms.forEach((r, idx) => {
+          const card = document.createElement('div');
+          card.className = 'room-card';
+          card.setAttribute('data-reveal', 'card');
+          card.setAttribute('data-delay', String(idx * 80));
 
-<div class="mobile-action-bar"><div class="mobile-action-bar-inner"><button onclick="quickWhatsApp()" class="mobile-action-btn whatsapp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</button><a href="tel:6382316323" class="mobile-action-btn call"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call</a><a href="booking.html" class="mobile-action-btn book"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a></div></div>
+          const featuresHtml = (r.features || []).map(f => `<span class="feature-tag">✓ ${f}</span>`).join('');
+          const isAvail = r.status !== 'unavailable';
 
-<script src="js/config.js?v=3.0"></script>
-<script src="js/whatsapp.js?v=3.0"></script>
-<script src="js/main.js?v=3.0"></script>
+          card.innerHTML = `
+            <div class="room-card-img-wrap">
+              <img src="${r.image}" alt="${r.name} at The Groot Ooty" loading="lazy" decoding="async" />
+              <div class="room-card-gradient"></div>
+              <div class="room-card-badge">${r.tagline || 'Boutique Stay'}</div>
+            </div>
+            <div class="room-card-info">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; flex-wrap:wrap; gap:8px;">
+                <h2 class="room-card-name" style="margin-bottom:0;">${r.name}</h2>
+                <div>
+                  <span class="room-price-tag">₹${r.price.toLocaleString()}</span>
+                  <span class="room-price-sub"> / night</span>
+                </div>
+              </div>
+              <div style="margin-bottom:0.75rem;">
+                <span class="room-status-badge ${isAvail ? 'available' : 'unavailable'}">
+                  ${isAvail ? '● Available' : '● Sold Out'}
+                </span>
+              </div>
+              <p class="room-card-desc">${r.shortDescription || r.description}</p>
+              <div class="room-card-features">
+                ${featuresHtml}
+              </div>
+              <div class="room-card-footer">
+                <a href="room-detail.html?room=${r.id}" class="room-card-cta">
+                  <span>View Details</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+                <a href="booking.html?room=${r.id}" class="btn ${isAvail ? 'btn-primary' : 'btn-outline-light'} btn-sm">
+                  ${isAvail ? 'Book Room' : 'Enquire'}
+                </a>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        if (typeof initScrollReveal === 'function') initScrollReveal();
+      }
+
+      renderRooms();
+      window.GrootStore.subscribe(renderRooms);
+    });
+  </script>
 </body>
 </html>

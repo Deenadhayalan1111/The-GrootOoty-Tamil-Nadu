@@ -1,575 +1,1105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Check Availability | The Groot Ooty</title>
+  <title>Check Availability & Book | The Groot Ooty</title>
   <meta name="description" content="Check availability and book your stay at The Groot Ooty. A-Frame rooms, Glass House, Luxurious Suite and Standard Rooms. Book direct via WhatsApp." />
-  <link rel="icon" href="assets/images/IMG-20260821-WA0039.jpg" type="image/png" />
+  <link rel="icon" href="assets/images/IMG-20260821-WA0039_4k.webp" type="image/jpeg" />
 
-  <!-- Page Transition Initialization -->
-  <script>
-    (function(){
-      try {
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          document.documentElement.classList.add('page-transitioning');
-        }
-      } catch(e) {}
-    })();
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/variables.css?v=3.0" />
-  <link rel="stylesheet" href="css/base.css?v=3.0" />
-  <link rel="stylesheet" href="css/animations.css?v=3.0" />
-  <link rel="stylesheet" href="css/components.css?v=3.0" />
-  <link rel="stylesheet" href="css/header.css?v=3.0" />
-  <link rel="stylesheet" href="css/sections.css?v=3.0" />
-  <link rel="stylesheet" href="css/footer.css?v=3.0" />
-  <link rel="stylesheet" href="css/booking.css?v=3.0" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/booking.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+
+  <style>
+    /* Wizard specific styling */
+    .booking-progress {
+      margin-bottom: 2.5rem;
+    }
+    .booking-progress-steps {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      z-index: 2;
+    }
+    .progress-step-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-obsidian);
+      border: 2px solid rgba(17, 27, 18, 0.2);
+      color: rgba(250, 247, 242, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .progress-step.active .progress-step-circle {
+      background: var(--color-obsidian);
+      border-color: var(--color-obsidian);
+      color: #89D97B;
+      box-shadow: var(--shadow-sm);
+    }
+    .progress-step.completed .progress-step-circle {
+      background: #89D97B;
+      border-color: #89D97B;
+      color: var(--color-obsidian);
+    }
+    .progress-step-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-obsidian);
+    }
+    .progress-line {
+      flex: 1;
+      height: 2px;
+      background: rgba(17, 27, 18, 0.2);
+      margin: 0 -8px 20px;
+      z-index: 1;
+    }
+    .booking-step {
+      display: none;
+    }
+    .booking-step.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    /* Calendar — Compact & Proportional */
+    .calendar-wrapper {
+      margin: 1.25rem 0;
+      max-width: 420px;
+    }
+    .calendar {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.15rem;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+    }
+    .calendar-month {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-cream);
+    }
+    .calendar-nav-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--color-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .calendar-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+    .calendar-day-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(250, 247, 242, 0.5);
+      padding: 4px 0;
+    }
+    .calendar-day {
+      aspect-ratio: 1/1;
+      max-height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      color: var(--color-cream);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: rgba(255, 255, 255, 0.04);
+      border: none;
+    }
+    .calendar-day:hover:not(.disabled):not(.empty) {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .calendar-day.disabled {
+      color: rgba(250, 247, 242, 0.2);
+      cursor: not-allowed;
+      background: transparent;
+    }
+    .calendar-day.empty {
+      background: transparent;
+      cursor: default;
+    }
+    .calendar-day.today {
+      border: 1px solid #89D97B;
+    }
+    .calendar-day.selected {
+      background: #89D97B !important;
+      color: var(--color-obsidian) !important;
+      font-weight: 700;
+    }
+    .calendar-day.in-range {
+      background: rgba(137, 217, 123, 0.2);
+      color: var(--color-cream);
+    }
+    .date-summary {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0.85rem 1.15rem;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      max-width: 420px;
+    }
+    /* Counters */
+    .guests-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .guests-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+    }
+    .guests-row-info h3 {
+      font-size: 1.05rem;
+      color: var(--color-cream);
+      margin-bottom: 2px;
+    }
+    .guests-row-info p {
+      font-size: 0.8rem;
+      color: var(--card-text-muted);
+    }
+    .counter-control {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .counter-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--color-cream);
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .counter-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .counter-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-cream);
+      min-width: 24px;
+      text-align: center;
+    }
+    /* Options */
+    .room-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .room-option {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .room-option:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .room-option.selected {
+      border-color: #89D97B;
+      background: rgba(137, 217, 123, 0.12);
+    }
+    .room-option-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .room-option-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .room-option-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-cream);
+      margin-bottom: 0;
+    }
+    .room-option-price {
+      font-weight: 700;
+      color: #89D97B;
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+    .room-option-per-night {
+      font-size: 0.75rem;
+      color: var(--card-text-muted);
+      font-weight: 400;
+    }
+    .room-option-desc {
+      font-size: 0.8rem;
+      color: var(--card-text-muted);
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+    }
+    .room-option-check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #89D97B;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .room-option-check-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid #89D97B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Preferences */
+    .preference-group {
+      margin-bottom: 1.75rem;
+    }
+    .preference-group-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #89D97B;
+      margin-bottom: 0.75rem;
+    }
+    .preference-option {
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .preference-option:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .preference-option.selected {
+      border-color: #89D97B;
+      background: rgba(137, 217, 123, 0.12);
+    }
+    .preference-option h4 {
+      font-size: 0.95rem;
+      color: var(--color-cream);
+      margin-bottom: 2px;
+    }
+    .preference-option p {
+      font-size: 0.8rem;
+      color: var(--card-text-muted);
+    }
+    /* Review Enquiry Card */
+    .review-enquiry-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+    .review-enquiry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    .review-enquiry-header-brand {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-cream);
+    }
+    .review-enquiry-header-sub {
+      font-size: 0.75rem;
+      color: #89D97B;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .review-enquiry-id {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-cream);
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+    }
+    .review-enquiry-body {
+      padding: 1.5rem;
+    }
+    .review-section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #89D97B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.75rem;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .review-field-label {
+      font-size: 0.72rem;
+      color: rgba(250, 247, 242, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+    .review-field-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-cream);
+    }
+    /* Summary Sidebar */
+    .booking-summary-card {
+      background: var(--color-obsidian);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      color: var(--color-cream);
+      box-shadow: var(--shadow-card);
+    }
+    .booking-summary-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .booking-summary-property {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    .booking-summary-property-img {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+    }
+    .booking-summary-property-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .booking-summary-property-loc {
+      font-size: 0.75rem;
+      color: #89D97B;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+    .booking-summary-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .booking-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+    .booking-summary-row-label {
+      color: rgba(250, 247, 242, 0.65);
+    }
+    .booking-summary-row-value {
+      font-weight: 600;
+      color: var(--color-cream);
+    }
+    .booking-summary-note {
+      font-size: 0.78rem;
+      color: rgba(250, 247, 242, 0.7);
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      line-height: 1.55;
+    }
+    .booking-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    /* Date Summary Bar */
+    .date-summary {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      margin-top: 1rem;
+    }
+    .date-summary-item {
+      flex: 1;
+    }
+    .date-summary-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #89D97B;
+      margin-bottom: 2px;
+    }
+    .date-summary-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-cream);
+    }
+    .date-summary-night {
+      font-size: 0.8rem;
+      color: #89D97B;
+      margin-top: 2px;
+    }
+    .booking-success {
+      display: none;
+      background: var(--color-obsidian);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-2xl);
+      padding: clamp(2rem, 5vw, 3.5rem);
+      text-align: center;
+      color: var(--color-cream);
+      box-shadow: var(--shadow-lg);
+    }
+    .booking-success.show {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    .booking-success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.2);
+      color: var(--color-whatsapp);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .booking-success-id {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #89D97B;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.25rem;
+    }
+    .booking-success-note {
+      font-size: 1rem;
+      color: var(--card-text-muted);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+  </style>
 </head>
-<body>
-<!-- Cinematic Loader -->
-<div id="cinematic-loader" aria-hidden="true">
-  <div class="cinematic-text-wrapper">
-    <div class="cinematic-text-main" aria-label="The Groot">
-      <span class="c-char" style="--i:0">T</span><span class="c-char" style="--i:1">h</span><span class="c-char" style="--i:2">e</span><span class="c-space">&nbsp;</span><span class="c-char" style="--i:3">G</span><span class="c-char" style="--i:4">r</span><span class="c-char" style="--i:5">o</span><span class="c-char" style="--i:6">o</span><span class="c-char" style="--i:7">t</span>
-    </div>
-    <div class="cinematic-text-sub" aria-label="Ooty, Tamil Nadu">
-      <span class="c-sub-word" style="--w:0">Ooty,</span>
-      <span class="c-sub-word" style="--w:1">Tamil</span>
-      <span class="c-sub-word" style="--w:2">Nadu</span>
-    </div>
-  </div>
-  <div class="cinematic-light-sweep"></div>
-</div>
+<body class="booking-page">
 
-<!-- HEADER (same as index) -->
-<header id="site-header" class="scrolled" role="banner">
-  <div class="container header-inner">
-    <a href="index.html" class="site-logo"><span class="logo-name">The Groot</span><span class="logo-location">Ooty, Tamil Nadu</span></a>
-    <nav class="desktop-nav">
-      <a href="index.html#rooms" class="nav-link">Stay</a>
-      <a href="experiences.html" class="nav-link">Experiences</a>
-      <a href="gallery.html" class="nav-link">Gallery</a>
-      <a href="ooty.html" class="nav-link">Ooty</a>
-      <a href="reviews.html" class="nav-link">Reviews</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <!-- Header CTA -->
-      <div class="header-cta">
-        <a href="booking.html" class="btn btn-primary btn-sm" id="header-book-btn">Book Now</a>
-      </div>
-
-
-      <!-- Hamburger -->
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
-    </div>
-  </div>
-</header>
-
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header">
-    <a href="index.html" class="site-logo"><span class="logo-name">The Groot</span><span class="logo-location">Ooty, Tamil Nadu</span></a>
-    <button id="mobile-menu-close" class="hamburger open" aria-label="Close menu"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
-  </div>
-  <nav class="mobile-menu-nav">
-    <a href="index.html" class="mobile-nav-link">Home <span class="arrow" aria-hidden="true">&rarr;</span></a>
-    <a href="index.html#rooms" class="mobile-nav-link">Stay <span class="arrow" aria-hidden="true">&rarr;</span></a>
-    <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow" aria-hidden="true">&rarr;</span></a>
-    <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow" aria-hidden="true">&rarr;</span></a>
-    <a href="ooty.html" class="mobile-nav-link">Ooty <span class="arrow" aria-hidden="true">&rarr;</span></a>
-    <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow" aria-hidden="true">&rarr;</span></a>
-    <a href="contact.html" class="mobile-nav-link">Contact <span class="arrow" aria-hidden="true">&rarr;</span></a>
-  </nav>
-  <div class="mobile-menu-actions">
-    <a href="booking.html" class="btn btn-primary btn-block">Check Availability</a>
-    <button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">WhatsApp The Groot</button>
-  </div>
-</div>
-
-<!-- BOOKING PAGE -->
-<main class="booking-page" id="booking-wizard">
-
-  <!-- Breadcrumb -->
-  <div class="booking-hero">
-    <div class="booking-breadcrumb">
-      <a href="index.html">Home</a>
-      <span aria-hidden="true">&rsaquo;</span>
-      <span>Check Availability</span>
-    </div>
-
-    <div class="section-header">
-      <span class="section-overline">Book Direct</span>
-      <h1 class="section-title">Check Availability</h1>
-      <p class="section-subtitle">Fill in your details below and we'll send your enquiry directly to The Groot via WhatsApp.</p>
-    </div>
-
-    <!-- Step Progress -->
-    <div class="booking-progress" role="progressbar" aria-label="Booking progress">
-      <div class="booking-progress-steps">
-        <div class="progress-step active" data-step="1">
-          <div class="progress-step-circle">1</div>
-          <div class="progress-step-label">Dates</div>
-        </div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="2">
-          <div class="progress-step-circle">2</div>
-          <div class="progress-step-label">Guests</div>
-        </div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="3">
-          <div class="progress-step-circle">3</div>
-          <div class="progress-step-label">Room</div>
-        </div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="4">
-          <div class="progress-step-circle">4</div>
-          <div class="progress-step-label">Details</div>
-        </div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="5">
-          <div class="progress-step-circle">5</div>
-          <div class="progress-step-label">Review</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="booking-layout">
-
-    <!-- MAIN PANEL -->
-    <div>
-      <div class="booking-panel">
-
-        <!-- ============ STEP 1: DATES ============ -->
-        <div class="booking-step active" id="step-1">
-          <h2 class="booking-step-title">Select Your Dates</h2>
-          <p class="booking-step-subtitle">Choose your check-in and check-out dates. Select check-in first, then check-out.</p>
-
-          <div class="calendar-wrapper">
-            <div class="calendar">
-              <div class="calendar-header">
-                <button class="calendar-nav-btn" id="cal-prev" aria-label="Previous month">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <span class="calendar-month" id="cal-month"></span>
-                <button class="calendar-nav-btn" id="cal-next" aria-label="Next month">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-              </div>
-              <div class="calendar-grid" id="cal-grid"></div>
-            </div>
-          </div>
-
-          <div class="date-summary" id="date-summary">
-            <div class="date-summary-item">
-              <div class="date-summary-label">Check-in</div>
-              <div class="date-summary-value" id="summary-checkin">—</div>
-            </div>
-            <div class="date-summary-item">
-              <div class="date-summary-label">Check-out</div>
-              <div class="date-summary-value" id="summary-checkout">—</div>
-              <div class="date-summary-night" id="summary-nights"></div>
-            </div>
-          </div>
-
-          <div id="cal-error" class="form-error" style="margin-top:0.5rem;"></div>
-
-          <div class="booking-nav">
-            <div></div>
-            <button class="btn btn-primary" data-booking-next id="step1-next">Continue &rarr; Guests</button>
-          </div>
-        </div>
-
-        <!-- ============ STEP 2: GUESTS ============ -->
-        <div class="booking-step" id="step-2">
-          <h2 class="booking-step-title">How Many Guests?</h2>
-          <p class="booking-step-subtitle">Let us know who's coming so The Groot can prepare accordingly.</p>
-
-          <div class="guests-section">
-            <div class="guests-row">
-              <div class="guests-row-info">
-                <h3>Adults</h3>
-                <p>Ages 12 and above</p>
-              </div>
-              <div class="counter-control">
-                <button class="counter-btn" id="adults-minus" aria-label="Remove adult">-</button>
-                <span class="counter-value" id="adults-count">1</span>
-                <button class="counter-btn" id="adults-plus" aria-label="Add adult">+</button>
-              </div>
-            </div>
-            <div class="guests-row">
-              <div class="guests-row-info">
-                <h3>Children</h3>
-                <p>Ages under 12</p>
-              </div>
-              <div class="counter-control">
-                <button class="counter-btn" id="children-minus" aria-label="Remove child">-</button>
-                <span class="counter-value" id="children-count">0</span>
-                <button class="counter-btn" id="children-plus" aria-label="Add child">+</button>
-              </div>
-            </div>
-          </div>
-
-          <div id="guests-error" class="form-error" style="margin-top:0.5rem;"></div>
-
-          <div class="booking-nav">
-            <button class="btn btn-outline" data-booking-prev>&larr; Back</button>
-            <button class="btn btn-primary" data-booking-next id="step2-next">Continue &rarr; Room</button>
-          </div>
-        </div>
-
-        <!-- ============ STEP 3: ROOM ============ -->
-        <div class="booking-step" id="step-3">
-          <h2 class="booking-step-title">Choose Your Room</h2>
-          <p class="booking-step-subtitle">Select the room that suits you best — or tell us to recommend one.</p>
-
-          <div class="room-options">
-            <div class="room-option" data-room="aframe" id="opt-aframe" role="radio" tabindex="0" aria-label="A-Frame Room">
-              <img class="room-option-img" src="assets/images/1000032836_professional.webp" alt="A-Frame Room" loading="lazy" />
-              <div class="room-option-body">
-                <div class="room-option-name">A-Frame Room</div>
-                <div class="room-option-desc">Signature triangular cabin with forest views and wooden character.</div>
-                <div class="room-option-check">
-                  <div class="room-option-check-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  Select Room
-                </div>
-              </div>
-            </div>
-
-            <div class="room-option" data-room="glasshouse" id="opt-glasshouse" role="radio" tabindex="0" aria-label="Glass House">
-              <img class="room-option-img" src="assets/images/1000032837_professional.webp" alt="Glass House" loading="lazy" />
-              <div class="room-option-body">
-                <div class="room-option-name">Glass House</div>
-                <div class="room-option-desc">Sleep surrounded by the living Nilgiri forest through glass walls.</div>
-                <div class="room-option-check">
-                  <div class="room-option-check-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  Select Room
-                </div>
-              </div>
-            </div>
-
-            <div class="room-option" data-room="suite" id="opt-suite" role="radio" tabindex="0" aria-label="Luxurious Suite">
-              <img class="room-option-img" src="assets/images/1000032838_professional.webp" alt="Luxurious Suite" loading="lazy" />
-              <div class="room-option-body">
-                <div class="room-option-name">Luxurious Suite</div>
-                <div class="room-option-desc">Our most spacious and premium room with elevated furnishings.</div>
-                <div class="room-option-check">
-                  <div class="room-option-check-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  Select Room
-                </div>
-              </div>
-            </div>
-
-            <div class="room-option" data-room="standard" id="opt-standard" role="radio" tabindex="0" aria-label="Standard Room">
-              <img class="room-option-img" src="assets/images/1000032839_professional.webp" alt="Standard Room" loading="lazy" />
-              <div class="room-option-body">
-                <div class="room-option-name">Standard Room</div>
-                <div class="room-option-desc">Warm, comfortable and welcoming. Perfect for a cozy Ooty stay.</div>
-                <div class="room-option-check">
-                  <div class="room-option-check-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  Select Room
-                </div>
-              </div>
-            </div>
-
-            <div class="room-option" data-room="not-sure" id="opt-notsure" role="radio" tabindex="0" aria-label="Not Sure" style="grid-column:1/-1;display:flex;flex-direction:row;align-items:center;gap:1rem;padding:1.25rem;">
-              <div style="font-size:2rem;">🌿</div>
-              <div>
-                <div class="room-option-name" style="font-size:1rem;">Not Sure — Recommend a Room</div>
-                <div class="room-option-desc" style="margin-bottom:0.5rem;">Tell The Groot your group size and preferences, and they'll recommend the best option for you.</div>
-                <div class="room-option-check">
-                  <div class="room-option-check-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  Select This
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="booking-nav">
-            <button class="btn btn-outline" data-booking-prev>&larr; Back</button>
-            <button class="btn btn-primary" data-booking-next id="step3-next">Continue &rarr; Details</button>
-          </div>
-        </div>
-
-        <!-- ============ STEP 4: GUEST DETAILS ============ -->
-        <div class="booking-step" id="step-4">
-          <h2 class="booking-step-title">Your Details</h2>
-          <p class="booking-step-subtitle">We need your contact info to send the booking enquiry to The Groot.</p>
-
-          <div class="form-group">
-            <label class="form-label" for="guest-name">Full Name <span style="color:#e57373">*</span></label>
-            <input type="text" class="form-input" id="guest-name" name="name" placeholder="Your full name" autocomplete="name" required />
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="guest-mobile">Mobile Number <span style="color:#e57373">*</span></label>
-            <input type="tel" class="form-input" id="guest-mobile" name="mobile" placeholder="+91 XXXXX XXXXX" autocomplete="tel" required />
-          </div>
-
-          <div class="form-group">
-            <label class="checkbox-label" style="margin-bottom:0.75rem;">
-              <input type="checkbox" id="wa-same-as-mobile" />
-              WhatsApp number is same as mobile
-            </label>
-            <input type="tel" class="form-input" id="guest-whatsapp" name="whatsapp" placeholder="WhatsApp number (if different)" autocomplete="tel" />
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="guest-email">Email Address <span style="color:var(--text-muted);font-weight:400;letter-spacing:0">(optional)</span></label>
-            <input type="email" class="form-input" id="guest-email" name="email" placeholder="your@email.com" autocomplete="email" />
-          </div>
-
-          <div class="booking-nav">
-            <button class="btn btn-outline" data-booking-prev>&larr; Back</button>
-            <button class="btn btn-primary" data-booking-next id="step4-next">Continue &rarr; Preferences</button>
-          </div>
-        </div>
-
-        <!-- ============ STEP 5: PREFERENCES + REVIEW ============ -->
-        <div class="booking-step" id="step-5">
-          <h2 class="booking-step-title">Preferences & Review</h2>
-          <p class="booking-step-subtitle">Any special requests? Then review your enquiry before sending.</p>
-
-          <!-- Campfire -->
-          <div class="preference-group">
-            <div class="preference-group-label">🔥 Campfire Experience</div>
-            <div class="preference-option" data-pref-group="campfire" data-pref-val="yes" id="campfire-yes">
-              <div>
-                <h4>Yes, I'm Interested</h4>
-                <p>I'd like to know about campfire availability during my stay.</p>
-              </div>
-            </div>
-            <div class="preference-option" data-pref-group="campfire" data-pref-val="more" id="campfire-more">
-              <div>
-                <h4>Tell Me More</h4>
-                <p>I'd like more information about the campfire experience.</p>
-              </div>
-            </div>
-            <div class="preference-option" data-pref-group="campfire" data-pref-val="no" id="campfire-no">
-              <div>
-                <h4>Not Interested</h4>
-                <p>I won't be needing the campfire experience.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Meals -->
-          <div class="preference-group">
-            <div class="preference-group-label">🍽️ Meals</div>
-            <div class="preference-option" data-pref-group="meals" data-pref-val="yes" id="meals-yes">
-              <div>
-                <h4>Yes, I'd Like Meals</h4>
-                <p>Please include home-cooked meals during my stay.</p>
-              </div>
-            </div>
-            <div class="preference-option" data-pref-group="meals" data-pref-val="more" id="meals-more">
-              <div>
-                <h4>Tell Me More</h4>
-                <p>I'd like more information about the meals available.</p>
-              </div>
-            </div>
-            <div class="preference-option" data-pref-group="meals" data-pref-val="no" id="meals-no">
-              <div>
-                <h4>No Meals Required</h4>
-                <p>I'll handle my own meals.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Special Request -->
-          <div class="form-group">
-            <label class="form-label" for="special-request">Special Request <span style="color:var(--text-muted);font-weight:400;letter-spacing:0">(optional)</span></label>
-            <textarea class="form-textarea" id="special-request" placeholder="Birthday celebration, anniversary, early check-in, pickup request, dietary preference, etc."></textarea>
-          </div>
-
-          <!-- REVIEW CARD -->
-          <div style="margin-top:2rem;">
-            <div class="review-section-label">📋 Review Your Enquiry</div>
-            <div class="review-enquiry-card">
-              <div class="review-enquiry-header">
-                <div>
-                  <div class="review-enquiry-header-brand">The Groot Ooty</div>
-                  <div class="review-enquiry-header-sub">Booking Enquiry</div>
-                </div>
-                <div class="review-enquiry-id" id="review-enquiry-id">Generating ID—</div>
-              </div>
-              <div class="review-enquiry-body">
-                <div class="review-section-label">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  Stay Details
-                </div>
-                <div class="review-grid">
-                  <div class="review-field"><div class="review-field-label">Check-in</div><div class="review-field-value" id="review-checkin">—</div></div>
-                  <div class="review-field"><div class="review-field-label">Check-out</div><div class="review-field-value" id="review-checkout">—</div></div>
-                  <div class="review-field"><div class="review-field-label">Duration</div><div class="review-field-value" id="review-nights">—</div></div>
-                  <div class="review-field"><div class="review-field-label">Guests</div><div class="review-field-value" id="review-guests">—</div></div>
-                  <div class="review-field" style="grid-column:span 2"><div class="review-field-label">Preferred Room</div><div class="review-field-value" id="review-room">—</div></div>
-                </div>
-
-                <div class="review-section-label" style="margin-top:1.25rem;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  Guest Details
-                </div>
-                <div class="review-grid">
-                  <div class="review-field"><div class="review-field-label">Name</div><div class="review-field-value" id="review-name">—</div></div>
-                  <div class="review-field"><div class="review-field-label">Mobile</div><div class="review-field-value" id="review-mobile">—</div></div>
-                  <div class="review-field" style="grid-column:span 2"><div class="review-field-label">Email</div><div class="review-field-value" id="review-email">—</div></div>
-                </div>
-
-                <div class="review-section-label" style="margin-top:1.25rem;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                  Preferences
-                </div>
-                <div class="review-grid">
-                  <div class="review-field"><div class="review-field-label">Campfire</div><div class="review-field-value" id="review-campfire">—</div></div>
-                  <div class="review-field"><div class="review-field-label">Meals</div><div class="review-field-value" id="review-meals">—</div></div>
-                  <div class="review-field" style="grid-column:span 2"><div class="review-field-label">Special Request</div><div class="review-field-value" id="review-request">None</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="booking-nav" style="margin-top:1.5rem;">
-            <button class="btn btn-outline" data-booking-prev>&larr; Back</button>
-            <button class="btn btn-whatsapp btn-lg" id="booking-submit">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Send Enquiry via WhatsApp
-            </button>
-          </div>
-        </div>
-
-      </div><!-- /booking-panel -->
-
-      <!-- Success state -->
-      <div class="booking-success" id="booking-success">
-        <div class="booking-success-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </div>
-        <h2 class="display-sm" style="color:var(--text-on-image);margin-bottom:0.5rem;">Your Enquiry is Ready!</h2>
-        <div class="booking-success-id" id="review-id-display"></div>
-        <p class="booking-success-note">
-          Your booking details have been prepared in WhatsApp. Send the message to The Groot to confirm availability and receive pricing. They'll get back to you as soon as possible.
-        </p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="index.html" class="btn btn-outline">&larr; Back to Home</a>
-          <button onclick="quickWhatsApp()" class="btn btn-whatsapp">Send Again via WhatsApp</button>
-        </div>
-      </div>
-
-    </div><!-- /main panel col -->
-
-    <!-- SIDEBAR -->
-    <div class="booking-sidebar">
-      <div class="booking-summary-card">
-        <div class="booking-summary-title">Your Stay Summary</div>
-
-        <div class="booking-summary-property">
-          <img src="assets/images/1000032834_professional.webp" alt="The Groot Ooty" class="booking-summary-property-img" loading="lazy" />
-          <div>
-            <div class="booking-summary-property-name">The Groot Ooty</div>
-            <div class="booking-summary-property-loc">
-              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Pudumund, Ooty
-            </div>
-          </div>
-        </div>
-
-        <div class="booking-summary-rows">
-          <div class="booking-summary-row">
-            <span class="booking-summary-row-label">Check-in</span>
-            <span class="booking-summary-row-value" id="sb-checkin">Not selected</span>
-          </div>
-          <div class="booking-summary-row">
-            <span class="booking-summary-row-label">Check-out</span>
-            <span class="booking-summary-row-value" id="sb-checkout">Not selected</span>
-          </div>
-          <div class="booking-summary-row">
-            <span class="booking-summary-row-label">Duration</span>
-            <span class="booking-summary-row-value" id="sb-nights">—</span>
-          </div>
-          <div class="booking-summary-row">
-            <span class="booking-summary-row-label">Guests</span>
-            <span class="booking-summary-row-value" id="sb-guests">1 Adult</span>
-          </div>
-          <div class="booking-summary-row">
-            <span class="booking-summary-row-label">Room</span>
-            <span class="booking-summary-row-value" id="sb-room">Not selected</span>
-          </div>
-          <div class="booking-summary-row">
-            <span class="booking-summary-row-label">Guest</span>
-            <span class="booking-summary-row-value" id="sb-name">—</span>
-          </div>
-        </div>
-
-        <div class="booking-summary-note">
-          <strong>No payment required.</strong> This form generates a WhatsApp message to The Groot. Availability confirmation and pricing will be shared by the property directly.
-        </div>
-      </div>
-
-      <!-- Quick WhatsApp -->
-      <div style="margin-top:1rem;text-align:center;">
-        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem;">Prefer to message directly?</p>
-        <button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Quick WhatsApp
+  <!-- Header -->
+  <header id="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <span class="logo-name">The Groot</span>
+        <span class="logo-location">Ooty, Tamil Nadu</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="rooms.html" class="nav-link">Stay</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="ooty.html" class="nav-link">Ooty</a>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
         </button>
       </div>
     </div>
+  </header>
 
-  </div><!-- /booking-layout -->
-</main>
-
-<!-- FOOTER (minimal) -->
-<footer style="background:#74C365;border-top:1px solid rgba(17,27,18,0.20);padding:2rem 0;margin-top:2rem;">
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-    <div>
-      <div style="font-family:var(--font-display);font-weight:700;color:#111B12;letter-spacing:0.08em;">The Groot Ooty</div>
-      <div style="font-size:0.75rem;color:rgba(17,27,18,0.85);margin-top:3px;">Pudumund, Ooty, Tamil Nadu 643001</div>
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="mobile-menu" role="dialog">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="site-logo">
+        <span class="logo-name">The Groot</span>
+        <span class="logo-location">Ooty, Tamil Nadu</span>
+      </a>
+      <button id="mobile-menu-close" class="hamburger open" aria-label="Close menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="tel:6382316323" style="font-size:0.85rem;color:#111B12;text-decoration:none;" data-phone="1">6382316323</a>
-      <a href="tel:7395965006" style="font-size:0.85rem;color:#111B12;text-decoration:none;" data-phone="2">7395965006</a>
+    <nav class="mobile-menu-nav">
+      <a href="index.html" class="mobile-nav-link">Home <span class="arrow">&rarr;</span></a>
+      <a href="rooms.html" class="mobile-nav-link">Stay & Rooms <span class="arrow">&rarr;</span></a>
+      <a href="experiences.html" class="mobile-nav-link">Experiences <span class="arrow">&rarr;</span></a>
+      <a href="gallery.html" class="mobile-nav-link">Gallery <span class="arrow">&rarr;</span></a>
+      <a href="ooty.html" class="mobile-nav-link">Ooty Guide <span class="arrow">&rarr;</span></a>
+      <a href="reviews.html" class="mobile-nav-link">Reviews <span class="arrow">&rarr;</span></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <span class="arrow">&rarr;</span></a>
+    </nav>
+    <div class="mobile-menu-actions">
+      <a href="booking.html" class="btn btn-primary btn-block">Check Availability</a>
+      <button onclick="quickWhatsApp()" class="btn btn-whatsapp btn-block">WhatsApp Direct</button>
     </div>
-    <a href="index.html" class="btn btn-ghost btn-sm">&larr; Back to Home</a>
   </div>
-</footer>
 
-<!-- Mobile Action Bar -->
-<div class="mobile-action-bar">
-  <div class="mobile-action-bar-inner">
-    <button onclick="quickWhatsApp()" class="mobile-action-btn whatsapp">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </button>
-    <a href="tel:6382316323" class="mobile-action-btn call" data-phone="1">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.2 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      Call
-    </a>
-    <a href="index.html" class="mobile-action-btn book" style="color:var(--text-secondary);">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-      Home
-    </a>
-  </div>
-</div>
+  <!-- Wizard Main Layout -->
+  <main class="section-pad-sm" id="booking-wizard" style="padding-top: calc(var(--nav-height) + 2.5rem);">
+    <div class="container">
+      <div class="section-header center" data-reveal="fade-up">
+        <span class="section-overline">Direct Booking Enquiry</span>
+        <h1 class="display-lg" style="color:var(--color-obsidian); margin-bottom: 0.75rem;">Check Availability</h1>
+        <p class="section-subtitle center">
+          Select your dates, guests, and preferred room below. We will format a direct WhatsApp message to check availability with The Groot instantly.
+        </p>
+      </div>
 
-<script src="js/config.js?v=3.0"></script>
-<script src="js/whatsapp.js?v=3.0"></script>
-<script src="js/main.js?v=3.0"></script>
-<script src="js/booking.js?v=3.0"></script>
+      <!-- Step Progress Ribbon -->
+      <div class="booking-progress" role="progressbar" aria-label="Booking steps progress" data-reveal="fade-up">
+        <div class="booking-progress-steps">
+          <div class="progress-step active" data-step="1">
+            <div class="progress-step-circle">1</div>
+            <div class="progress-step-label">Dates</div>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="2">
+            <div class="progress-step-circle">2</div>
+            <div class="progress-step-label">Guests</div>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="3">
+            <div class="progress-step-circle">3</div>
+            <div class="progress-step-label">Room</div>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="4">
+            <div class="progress-step-circle">4</div>
+            <div class="progress-step-label">Details</div>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="5">
+            <div class="progress-step-circle">5</div>
+            <div class="progress-step-label">Review</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Layout Grid -->
+      <div class="booking-layout">
+        <!-- Form Panel -->
+        <div>
+          <div class="booking-form-panel" data-reveal="fade-up">
+
+            <!-- STEP 1: DATES -->
+            <div class="booking-step active" id="step-1">
+              <div class="step-header">
+                <div class="step-num">1</div>
+                <h2 class="step-title">Select Check-in & Check-out Dates</h2>
+              </div>
+              <p style="font-size:0.85rem;color:var(--card-text-muted);">Click your check-in date first, followed by your check-out date.</p>
+
+              <div class="calendar-wrapper">
+                <div class="calendar">
+                  <div class="calendar-header">
+                    <button class="calendar-nav-btn" id="cal-prev" aria-label="Previous month">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <span class="calendar-month" id="cal-month"></span>
+                    <button class="calendar-nav-btn" id="cal-next" aria-label="Next month">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                  </div>
+                  <div class="calendar-grid" id="cal-grid"></div>
+                </div>
+              </div>
+
+              <div class="date-summary" id="date-summary">
+                <div class="date-summary-item">
+                  <div class="date-summary-label">Check-in</div>
+                  <div class="date-summary-value" id="summary-checkin">—</div>
+                </div>
+                <div class="date-summary-item">
+                  <div class="date-summary-label">Check-out</div>
+                  <div class="date-summary-value" id="summary-checkout">—</div>
+                  <div class="date-summary-night" id="summary-nights"></div>
+                </div>
+              </div>
+
+              <div id="cal-error" class="form-error" style="color:#ff8a80;font-size:0.85rem;margin-top:0.75rem;"></div>
+
+              <div class="booking-nav">
+                <div></div>
+                <button class="btn btn-primary" data-booking-next id="step1-next">Continue &rarr; Guests</button>
+              </div>
+            </div>
+
+            <!-- STEP 2: GUESTS -->
+            <div class="booking-step" id="step-2">
+              <div class="step-header">
+                <div class="step-num">2</div>
+                <h2 class="step-title">How Many Guests?</h2>
+              </div>
+              <p style="font-size:0.85rem;color:var(--card-text-muted);">Let us know who's traveling so The Groot can prepare.</p>
+
+              <div class="guests-section">
+                <div class="guests-row">
+                  <div class="guests-row-info">
+                    <h3>Adults</h3>
+                    <p>Ages 12 and above</p>
+                  </div>
+                  <div class="counter-control">
+                    <button class="counter-btn" id="adults-minus" aria-label="Decrease adult count">-</button>
+                    <span class="counter-value" id="adults-count">1</span>
+                    <button class="counter-btn" id="adults-plus" aria-label="Increase adult count">+</button>
+                  </div>
+                </div>
+                <div class="guests-row">
+                  <div class="guests-row-info">
+                    <h3>Children</h3>
+                    <p>Ages under 12</p>
+                  </div>
+                  <div class="counter-control">
+                    <button class="counter-btn" id="children-minus" aria-label="Decrease child count">-</button>
+                    <span class="counter-value" id="children-count">0</span>
+                    <button class="counter-btn" id="children-plus" aria-label="Increase child count">+</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="guests-error" class="form-error" style="color:#ff8a80;font-size:0.85rem;margin-top:0.5rem;"></div>
+
+              <div class="booking-nav">
+                <button class="btn btn-outline-light" data-booking-prev>&larr; Back</button>
+                <button class="btn btn-primary" data-booking-next id="step2-next">Continue &rarr; Room</button>
+              </div>
+            </div>
+
+            <!-- STEP 3: ROOM SELECTION -->
+            <div class="booking-step" id="step-3">
+              <div class="step-header">
+                <div class="step-num">3</div>
+                <h2 class="step-title">Choose Preferred Room</h2>
+              </div>
+              <p style="font-size:0.85rem;color:var(--card-text-muted);">Select the accommodation that fits your journey.</p>
+
+              <div class="room-options">
+                <div class="room-option" data-room="aframe" id="opt-aframe" role="radio" tabindex="0">
+                  <img class="room-option-img" src="assets/images/1000032836_professional_4k.webp" alt="A-frame" loading="lazy" />
+                  <div class="room-option-body">
+                    <div class="room-option-header">
+                      <div class="room-option-name">A-frame</div>
+                      <div class="room-option-price">₹4,500 <span class="room-option-per-night">/ night</span></div>
+                    </div>
+                    <div class="room-option-desc">Signature triangular cabin with timber character and forest views.</div>
+                    <div class="room-option-check">
+                      <div class="room-option-check-circle">✓</div>
+                      <span>Select Room</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="room-option" data-room="glasshouse" id="opt-glasshouse" role="radio" tabindex="0">
+                  <img class="room-option-img" src="assets/images/1000032837_professional_4k.webp" alt="Glass house" loading="lazy" />
+                  <div class="room-option-body">
+                    <div class="room-option-header">
+                      <div class="room-option-name">Glass house</div>
+                      <div class="room-option-price">₹5,000 <span class="room-option-per-night">/ night</span></div>
+                    </div>
+                    <div class="room-option-desc">Sleep surrounded by the living Nilgiri forest through glass walls.</div>
+                    <div class="room-option-check">
+                      <div class="room-option-check-circle">✓</div>
+                      <span>Select Room</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="room-option" data-room="suite" id="opt-suite" role="radio" tabindex="0">
+                  <img class="room-option-img" src="assets/images/1000032838_professional_4k.webp" alt="Luxurious suit" loading="lazy" />
+                  <div class="room-option-body">
+                    <div class="room-option-header">
+                      <div class="room-option-name">Luxurious suit</div>
+                      <div class="room-option-price">₹5,500 <span class="room-option-per-night">/ night</span></div>
+                    </div>
+                    <div class="room-option-desc">Our most spacious accommodation with plush king bed & seating area.</div>
+                    <div class="room-option-check">
+                      <div class="room-option-check-circle">✓</div>
+                      <span>Select Room</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="room-option" data-room="standard" id="opt-standard" role="radio" tabindex="0">
+                  <img class="room-option-img" src="assets/images/1000032839_professional_4k.webp" alt="Standard" loading="lazy" />
+                  <div class="room-option-body">
+                    <div class="room-option-header">
+                      <div class="room-option-name">Standard</div>
+                      <div class="room-option-price">₹2,500 <span class="room-option-per-night">/ night</span></div>
+                    </div>
+                    <div class="room-option-desc">Warm, cozy, and welcoming double bedroom for couples or solo stays.</div>
+                    <div class="room-option-check">
+                      <div class="room-option-check-circle">✓</div>
+                      <span>Select Room</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="room-option" data-room="not-sure" id="opt-notsure" role="radio" tabindex="0" style="grid-column: 1 / -1; display:flex; align-items:center; gap:1rem; padding:1.25rem;">
+                  <div style="font-size:2rem;">🌲</div>
+                  <div>
+                    <div class="room-option-name">Not Sure — Recommend a Room</div>
+                    <div class="room-option-desc" style="margin-bottom:0.25rem;">Tell us your group size and preferences, and our caretakers will recommend the best fit.</div>
+                    <div class="room-option-check">
+                      <div class="room-option-check-circle">✓</div>
+                      <span>Select Recommendation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="booking-nav">
+                <button class="btn btn-outline-light" data-booking-prev>&larr; Back</button>
+                <button class="btn btn-primary" data-booking-next id="step3-next">Continue &rarr; Details</button>
+              </div>
+            </div>
+
+            <!-- STEP 4: GUEST DETAILS -->
+            <div class="booking-step" id="step-4">
+              <div class="step-header">
+                <div class="step-num">4</div>
+                <h2 class="step-title">Your Contact Information</h2>
+              </div>
+              <p style="font-size:0.85rem;color:var(--card-text-muted);">Required for preparing your WhatsApp enquiry to The Groot.</p>
+
+              <div class="form-group" style="margin-top:1.5rem;">
+                <label class="form-label" for="guest-name">Full Name *</label>
+                <input type="text" class="form-control" id="guest-name" name="name" placeholder="Your full name" autocomplete="name" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="guest-mobile">Mobile Number *</label>
+                <input type="tel" class="form-control" id="guest-mobile" name="mobile" placeholder="+91 XXXXX XXXXX" autocomplete="tel" required />
+              </div>
+
+              <div class="form-group">
+                <label style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--card-text-muted);cursor:pointer;margin-bottom:0.5rem;">
+                  <input type="checkbox" id="wa-same-as-mobile" />
+                  <span>WhatsApp number is same as mobile</span>
+                </label>
+                <input type="tel" class="form-control" id="guest-whatsapp" name="whatsapp" placeholder="WhatsApp number (if different)" autocomplete="tel" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="guest-email">Email Address <span style="font-weight:400;text-transform:none;">(optional)</span></label>
+                <input type="email" class="form-control" id="guest-email" name="email" placeholder="your@email.com" autocomplete="email" />
+              </div>
+
+              <div class="booking-nav">
+                <button class="btn btn-outline-light" data-booking-prev>&larr; Back</button>
+                <button class="btn btn-primary" data-booking-next id="step4-next">Continue &rarr; Preferences</button>
+              </div>
+            </div>
+
+            <!-- STEP 5: PREFERENCES & REVIEW -->
+            <div class="booking-step" id="step-5">
+              <div class="step-header">
+                <div class="step-num">5</div>
+                <h2 class="step-title">Preferences & Review</h2>
+              </div>
+              <p style="font-size:0.85rem;color:var(--card-text-muted);">Any special requests? Review your enquiry before sending to WhatsApp.</p>
+
+              <!-- Campfire Preference -->
+              <div class="preference-group" style="margin-top:1.5rem;">
+                <div class="preference-group-label">🔥 Campfire Session</div>
+                <div class="preference-option" data-pref-group="campfire" data-pref-val="yes" id="campfire-yes">
+                  <h4>Yes, I'm Interested</h4>
+                  <p>I would like to enjoy the campfire during my stay.</p>
+                </div>
+                <div class="preference-option" data-pref-group="campfire" data-pref-val="more" id="campfire-more">
+                  <h4>Tell Me More</h4>
+                  <p>Send me more details on campfire timings and arrangements.</p>
+                </div>
+                <div class="preference-option" data-pref-group="campfire" data-pref-val="no" id="campfire-no">
+                  <h4>Not Interested</h4>
+                  <p>No campfire needed for this visit.</p>
+                </div>
+              </div>
+
+              <!-- Meals Preference -->
+              <div class="preference-group">
+                <div class="preference-group-label">🍽️ Home-Cooked Meals</div>
+                <div class="preference-option" data-pref-group="meals" data-pref-val="yes" id="meals-yes">
+                  <h4>Yes, I'd Like Home Meals</h4>
+                  <p>Please include authentic Tamil home meals in the enquiry.</p>
+                </div>
+                <div class="preference-option" data-pref-group="meals" data-pref-val="more" id="meals-more">
+                  <h4>Tell Me More</h4>
+                  <p>Send menu options and meal availability details.</p>
+                </div>
+                <div class="preference-option" data-pref-group="meals" data-pref-val="no" id="meals-no">
+                  <h4>No Meals Required</h4>
+                  <p>I will handle dining externally.</p>
+                </div>
+              </div>
+
+              <!-- Special Request -->
+              <div class="form-group">
+                <label class="form-label" for="special-request">Special Requests <span style="font-weight:400;text-transform:none;">(optional)</span></label>
+                <textarea class="form-control" id="special-request" rows="3" placeholder="Birthday, anniversary, early check-in, pickup, dietary preference, etc."></textarea>
+              </div>
+
+              <!-- Review Card -->
+              <div style="margin-top:2rem;">
+                <div class="review-enquiry-card">
+                  <div class="review-enquiry-header">
+                    <div>
+                      <div class="review-enquiry-header-brand">The Groot Ooty</div>
+                      <div class="review-enquiry-header-sub">Direct Booking Enquiry</div>
+                    </div>
+                    <div class="review-enquiry-id" id="review-enquiry-id">Generating ID...</div>
+                  </div>
+                  <div class="review-enquiry-body">
+                    <div class="review-section-label">📅 Stay Details</div>
+                    <div class="review-grid">
+                      <div class="review-field"><div class="review-field-label">Check-in</div><div class="review-field-value" id="review-checkin">—</div></div>
+                      <div class="review-field"><div class="review-field-label">Check-out</div><div class="review-field-value" id="review-checkout">—</div></div>
+                      <div class="review-field"><div class="review-field-label">Duration</div><div class="review-field-value" id="review-nights">—</div></div>
+                      <div class="review-field"><div class="review-field-label">Guests</div><div class="review-field-value" id="review-guests">—</div></div>
+                      <div class="review-field" style="grid-column: span 2;"><div class="review-field-label">Preferred Room</div><div class="review-field-value" id="review-room">—</div></div>
+                    </div>
+
+                    <div class="review-section-label" style="margin-top:1.25rem;">👤 Guest Information</div>
+                    <div class="review-grid">
+                      <div class="review-field"><div class="review-field-label">Name</div><div class="review-field-value" id="review-name">—</div></div>
+                      <div class="review-field"><div class="review-field-label">Mobile</div><div class="review-field-value" id="review-mobile">—</div></div>
+                      <div class="review-field" style="grid-column: span 2;"><div class="review-field-label">Email</div><div class="review-field-value" id="review-email">—</div></div>
+                    </div>
+
+                    <div class="review-section-label" style="margin-top:1.25rem;">✨ Preferences</div>
+                    <div class="review-grid">
+                      <div class="review-field"><div class="review-field-label">Campfire</div><div class="review-field-value" id="review-campfire">—</div></div>
+                      <div class="review-field"><div class="review-field-label">Meals</div><div class="review-field-value" id="review-meals">—</div></div>
+                      <div class="review-field" style="grid-column: span 2;"><div class="review-field-label">Special Request</div><div class="review-field-value" id="review-request">None</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="booking-nav" style="margin-top: 1.5rem;">
+                <button class="btn btn-outline-light" data-booking-prev>&larr; Back</button>
+                <button class="btn btn-whatsapp btn-lg" id="booking-submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Send Direct Enquiry via WhatsApp
+                </button>
+              </div>
+            </div>
+
+          </div><!-- /booking-form-panel -->
+
+          <!-- Success State -->
+          <div class="booking-success" id="booking-success">
+            <div class="booking-success-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <h2 class="display-sm" style="color:var(--color-cream); margin-bottom: 0.5rem;">Your Enquiry is Ready!</h2>
+            <div class="booking-success-id" id="review-id-display"></div>
+            <p class="booking-success-note">
+              Your booking details have been prepared in WhatsApp. Send the message to The Groot to confirm availability and receive pricing. Our caretakers will respond promptly.
+            </p>
+            <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+              <a href="index.html" class="btn btn-outline-light">&larr; Return Home</a>
+              <button onclick="quickWhatsApp()" class="btn btn-whatsapp">Send Again via WhatsApp</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Summary -->
+        <div class="booking-sidebar">
+          <div class="booking-summary-card" data-reveal="fade-left">
+            <h3 class="booking-summary-title">Stay Summary</h3>
+
+            <div class="booking-summary-property">
+              <img src="assets/images/1000032834_professional_4k.webp" alt="The Groot Ooty" class="booking-summary-property-img" loading="lazy" />
+              <div>
+                <div class="booking-summary-property-name">The Groot Ooty</div>
+                <div class="booking-summary-property-loc">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Pudumund, Ooty</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="booking-summary-rows">
+              <div class="booking-summary-row">
+                <span class="booking-summary-row-label">Check-in</span>
+                <span class="booking-summary-row-value" id="sb-checkin">Not selected</span>
+              </div>
+              <div class="booking-summary-row">
+                <span class="booking-summary-row-label">Check-out</span>
+                <span class="booking-summary-row-value" id="sb-checkout">Not selected</span>
+              </div>
+              <div class="booking-summary-row">
+                <span class="booking-summary-row-label">Duration</span>
+                <span class="booking-summary-row-value" id="sb-nights">—</span>
+              </div>
+              <div class="booking-summary-row">
+                <span class="booking-summary-row-label">Guests</span>
+                <span class="booking-summary-row-value" id="sb-guests">1 Adult</span>
+              </div>
+              <div class="booking-summary-row">
+                <span class="booking-summary-row-label">Preferred Room</span>
+                <span class="booking-summary-row-value" id="sb-room">Not selected</span>
+              </div>
+              <div class="booking-summary-row">
+                <span class="booking-summary-row-label">Lead Guest</span>
+                <span class="booking-summary-row-value" id="sb-name">—</span>
+              </div>
+            </div>
+
+            <div class="booking-summary-note">
+              <strong>100% Direct Booking.</strong> No prepayment is taken on this website. All availability and final pricing are confirmed directly with The Groot via WhatsApp.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo">
+            <span class="logo-name">The Groot</span>
+            <span class="logo-location">Ooty, Tamil Nadu</span>
+          </a>
+          <p class="footer-brand-desc">A cozy boutique stay in the Nilgiri hills. Featuring A-Frame cabins, Glass House, campfire evenings, and warm hospitality.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <nav class="footer-nav">
+            <a href="index.html#rooms" class="footer-link">Rooms & Cabins</a>
+            <a href="experiences.html" class="footer-link">Experiences</a>
+            <a href="gallery.html" class="footer-link">Photo Gallery</a>
+            <a href="ooty.html" class="footer-link">Ooty Attractions</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Booking</h4>
+          <nav class="footer-nav">
+            <a href="booking.html" class="footer-link">Check Availability</a>
+            <a href="contact.html" class="footer-link">Contact Us</a>
+            <a href="admin.html" class="footer-link" style="opacity:0.75;">Admin Portal</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <div class="footer-nav">
+            <a href="tel:6382316323" class="footer-contact-item" data-phone="1">📞 6382316323</a>
+            <a href="tel:7395965006" class="footer-contact-item" data-phone="2">📞 7395965006</a>
+            <div class="footer-contact-item">📍 Pudumund, Ooty, Tamil Nadu 643001</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Groot Ooty. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="contact.html" class="footer-bottom-link">Contact</a>
+          <a href="booking.html" class="footer-bottom-link">Book Direct</a>
+          <a href="admin.html" class="footer-bottom-link" style="opacity:0.7;">Admin</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/whatsapp.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
 </body>
 </html>
