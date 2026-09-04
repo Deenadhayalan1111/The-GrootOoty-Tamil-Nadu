@@ -256,7 +256,6 @@ function renderRoomOptions() {
     card.setAttribute('tabindex', '0');
 
     card.innerHTML = `
-      <img class="room-option-img" src="${r.image}" alt="${r.name}" loading="lazy" decoding="async" />
       <div class="room-option-body">
         <div class="room-option-header">
           <div class="room-option-name">${r.name}</div>

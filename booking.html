@@ -56,13 +56,13 @@
     .progress-step.active .progress-step-circle {
       background: #74C365;
       border-color: #74C365;
-      color: #FFFFFF;
+      color: #111111;
       box-shadow: 0 4px 12px rgba(116, 195, 101, 0.35);
     }
     .progress-step.completed .progress-step-circle {
       background: #111111;
       border-color: #111111;
-      color: #FFFFFF;
+      color: #111111;
     }
     .progress-step-label {
       font-size: 0.72rem;
@@ -91,8 +91,8 @@
       max-width: 420px;
     }
     .calendar {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-lg);
       padding: 1rem 1.15rem;
     }
@@ -106,15 +106,15 @@
       font-family: var(--font-display);
       font-size: 1.05rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
     }
     .calendar-nav-btn {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.30);
-      color: #FFFFFF;
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      color: #111111;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -122,7 +122,7 @@
       transition: all 0.2s ease;
     }
     .calendar-nav-btn:hover {
-      background: rgba(255, 255, 255, 0.30);
+      background: rgba(116, 195, 101, 0.2);
     }
     .calendar-grid {
       display: grid;
@@ -133,11 +133,14 @@
     .calendar-day-label {
       font-size: 0.72rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
       opacity: 0.95;
       padding: 4px 0;
     }
     .calendar-day {
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      color: #111111;
       aspect-ratio: 1/1;
       max-height: 36px;
       border-radius: var(--radius-sm);
@@ -145,17 +148,20 @@
       align-items: center;
       justify-content: center;
       font-size: 0.82rem;
-      color: #FFFFFF;
+      color: #111111;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
-      background: rgba(255, 255, 255, 0.08);
+      background: #FFFFFF;
       border: none;
     }
     .calendar-day:hover:not(.disabled):not(.empty) {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(116, 195, 101, 0.15);
+      border-color: rgba(116, 195, 101, 0.4);
+      background: rgba(116, 195, 101, 0.15);
     }
     .calendar-day.disabled {
+      color: rgba(17, 17, 17, 0.3);
       color: rgba(255, 255, 255, 0.45);
       cursor: not-allowed;
       background: transparent;
@@ -165,24 +171,31 @@
       cursor: default;
     }
     .calendar-day.today {
-      border: 2px solid #FFFFFF;
+      border: 2px solid var(--color-mantis);
+      color: var(--color-mantis);
+      font-weight: 700;
+      border: 2px solid var(--color-mantis);
     }
     .calendar-day.selected {
+      background: var(--color-mantis) !important;
+      color: #FFFFFF !important;
       background: #FFFFFF !important;
-      color: #111111 !important;
+      color: #FFFFFF !important;
       font-weight: 800 !important;
     }
     .calendar-day.in-range {
-      background: rgba(255, 255, 255, 0.25);
-      color: #FFFFFF;
+      background: rgba(116, 195, 101, 0.15);
+      color: #111111;
+      background: rgba(116, 195, 101, 0.15);
+      color: #111111;
       font-weight: 700;
     }
     .date-summary {
       display: flex;
       gap: 1.5rem;
       padding: 0.85rem 1.15rem;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-md);
       max-width: 420px;
     }
@@ -198,19 +211,19 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.25rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.20);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-lg);
     }
     .guests-row-info h3 {
       font-size: 1.05rem;
-      color: #FFFFFF;
+      color: #111111;
       font-weight: 700;
       margin-bottom: 2px;
     }
     .guests-row-info p {
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.92);
+      color: rgba(17, 17, 17, 0.75);
     }
     .counter-control {
       display: flex;
@@ -221,9 +234,9 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      color: #FFFFFF;
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      color: #111111;
       font-size: 1.2rem;
       font-weight: 700;
       display: flex;
@@ -233,12 +246,12 @@
       transition: all 0.2s ease;
     }
     .counter-btn:hover {
-      background: rgba(255, 255, 255, 0.30);
+      background: rgba(116, 195, 101, 0.2);
     }
     .counter-value {
       font-size: 1.15rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
       min-width: 24px;
       text-align: center;
     }
@@ -250,20 +263,20 @@
       margin: 1.5rem 0;
     }
     .room-option {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      background: #FFFFFF;
+      border: 1.5px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-lg);
       overflow: hidden;
       cursor: pointer;
       transition: all 0.2s ease;
     }
     .room-option:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: #FFFFFF;
       border-color: rgba(255, 255, 255, 0.45);
     }
     .room-option.selected {
-      border-color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.24);
+      border-color: #111111;
+      background: rgba(116, 195, 101, 0.15);
       box-shadow: 0 0 0 2px #FFFFFF;
     }
     .room-option-img {
@@ -283,18 +296,18 @@
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
       margin-bottom: 0;
     }
     .room-option-price {
       font-weight: 800;
-      color: #FFFFFF;
+      color: #111111;
       font-size: 1.15rem;
       white-space: nowrap;
     }
     .room-option-per-night {
       font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.90);
+      color: rgba(17, 17, 17, 0.75);
       font-weight: 500;
     }
     .room-avail-badge {
@@ -307,19 +320,19 @@
       text-transform: uppercase;
       padding: 3px 10px;
       border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.22);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(116, 195, 101, 0.15);
+      color: #111111;
+      border: 1px solid rgba(0, 0, 0, 0.2);
       margin-bottom: 0.5rem;
     }
     .room-avail-badge.unavailable {
       background: rgba(0, 0, 0, 0.30);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #111111;
+      border: 1px solid rgba(0, 0, 0, 0.12);
     }
     .room-option-desc {
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.92);
+      color: rgba(17, 17, 17, 0.75);
       line-height: 1.45;
       margin-bottom: 0.75rem;
     }
@@ -329,7 +342,7 @@
       gap: 6px;
       font-size: 0.75rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
@@ -337,11 +350,11 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      border: 1.5px solid #FFFFFF;
+      border: 1.5px solid var(--color-mantis);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #FFFFFF;
+      color: #111111;
     }
     /* Preferences */
     .preference-group {
@@ -352,40 +365,40 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: #111111;
       margin-bottom: 0.75rem;
     }
     .preference-option {
       padding: 1rem 1.25rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-md);
       margin-bottom: 0.5rem;
       cursor: pointer;
       transition: all 0.2s ease;
     }
     .preference-option:hover {
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(116, 195, 101, 0.05);
     }
     .preference-option.selected {
-      border-color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.22);
+      border-color: #111111;
+      background: rgba(116, 195, 101, 0.15);
       box-shadow: 0 0 0 1.5px #FFFFFF;
     }
     .preference-option h4 {
       font-size: 0.95rem;
-      color: #FFFFFF;
+      color: #111111;
       font-weight: 700;
       margin-bottom: 2px;
     }
     .preference-option p {
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.92);
+      color: rgba(17, 17, 17, 0.75);
     }
     /* Review Enquiry Card */
     .review-enquiry-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-xl);
       overflow: hidden;
     }
@@ -394,18 +407,18 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.25rem 1.5rem;
-      background: rgba(255, 255, 255, 0.06);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      background: #F8F9FA;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     }
     .review-enquiry-header-brand {
       font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
     }
     .review-enquiry-header-sub {
       font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.90);
+      color: rgba(17, 17, 17, 0.75);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -413,10 +426,10 @@
     .review-enquiry-id {
       font-size: 0.85rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
       padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.20);
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(116, 195, 101, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.2);
       border-radius: var(--radius-sm);
     }
     .review-enquiry-body {
@@ -427,7 +440,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #FFFFFF;
+      color: #111111;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -440,7 +453,7 @@
     }
     .review-field-label {
       font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(17, 17, 17, 0.70);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -449,7 +462,7 @@
     .review-field-value {
       font-size: 0.95rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
     }
     /* Summary Sidebar */
     .booking-summary-card {
@@ -457,7 +470,7 @@
       border: 1px solid var(--card-border);
       border-radius: var(--radius-xl);
       padding: 1.75rem;
-      color: #FFFFFF;
+      color: #111111;
       box-shadow: var(--shadow-card);
     }
     .booking-summary-title {
@@ -466,8 +479,8 @@
       font-weight: 700;
       margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-      color: #FFFFFF;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      color: #111111;
     }
     .booking-summary-property {
       display: flex;
@@ -475,7 +488,7 @@
       gap: 12px;
       margin-bottom: 1.25rem;
       padding-bottom: 1.25rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     }
     .booking-summary-property-img {
       width: 56px;
@@ -487,11 +500,11 @@
       font-family: var(--font-display);
       font-size: 1.1rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
     }
     .booking-summary-property-loc {
       font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.92);
+      color: rgba(17, 17, 17, 0.75);
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -510,19 +523,19 @@
       font-size: 0.88rem;
     }
     .booking-summary-row-label {
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(17, 17, 17, 0.70);
       font-weight: 500;
     }
     .booking-summary-row-value {
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
     }
     .booking-summary-note {
       font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.94);
+      color: rgba(17, 17, 17, 0.75);
       padding: 12px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.20);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-md);
       line-height: 1.55;
     }
@@ -532,15 +545,15 @@
       align-items: center;
       margin-top: 2rem;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
     }
     /* Date Summary Bar */
     .date-summary {
       display: flex;
       gap: 1.5rem;
       padding: 1rem 1.25rem;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: var(--radius-md);
       margin-top: 1rem;
     }
@@ -551,7 +564,7 @@
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #FFFFFF;
+      color: #111111;
       font-weight: 700;
       opacity: 0.95;
       margin-bottom: 2px;
@@ -559,11 +572,11 @@
     .date-summary-value {
       font-size: 1rem;
       font-weight: 700;
-      color: #FFFFFF;
+      color: #111111;
     }
     .date-summary-night {
       font-size: 0.8rem;
-      color: #FFFFFF;
+      color: #111111;
       font-weight: 700;
       margin-top: 2px;
     }
@@ -574,7 +587,7 @@
       border-radius: var(--radius-2xl);
       padding: clamp(2rem, 5vw, 3.5rem);
       text-align: center;
-      color: #FFFFFF;
+      color: #111111;
       box-shadow: var(--shadow-lg);
     }
     .booking-success.show {
@@ -585,9 +598,9 @@
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.20);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      color: #FFFFFF;
+      background: rgba(116, 195, 101, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      color: #111111;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -600,16 +613,16 @@
       display: inline-block;
       font-size: 0.9rem;
       font-weight: 700;
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.22);
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #111111;
+      background: rgba(116, 195, 101, 0.15);
+      border: 1px solid rgba(0, 0, 0, 0.2);
       padding: 6px 16px;
       border-radius: var(--radius-full);
       margin-bottom: 1.25rem;
     }
     .booking-success-note {
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.95);
+      color: rgba(17, 17, 17, 0.75);
       max-width: 520px;
       margin: 0 auto 2rem;
       line-height: 1.65;
@@ -630,6 +643,9 @@
       }
       
       .calendar-day {
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      color: #111111;
         font-size: 0.75rem;
       }
 
@@ -671,7 +687,75 @@
         line-height: 1.4;
       }
     }
-  </style>
+  
+    /* Overrides */
+    .progress-step.active .progress-step-circle { color: #FFFFFF; background: var(--color-mantis); border-color: var(--color-mantis); }
+    .calendar-day.selected { color: #FFFFFF !important; background: var(--color-mantis) !important; }
+    .room-option-check-circle { color: var(--color-mantis); }
+    .room-option.selected .room-option-check-circle { background: var(--color-mantis); color: #FFFFFF; }
+    .room-option-check { color: #111111; }
+    .calendar-nav-btn { color: #111111; }
+    
+    /* Buttons Fix */
+    .btn-outline-light {
+      background-color: transparent;
+      color: #111111;
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+    .btn-outline-light:hover {
+      background-color: #F8F9FA;
+      color: #111111;
+      border-color: #111111;
+    }
+    
+    /* Date Inputs */
+    .date-inputs-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .date-input-field {
+      padding: 12px 16px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .date-input-field:hover {
+      border-color: rgba(0, 0, 0, 0.4);
+      background: #F8F9FA;
+    }
+    .date-input-field:focus-within {
+      border-color: var(--color-mantis);
+      box-shadow: 0 0 0 3px rgba(116, 195, 101, 0.15);
+    }
+    .date-input-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 6px;
+    }
+    .date-input-value {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #111111;
+    }
+    .date-input-value svg {
+      color: var(--color-mantis);
+    }
+    @media (max-width: 768px) {
+      .date-inputs-row {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+    }
+    </style>
 </head>
 <body class="booking-page">
 
@@ -772,7 +856,7 @@
                 <div class="step-num">1</div>
                 <h2 class="step-title">Select Check-in & Check-out Dates</h2>
               </div>
-              <p style="font-size:0.85rem;color:var(--card-text-muted);">Click your check-in date first, followed by your check-out date.</p>
+              <p style="font-size:0.85rem;color:rgba(17, 17, 17, 0.7);">Click your check-in date first, followed by your check-out date.</p>
 
               <div class="calendar-wrapper">
                 <div class="calendar">
@@ -789,15 +873,21 @@
                 </div>
               </div>
 
-              <div class="date-summary" id="date-summary">
-                <div class="date-summary-item">
-                  <div class="date-summary-label">Check-in</div>
-                  <div class="date-summary-value" id="summary-checkin">—</div>
+              <div class="date-inputs-row" id="date-summary">
+                <div class="date-input-field" tabindex="0">
+                  <div class="date-input-label">CHECK-IN</div>
+                  <div class="date-input-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span id="summary-checkin">Select date</span>
+                  </div>
                 </div>
-                <div class="date-summary-item">
-                  <div class="date-summary-label">Check-out</div>
-                  <div class="date-summary-value" id="summary-checkout">—</div>
-                  <div class="date-summary-night" id="summary-nights"></div>
+                <div class="date-input-field" tabindex="0">
+                  <div class="date-input-label">CHECK-OUT</div>
+                  <div class="date-input-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span id="summary-checkout">Select date</span>
+                  </div>
+                  <div class="date-summary-night" id="summary-nights" style="font-size:0.8rem; color:rgba(17,17,17,0.7); margin-top:4px;"></div>
                 </div>
               </div>
 
@@ -815,7 +905,7 @@
                 <div class="step-num">2</div>
                 <h2 class="step-title">How Many Guests?</h2>
               </div>
-              <p style="font-size:0.85rem;color:var(--card-text-muted);">Let us know who's traveling so The Groot can prepare.</p>
+              <p style="font-size:0.85rem;color:rgba(17, 17, 17, 0.7);">Let us know who's traveling so The Groot can prepare.</p>
 
               <div class="guests-section">
                 <div class="guests-row">
@@ -856,11 +946,10 @@
                 <div class="step-num">3</div>
                 <h2 class="step-title">Choose Preferred Room</h2>
               </div>
-              <p style="font-size:0.85rem;color:var(--card-text-muted);">Select the accommodation that fits your journey.</p>
+              <p style="font-size:0.85rem;color:rgba(17, 17, 17, 0.7);">Select the accommodation that fits your journey.</p>
 
               <div class="room-options">
                 <div class="room-option" data-room="aframe" id="opt-aframe" role="radio" tabindex="0">
-                  <img class="room-option-img" src="assets/images/1000032838_professional_4k.webp" alt="A-frame" loading="lazy" />
                   <div class="room-option-body">
                     <div class="room-option-header">
                       <div class="room-option-name">A-frame</div>
@@ -875,7 +964,6 @@
                 </div>
 
                 <div class="room-option" data-room="glasshouse" id="opt-glasshouse" role="radio" tabindex="0">
-                  <img class="room-option-img" src="assets/images/1000032839_professional_4k.webp" alt="Glass house" loading="lazy" />
                   <div class="room-option-body">
                     <div class="room-option-header">
                       <div class="room-option-name">Glass house</div>
@@ -890,7 +978,6 @@
                 </div>
 
                 <div class="room-option" data-room="suite" id="opt-suite" role="radio" tabindex="0">
-                  <img class="room-option-img" src="assets/images/1000032836_professional_4k.webp" alt="Luxurious suit" loading="lazy" />
                   <div class="room-option-body">
                     <div class="room-option-header">
                       <div class="room-option-name">Luxurious suit</div>
@@ -905,7 +992,6 @@
                 </div>
 
                 <div class="room-option" data-room="standard" id="opt-standard" role="radio" tabindex="0">
-                  <img class="room-option-img" src="assets/images/1000032837_professional_4k.webp" alt="Standard" loading="lazy" />
                   <div class="room-option-body">
                     <div class="room-option-header">
                       <div class="room-option-name">Standard</div>
@@ -944,7 +1030,7 @@
                 <div class="step-num">4</div>
                 <h2 class="step-title">Your Contact Information</h2>
               </div>
-              <p style="font-size:0.85rem;color:var(--card-text-muted);">Required for preparing your WhatsApp enquiry to The Groot.</p>
+              <p style="font-size:0.85rem;color:rgba(17, 17, 17, 0.7);">Required for preparing your WhatsApp enquiry to The Groot.</p>
 
               <div class="form-group" style="margin-top:1.5rem;">
                 <label class="form-label" for="guest-name">Full Name *</label>
@@ -957,7 +1043,7 @@
               </div>
 
               <div class="form-group">
-                <label style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--card-text-muted);cursor:pointer;margin-bottom:0.5rem;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:rgba(17, 17, 17, 0.7);cursor:pointer;margin-bottom:0.5rem;">
                   <input type="checkbox" id="wa-same-as-mobile" />
                   <span>WhatsApp number is same as mobile</span>
                 </label>
@@ -981,7 +1067,7 @@
                 <div class="step-num">5</div>
                 <h2 class="step-title">Preferences & Review</h2>
               </div>
-              <p style="font-size:0.85rem;color:var(--card-text-muted);">Any special requests? Review your enquiry before sending to WhatsApp.</p>
+              <p style="font-size:0.85rem;color:rgba(17, 17, 17, 0.7);">Any special requests? Review your enquiry before sending to WhatsApp.</p>
 
               <!-- Campfire Preference -->
               <div class="preference-group" style="margin-top:1.5rem;">
@@ -1076,7 +1162,7 @@
             <div class="booking-success-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </div>
-            <h2 class="display-sm" style="color:var(--color-cream); margin-bottom: 0.5rem;">Your Enquiry is Ready!</h2>
+            <h2 class="display-sm" style="color:#111111; margin-bottom: 0.5rem;">Your Enquiry is Ready!</h2>
             <div class="booking-success-id" id="review-id-display"></div>
             <p class="booking-success-note">
               Your booking details have been prepared in WhatsApp. Send the message to The Groot to confirm availability and receive pricing. Our caretakers will respond promptly.
