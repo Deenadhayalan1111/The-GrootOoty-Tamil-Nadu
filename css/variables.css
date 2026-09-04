@@ -1,76 +1,80 @@
 /* =========================================================
    THE GROOT OOTY — Design Tokens & Variables
-   Theme: Mantis Green (#74C365) with Premium High-Contrast Boutique Styling
+   Theme: Strict White & Mantis Green (#74C365)
    ========================================================= */
 
 :root {
-  /* --- Primary Brand Color (Exact Mandatory Requirement) --- */
+  /* --- Primary Brand Color (Secondary / Accents / Cards) --- */
   --color-mantis:          #74C365;
-  --bg-primary:            #74C365;
-  --bg-page:               #74C365;
-  --bg-section:            #74C365;
-  --bg-light:              #74C365;
-  --bg-dark:               #74C365;
+  
+  /* --- Global Backgrounds (Primary Color = WHITE) --- */
+  --bg-primary:            #FFFFFF;
+  --bg-page:               #FFFFFF;
+  --bg-section:            #FFFFFF;
+  --bg-light:              #FFFFFF;
+  --bg-dark:               #FFFFFF;
 
-  /* --- Premium Contrast Darks (For Cards, Navigation, Overlays) --- */
-  --color-obsidian:        #111B12;
-  --color-forest-deep:     #111B12;
-  --color-forest:          #18291B;
-  --color-forest-card:     #132015;
-  --color-forest-surface:  #1A2C1D;
-  --color-charcoal:        #111B12;
-  --color-charcoal-soft:   #253828;
+  /* --- Surface / Card Colors (Mantis Green #74C365) --- */
+  --card-bg:               #74C365;
+  --card-bg-elevated:      #74C365;
+  --color-forest-deep:     #74C365;
+  --color-forest:          #74C365;
+  --color-forest-card:     #74C365;
+  --color-forest-surface:  #74C365;
+  --color-charcoal:        #74C365;
+  --color-charcoal-soft:   #74C365;
 
-  /* --- Luxury Neutrals & Accents --- */
-  --color-cream:           #FAF7F2;
-  --color-cream-warm:      #F5EFE6;
+  /* --- Neutral Dark Accent (For Text & Headings on White) --- */
+  --color-obsidian:        #111111;
+  --color-cream:           #FFFFFF;
+  --color-cream-warm:      #FFFFFF;
   --color-warm-white:      #FFFFFF;
-  --color-linen:           #EDE4D8;
-  --color-bronze:          #111B12;
-  --color-bronze-light:    #C8A36E;
-  --color-gold:            #D4AF37;
+  --color-linen:           #FFFFFF;
+  --color-bronze:          #74C365;
+  --color-bronze-light:    #74C365;
+  --color-gold:            #FFFFFF;
+  --color-gold-subtle:     transparent;
+  --color-gold-glow:       transparent;
   --color-whatsapp:        #25D366;
   --color-whatsapp-hover:  #1EBE5D;
 
-  /* --- Text Tokens (Maximum Contrast & Legibility) --- */
-  /* On #74C365 Background */
-  --text-primary:          #111B12;
-  --text-secondary:        rgba(17, 27, 18, 0.88);
-  --text-muted:            rgba(17, 27, 18, 0.68);
-  --text-dark:             #111B12;
-  --text-dark-secondary:   rgba(17, 27, 18, 0.80);
+  /* --- Text Tokens (High Contrast) --- */
+  /* On White Background */
+  --text-primary:          #111111;
+  --text-secondary:        rgba(17, 17, 17, 0.88);
+  --text-muted:            rgba(17, 17, 17, 0.65);
+  --text-dark:             #111111;
+  --text-dark-secondary:   rgba(17, 17, 17, 0.80);
 
-  /* On Dark Cards & Overlays */
-  --card-bg:               #111B12;
-  --card-bg-elevated:      #18291B;
-  --card-border:           rgba(17, 27, 18, 0.20);
-  --card-border-subtle:    rgba(255, 255, 255, 0.14);
-  --card-text:             #FAF7F2;
-  --card-text-muted:       rgba(250, 247, 242, 0.82);
+  /* On Mantis Green Cards & Surfaces */
+  --card-border:           rgba(255, 255, 255, 0.35);
+  --card-border-subtle:    rgba(255, 255, 255, 0.20);
+  --card-text:             #FFFFFF;
+  --card-text-muted:       rgba(255, 255, 255, 0.92);
 
   /* On Full-bleed Photography / Parallax */
   --text-on-image:         #FFFFFF;
   --text-on-image-muted:   rgba(255, 255, 255, 0.88);
 
   /* --- Interactive Buttons --- */
-  --btn-primary-bg:        #111B12;
-  --btn-primary-text:      #FAF7F2;
-  --btn-primary-hover:     #1F3523;
-  --btn-outline-border:    #111B12;
-  --btn-outline-text:      #111B12;
-  --btn-outline-hover-bg:  #111B12;
-  --btn-outline-hover-text:#FAF7F2;
+  --btn-primary-bg:        #74C365;
+  --btn-primary-text:      #FFFFFF;
+  --btn-primary-hover:     #5ebd4e;
+  --btn-outline-border:    #74C365;
+  --btn-outline-text:      #74C365;
+  --btn-outline-hover-bg:  #74C365;
+  --btn-outline-hover-text:#FFFFFF;
 
   /* --- Borders & Shadows --- */
-  --border-dark:           rgba(17, 27, 18, 0.22);
-  --border-light:          rgba(255, 255, 255, 0.20);
-  --border-glow:           rgba(17, 27, 18, 0.35);
+  --border-dark:           rgba(17, 17, 17, 0.12);
+  --border-light:          rgba(116, 195, 101, 0.25);
+  --border-glow:           rgba(116, 195, 101, 0.35);
 
-  --shadow-sm:             0 2px 8px rgba(17, 27, 18, 0.12);
-  --shadow-md:             0 8px 24px rgba(17, 27, 18, 0.16);
-  --shadow-lg:             0 18px 45px rgba(17, 27, 18, 0.24);
-  --shadow-card:           0 12px 36px rgba(17, 27, 18, 0.20), 0 2px 6px rgba(17, 27, 18, 0.12);
-  --shadow-floating:       0 20px 50px rgba(17, 27, 18, 0.30);
+  --shadow-sm:             0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md:             0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-lg:             0 18px 45px rgba(0, 0, 0, 0.14);
+  --shadow-card:           0 10px 30px rgba(17, 27, 18, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-floating:       0 20px 50px rgba(0, 0, 0, 0.18);
 
   /* --- Typography --- */
   --font-display:          'Playfair Display', Georgia, serif;
@@ -108,6 +112,7 @@
   --radius-md:  12px;
   --radius-lg:  20px;
   --radius-xl:  28px;
+  --radius-2xl: 32px;
   --radius-full:9999px;
 
   /* --- Layout --- */

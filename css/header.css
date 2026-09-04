@@ -14,16 +14,16 @@
   transition: background-color var(--dur-base) var(--ease-snappy),
               box-shadow var(--dur-base) var(--ease-snappy),
               border-color var(--dur-base) var(--ease-snappy);
-  background: rgba(17, 27, 18, 0.88);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 #site-header.scrolled {
-  background: rgba(17, 27, 18, 0.96);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-  border-bottom-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom-color: rgba(0, 0, 0, 0.12);
 }
 
 .header-inner {
@@ -46,7 +46,7 @@
   font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--color-cream);
+  color: var(--text-primary);
 }
 
 .logo-location {
@@ -55,7 +55,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #89D97B;
+  color: var(--color-mantis);
   margin-top: 2px;
 }
 
@@ -69,7 +69,7 @@
 .nav-link {
   font-size: var(--text-sm);
   font-weight: 500;
-  color: rgba(250, 247, 242, 0.82);
+  color: var(--text-muted);
   text-decoration: none;
   position: relative;
   padding: 6px 0;
@@ -89,7 +89,7 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-cream);
+  color: var(--text-primary);
 }
 
 .nav-link:hover::after,
@@ -121,7 +121,7 @@
 .hamburger-line {
   width: 100%;
   height: 2px;
-  background-color: var(--color-cream);
+  background-color: var(--text-primary);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -181,7 +181,7 @@
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: var(--card-text);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -190,13 +190,13 @@
 }
 
 .mobile-nav-link .arrow {
-  color: var(--color-mantis);
+  color: var(--card-text);
   font-size: 1.2rem;
   transition: transform 0.2s ease;
 }
 
 .mobile-nav-link:hover {
-  color: var(--color-mantis);
+  color: var(--card-text-muted);
   transform: translateX(4px);
 }
 

@@ -29,47 +29,47 @@
   transform: scale(0.97);
 }
 
-/* Primary Button (Deep Obsidian on Mantis Green) */
+/* Primary Button (Mantis Green on White Page, High Contrast) */
 .btn-primary {
-  background-color: var(--color-obsidian);
-  color: var(--color-cream);
-  border-color: var(--color-obsidian);
-  box-shadow: 0 4px 14px rgba(17, 27, 18, 0.25);
+  background-color: var(--color-mantis);
+  color: #FFFFFF;
+  border-color: var(--color-mantis);
+  box-shadow: 0 4px 14px rgba(116, 195, 101, 0.30);
 }
 
 .btn-primary:hover {
-  background-color: #1F3622;
-  border-color: #1F3622;
+  background-color: #5ebd4e;
+  border-color: #5ebd4e;
   color: #FFFFFF;
-  box-shadow: 0 6px 20px rgba(17, 27, 18, 0.35);
+  box-shadow: 0 6px 20px rgba(116, 195, 101, 0.40);
   transform: translateY(-2px);
 }
 
 /* Outline Button (Dark High-Contrast Border) */
 .btn-outline {
   background-color: transparent;
-  color: var(--color-obsidian);
-  border-color: var(--color-obsidian);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
 }
 
 .btn-outline:hover {
-  background-color: var(--color-obsidian);
-  color: var(--color-cream);
+  background-color: var(--text-primary);
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(17, 27, 18, 0.20);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 /* Outline on Dark / Image */
 .btn-outline-light {
   background-color: transparent;
-  color: var(--color-cream);
-  border-color: rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-outline-light:hover {
-  background-color: var(--color-cream);
-  color: var(--color-obsidian);
-  border-color: var(--color-cream);
+  background-color: #FFFFFF;
+  color: #111111;
+  border-color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -98,15 +98,15 @@
 
 /* Ghost Button */
 .btn-ghost {
-  background-color: rgba(17, 27, 18, 0.08);
-  color: var(--color-obsidian);
-  border-color: rgba(17, 27, 18, 0.16);
+  background-color: rgba(116, 195, 101, 0.12);
+  color: var(--text-primary);
+  border-color: rgba(116, 195, 101, 0.25);
 }
 
 .btn-ghost:hover {
-  background-color: var(--color-obsidian);
-  color: var(--color-cream);
-  border-color: var(--color-obsidian);
+  background-color: var(--color-mantis);
+  color: #FFFFFF;
+  border-color: var(--color-mantis);
   transform: translateY(-2px);
 }
 
@@ -176,7 +176,7 @@
   width: 100%;
   aspect-ratio: 4/3;
   overflow: hidden;
-  background: var(--color-obsidian);
+  background: var(--card-bg);
 }
 
 .room-card-img-wrap img {
@@ -209,14 +209,14 @@
   right: 14px;
   background: rgba(17, 27, 18, 0.85);
   backdrop-filter: blur(10px);
-  color: var(--color-cream);
+  color: #FFFFFF;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 5px 12px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.20);
   z-index: 2;
 }
 
@@ -231,7 +231,7 @@
   font-family: var(--font-display);
   font-size: 1.45rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 0.5rem;
 }
 
@@ -256,11 +256,11 @@
   gap: 4px;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--color-cream);
-  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.20);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .room-card-footer {
@@ -268,7 +268,8 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(255, 255, 255, 0.20);
+  margin-top: auto;
 }
 
 .room-card-cta {
@@ -277,13 +278,13 @@
   gap: 6px;
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
   transition: gap 0.2s ease;
 }
 
 .room-card:hover .room-card-cta {
   gap: 10px;
-  color: #89D97B;
+  color: #FFFFFF;
 }
 
 /* ---------------------------------------------------------
@@ -299,8 +300,8 @@
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  background: var(--color-obsidian);
-  color: var(--color-cream);
+  background: var(--color-mantis);
+  color: #FFFFFF;
   box-shadow: var(--shadow-sm);
 }
 
@@ -308,7 +309,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--color-mantis);
+  background-color: #FFFFFF;
   display: inline-block;
 }
 
@@ -332,7 +333,7 @@
 .review-stars {
   display: flex;
   gap: 3px;
-  color: var(--color-gold);
+  color: #FFFFFF;
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }
@@ -351,33 +352,33 @@
   align-items: center;
   gap: var(--space-3);
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 .review-avatar {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, #243D27, #111B12);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.30);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--color-cream);
+  color: #FFFFFF;
   flex-shrink: 0;
 }
 
 .review-author-name {
   font-weight: 600;
   font-size: var(--text-sm);
-  color: var(--color-cream);
+  color: #FFFFFF;
 }
 
 .review-author-source {
   font-size: 0.78rem;
-  color: rgba(250, 247, 242, 0.65);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* ---------------------------------------------------------
@@ -425,7 +426,7 @@
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 0.35rem;
 }
 
@@ -439,7 +440,7 @@
   margin-top: 0.75rem;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #89D97B;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   gap: 4px;

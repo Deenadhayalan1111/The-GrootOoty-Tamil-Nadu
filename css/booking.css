@@ -4,7 +4,7 @@
 
 .booking-page {
   padding-top: var(--nav-height);
-  background-color: var(--color-mantis);
+  background-color: #FFFFFF;
   min-height: 100vh;
 }
 
@@ -27,7 +27,7 @@
 .booking-step {
   margin-bottom: 2rem;
   padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 .booking-step:last-child {
@@ -47,8 +47,8 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--color-mantis);
-  color: var(--color-obsidian);
+  background: #FFFFFF;
+  color: #111111;
   font-weight: 700;
   font-size: 0.85rem;
   display: flex;
@@ -60,7 +60,7 @@
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
 }
 
 /* Room Select Options */
@@ -72,34 +72,56 @@
 
 .room-option {
   position: relative;
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-lg);
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.10);
   cursor: pointer;
   transition: all var(--dur-fast) ease;
 }
 
 .room-option:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .room-option.selected {
-  border-color: #89D97B;
-  background: rgba(137, 217, 123, 0.12);
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .room-option-name {
   font-weight: 600;
   font-size: var(--text-sm);
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 4px;
+}
+
+.room-avail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.5rem;
+}
+
+.room-avail-badge.unavailable {
+  background: rgba(0, 0, 0, 0.30);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .room-option-desc {
   font-size: var(--text-xs);
-  color: var(--card-text-muted);
+  color: rgba(255, 255, 255, 0.90);
 }
 
 /* Form Controls */
@@ -112,28 +134,32 @@
 
 .form-label {
   font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--card-text-muted);
+  color: #FFFFFF;
 }
 
 .form-control {
   width: 100%;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.40);
   border-radius: var(--radius-md);
-  color: var(--color-cream);
+  color: #FFFFFF;
   font-family: var(--font-body);
   font-size: var(--text-sm);
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .form-control:focus {
   outline: none;
-  border-color: #89D97B;
-  background: rgba(255, 255, 255, 0.10);
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .form-row-2 {
@@ -158,26 +184,26 @@
   font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 .summary-item {
   display: flex;
   justify-content: space-between;
   font-size: var(--text-sm);
-  color: var(--card-text-muted);
+  color: rgba(255, 255, 255, 0.90);
   margin-bottom: 0.75rem;
 }
 
 .summary-item.total {
   font-size: var(--text-base);
   font-weight: 700;
-  color: var(--color-cream);
+  color: #FFFFFF;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   margin-top: 1rem;
 }
 

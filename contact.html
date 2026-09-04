@@ -10,13 +10,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/variables.css?v=3.1" />
+  <link rel="stylesheet" href="css/base.css?v=3.1" />
+  <link rel="stylesheet" href="css/animations.css?v=3.1" />
+  <link rel="stylesheet" href="css/components.css?v=3.1" />
+  <link rel="stylesheet" href="css/header.css?v=3.1" />
+  <link rel="stylesheet" href="css/sections.css?v=3.1" />
+  <link rel="stylesheet" href="css/footer.css?v=3.1" />
 
   <style>
     .contact-layout {
@@ -30,16 +30,16 @@
       align-items: flex-start;
       gap: 1.25rem;
       padding: 1.25rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: var(--radius-lg);
       text-decoration: none;
-      color: var(--color-cream);
+      color: #FFFFFF;
       transition: all 0.2s ease;
       margin-bottom: 0.85rem;
     }
     .contact-method-card:hover {
-      background: rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.22);
       transform: translateX(4px);
     }
     .contact-method-icon {
@@ -52,20 +52,20 @@
       flex-shrink: 0;
     }
     .contact-method-icon.whatsapp {
-      background: rgba(37, 211, 102, 0.2);
-      color: var(--color-whatsapp);
+      background: rgba(37, 211, 102, 0.3);
+      color: #FFFFFF;
     }
     .contact-method-icon.phone {
-      background: rgba(137, 217, 123, 0.2);
-      color: #89D97B;
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
     }
     .contact-method-icon.instagram {
-      background: rgba(225, 48, 108, 0.2);
-      color: #E1306C;
+      background: rgba(225, 48, 108, 0.3);
+      color: #FFFFFF;
     }
     .contact-method-icon.location {
-      background: rgba(255, 255, 255, 0.15);
-      color: var(--color-cream);
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
     }
     .map-frame {
       border-radius: var(--radius-xl);
@@ -73,7 +73,7 @@
       border: 1px solid var(--card-border);
       aspect-ratio: 16/10;
       box-shadow: var(--shadow-card);
-      background: var(--color-obsidian);
+      background: var(--card-bg);
     }
     .map-frame iframe {
       width: 100%;
@@ -85,7 +85,7 @@
     }
   </style>
 </head>
-<body style="background:var(--color-mantis);">
+<body>
 
   <!-- Header -->
   <header id="site-header" role="banner">

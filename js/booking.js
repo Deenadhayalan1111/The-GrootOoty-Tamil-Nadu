@@ -262,9 +262,9 @@ function renderRoomOptions() {
           <div class="room-option-name">${r.name}</div>
           <div class="room-option-price">₹${r.price.toLocaleString()} <span class="room-option-per-night">/ night</span></div>
         </div>
-        <div style="margin-bottom:6px;">
-          <span style="font-size:0.7rem; font-weight:700; text-transform:uppercase; color:${isAvail ? '#25D366' : '#FF5252'}; background:${isAvail ? 'rgba(37,211,102,0.14)' : 'rgba(255,82,82,0.14)'}; padding:2px 8px; border-radius:4px;">
-            ${isAvail ? 'Available' : 'Sold Out / Unavailable'}
+        <div>
+          <span class="room-avail-badge ${isAvail ? 'available' : 'unavailable'}">
+            ● ${isAvail ? 'Available' : 'Sold Out / Unavailable'}
           </span>
         </div>
         <div class="room-option-desc">${r.shortDescription || r.description}</div>

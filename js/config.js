@@ -49,8 +49,8 @@ function getRoomsData() {
       tagline: 'Cozy & comfortable double bedroom',
       shortDescription: 'Warm, well-appointed room perfect for couples or solo travelers seeking a peaceful stay in the Nilgiris.',
       longDescription: 'Wake up to the crisp Nilgiri air in our Standard room. A cozy, thoughtfully furnished double bedroom designed for calm comfort with quality bedding, warm blankets, hot water, and a charming view of the surrounding mountain greenery.',
-      image: 'assets/images/1000032839_professional_4k.webp',
-      interiorImage: 'assets/images/1000032839_professional_4k.webp',
+      image: 'assets/images/1000032837_professional_4k.webp',
+      interiorImage: 'assets/images/1000032837_professional_4k.webp',
       features: ['Double Bed', 'Hot Water 24/7', 'High-Speed Wi-Fi', 'Garden View'],
       amenities: [
         { label: 'Comfortable Double Bed' },
@@ -68,8 +68,8 @@ function getRoomsData() {
       tagline: 'Signature architectural timber cabin',
       shortDescription: 'Distinctive triangular architectural cabin with exposed timber beams, high ceilings, and forest ambiance.',
       longDescription: 'The A-frame is the signature stay of The Groot Ooty. Its distinctive triangular architecture, soaring ceilings, exposed natural wooden beams, and forest-framed windows create an unforgettable Nilgiri mountain experience.',
-      image: 'assets/images/1000032836_professional_4k.webp',
-      interiorImage: 'assets/images/1000032836_professional_4k.webp',
+      image: 'assets/images/1000032838_professional_4k.webp',
+      interiorImage: 'assets/images/1000032838_professional_4k.webp',
       features: ['Signature Cabin', 'Forest Views', 'High Ceilings', 'Hot Water 24/7'],
       amenities: [
         { label: 'Signature A-frame Timber Architecture' },
@@ -87,8 +87,8 @@ function getRoomsData() {
       tagline: 'Spacious premium comfort',
       shortDescription: 'Our most expansive accommodation with elevated furnishings, plush king bed, and private lounge area.',
       longDescription: 'Indulge in The Groot\'s premium retreat. The Luxurious suit features generous living space, refined teak furnishings, plush king bedding, and an ambiance balancing authentic mountain tranquility with elevated comfort.',
-      image: 'assets/images/1000032838_professional_4k.webp',
-      interiorImage: 'assets/images/1000032838_professional_4k.webp',
+      image: 'assets/images/1000032836_professional_4k.webp',
+      interiorImage: 'assets/images/1000032836_professional_4k.webp',
       features: ['King Bed', 'Spacious Suite', 'Lounge Seating', 'Hill Panoramas'],
       amenities: [
         { label: 'Expansive Suite Layout' },
@@ -106,8 +106,8 @@ function getRoomsData() {
       tagline: 'Sleep surrounded by the forest',
       shortDescription: 'Panoramic glass walls immersing you directly in the lush green canopy of the Nilgiri hills.',
       longDescription: 'The Glass house provides a one-of-a-kind immersion in Ooty nature. Floor-to-ceiling glass panels replace traditional walls, surrounding you with the living forest while keeping you cozy and warm inside.',
-      image: 'assets/images/1000032837_professional_4k.webp',
-      interiorImage: 'assets/images/1000032837_professional_4k.webp',
+      image: 'assets/images/1000032839_professional_4k.webp',
+      interiorImage: 'assets/images/1000032839_professional_4k.webp',
       features: ['Glass Wall Panorama', 'Forest Immersion', 'Hot Water 24/7', 'Nature Views'],
       amenities: [
         { label: 'Panoramic Glass Wall Design' },

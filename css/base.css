@@ -15,11 +15,12 @@ html {
   scroll-padding-top: calc(var(--nav-height) + 16px);
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-mantis);
+  background-color: var(--bg-page);
   color: var(--text-primary);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -33,14 +34,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-obsidian);
+  background: #FFFFFF;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-mantis);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #89D97B;
+  background: #5ebd4e;
 }
 
 /* Focus outline */
@@ -128,18 +129,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-obsidian);
-  background: rgba(17, 27, 18, 0.08);
+  color: #111111;
+  background: rgba(116, 195, 101, 0.16);
   padding: 6px 14px;
   border-radius: var(--radius-full);
   margin-bottom: var(--space-3);
-  border: 1px solid rgba(17, 27, 18, 0.15);
+  border: 1px solid rgba(116, 195, 101, 0.35);
 }
 
 .section-overline.on-dark {
-  color: var(--color-cream);
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .section-title {
@@ -147,12 +148,12 @@ h1, h2, h3, h4, h5, h6 {
   font-size: clamp(2rem, 4.5vw, 3.25rem);
   line-height: 1.15;
   font-weight: 600;
-  color: var(--color-obsidian);
+  color: #111111;
   margin-bottom: var(--space-4);
 }
 
 .section-title.on-dark {
-  color: var(--color-cream);
+  color: #FFFFFF;
 }
 
 .section-subtitle {

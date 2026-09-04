@@ -10,23 +10,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/variables.css?v=3.1" />
+  <link rel="stylesheet" href="css/base.css?v=3.1" />
+  <link rel="stylesheet" href="css/animations.css?v=3.1" />
+  <link rel="stylesheet" href="css/components.css?v=3.1" />
+  <link rel="stylesheet" href="css/header.css?v=3.1" />
+  <link rel="stylesheet" href="css/sections.css?v=3.1" />
+  <link rel="stylesheet" href="css/footer.css?v=3.1" />
 
   <style>
     .room-detail-hero {
       position: relative;
       padding-top: calc(var(--nav-height) + 2rem);
       padding-bottom: 2.5rem;
-      background: var(--color-mantis);
+      background: #FFFFFF;
     }
     .room-hero-card {
-      background: var(--color-obsidian);
+      background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-2xl);
       overflow: hidden;
@@ -40,7 +40,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0D160E;
+      background: #000000;
     }
     .room-hero-img-box img {
       width: 100%;
@@ -51,14 +51,14 @@
     }
     .room-hero-info {
       padding: clamp(1.5rem, 3.5vw, 2.5rem);
-      background: var(--color-obsidian);
-      color: var(--color-cream);
+      background: var(--card-bg);
+      color: #FFFFFF;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       flex-wrap: wrap;
       gap: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.20);
     }
     .room-detail-layout {
       display: grid;
@@ -77,24 +77,24 @@
       align-items: center;
       gap: 10px;
       padding: 1rem;
-      background: var(--color-obsidian);
+      background: rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-md);
-      color: var(--color-cream);
+      color: #FFFFFF;
       font-size: var(--text-sm);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
     .room-amenity-item svg {
-      color: #89D97B;
+      color: #FFFFFF;
       flex-shrink: 0;
     }
     .room-booking-panel {
       position: sticky;
       top: calc(var(--nav-height) + 1.5rem);
-      background: var(--color-obsidian);
+      background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-xl);
       padding: clamp(1.5rem, 3vw, 2.25rem);
-      color: var(--color-cream);
+      color: #FFFFFF;
       box-shadow: var(--shadow-card);
     }
     .room-gallery-strip {
@@ -177,7 +177,7 @@
     <div class="container">
       <div class="room-hero-card" data-reveal="scale">
         <div class="room-hero-img-box">
-          <img id="room-hero-img" src="assets/images/1000032836_professional_4k.webp" alt="Room Photo" />
+          <img id="room-hero-img" src="assets/images/1000032838_professional_4k.webp" alt="Room Photo" />
         </div>
         <div class="room-hero-info">
           <div>
@@ -204,7 +204,7 @@
   </section>
 
   <!-- Room Content & Booking Panel -->
-  <section class="section-pad-sm" style="background:var(--color-mantis);">
+  <section class="section-pad-sm">
     <div class="container room-detail-layout">
       <!-- Left: Room Information -->
       <div>
@@ -315,7 +315,7 @@
     </div>
   </footer>
 
-  <script src="js/store.js"></script>
+  <script src="js/store.js?v=5.0"></script>
   <script src="js/config.js"></script>
   <script src="js/whatsapp.js"></script>
   <script src="js/main.js"></script>

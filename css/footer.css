@@ -1,14 +1,21 @@
 /* =========================================================
-   THE GROOT OOTY — Footer
+   THE GROOT OOTY — Footer (Mantis Green Card on White Page)
    ========================================================= */
 
 #site-footer {
-  background-color: var(--color-obsidian);
-  color: var(--color-cream);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: clamp(3.5rem, 6vw, 5rem) 0 2rem;
+  background-color: #FFFFFF;
+  padding: 1.5rem 0 3rem;
   position: relative;
   z-index: 10;
+}
+
+#site-footer .container {
+  background-color: var(--color-mantis);
+  border-radius: var(--radius-2xl);
+  padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem) 2rem;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .footer-grid {
@@ -23,9 +30,17 @@
   flex-direction: column;
 }
 
+.footer-brand .site-logo .logo-name {
+  color: #FFFFFF;
+}
+
+.footer-brand .site-logo .logo-location {
+  color: rgba(255, 255, 255, 0.90);
+}
+
 .footer-brand-desc {
   font-size: var(--text-sm);
-  color: rgba(250, 247, 242, 0.72);
+  color: rgba(255, 255, 255, 0.92);
   line-height: 1.65;
   margin-top: 1rem;
   max-width: 320px;
@@ -37,7 +52,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 1.25rem;
 }
 
@@ -49,14 +64,14 @@
 
 .footer-link {
   font-size: var(--text-sm);
-  color: rgba(250, 247, 242, 0.75);
+  color: rgba(255, 255, 255, 0.90);
   text-decoration: none;
   transition: color var(--dur-fast) ease, transform var(--dur-fast) ease;
   display: inline-block;
 }
 
 .footer-link:hover {
-  color: var(--color-mantis);
+  color: #FFFFFF;
   transform: translateX(3px);
 }
 
@@ -65,19 +80,19 @@
   align-items: flex-start;
   gap: 10px;
   font-size: var(--text-sm);
-  color: rgba(250, 247, 242, 0.78);
+  color: rgba(255, 255, 255, 0.90);
   margin-bottom: 0.85rem;
   text-decoration: none;
 }
 
 .footer-contact-item svg {
-  color: var(--color-mantis);
+  color: #FFFFFF;
   flex-shrink: 0;
   margin-top: 3px;
 }
 
 .footer-contact-item:hover {
-  color: var(--color-cream);
+  color: #FFFFFF;
 }
 
 .footer-bottom {
@@ -85,9 +100,9 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(255, 255, 255, 0.20);
   font-size: var(--text-xs);
-  color: rgba(250, 247, 242, 0.60);
+  color: rgba(255, 255, 255, 0.88);
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -98,12 +113,12 @@
 }
 
 .footer-bottom-link {
-  color: rgba(250, 247, 242, 0.60);
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
 }
 
 .footer-bottom-link:hover {
-  color: var(--color-mantis);
+  color: #FFFFFF;
 }
 
 @media (max-width: 900px) {

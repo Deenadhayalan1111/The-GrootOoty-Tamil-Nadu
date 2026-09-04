@@ -2,12 +2,13 @@
    THE GROOT OOTY — Page Sections (Homepage & Core Layouts)
    ========================================================= */
 
+
+
 /* ---------------------------------------------------------
    INTRO / WELCOME SECTION
    --------------------------------------------------------- */
 
 .intro-section {
-  background-color: var(--color-mantis);
   position: relative;
   overflow: hidden;
 }
@@ -115,9 +116,9 @@
    --------------------------------------------------------- */
 
 .highlights-section {
-  background: var(--color-mantis);
-  border-top: 1px solid rgba(17, 27, 18, 0.18);
-  border-bottom: 1px solid rgba(17, 27, 18, 0.18);
+  background: #FFFFFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding: 2.25rem 0;
 }
 
@@ -143,8 +144,8 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--color-obsidian);
-  color: #89D97B;
+  background: var(--color-mantis);
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,7 +161,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--color-obsidian);
+  color: var(--text-primary);
 }
 
 /* ---------------------------------------------------------
@@ -168,7 +169,7 @@
    --------------------------------------------------------- */
 
 .rooms-section {
-  background: var(--color-mantis);
+  /* Inherit global white/gold background */
 }
 
 .rooms-grid {
@@ -194,7 +195,7 @@
   align-items: center;
   padding: clamp(4rem, 8vw, 6rem) 0;
   overflow: hidden;
-  background: var(--color-obsidian);
+  background: #FFFFFF;
 }
 
 .spotlight-bg {
@@ -249,7 +250,7 @@
    --------------------------------------------------------- */
 
 .food-section {
-  background: var(--color-mantis);
+  /* Inherit global white/gold background */
 }
 
 .food-layout {
@@ -293,7 +294,7 @@
    --------------------------------------------------------- */
 
 .day-section {
-  background: var(--color-mantis);
+  background: #FFFFFF;
 }
 
 .day-timeline {
@@ -338,14 +339,14 @@
   left: 10px;
   background: rgba(17, 27, 18, 0.85);
   backdrop-filter: blur(8px);
-  color: #89D97B;
+  color: #FFFFFF;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 .day-body {
@@ -359,11 +360,11 @@
   font-family: var(--font-display);
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 0.4rem;
 }
 
-.day-desc {
+.day-desc, .day-text {
   font-size: var(--text-xs);
   color: var(--card-text-muted);
   line-height: 1.55;
@@ -374,7 +375,7 @@
    --------------------------------------------------------- */
 
 .ooty-section {
-  background: var(--color-mantis);
+  background: #FFFFFF;
 }
 
 .ooty-grid {
@@ -412,7 +413,7 @@
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 0.4rem;
 }
 
@@ -427,17 +428,17 @@
    --------------------------------------------------------- */
 
 .cta-section {
-  background: var(--color-mantis);
+  background: #FFFFFF;
   padding: 4rem 0 6rem;
 }
 
 .cta-box {
-  background: var(--color-obsidian);
+  background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-2xl);
   padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
   text-align: center;
-  color: var(--color-cream);
+  color: #FFFFFF;
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
@@ -448,7 +449,7 @@
   font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 700;
   margin-bottom: var(--space-4);
-  color: var(--color-cream);
+  color: #FFFFFF;
 }
 
 .cta-subtitle {
@@ -472,7 +473,7 @@
    --------------------------------------------------------- */
 
 .home-gallery-section {
-  background-color: var(--color-mantis);
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
   padding: clamp(3.5rem, 6vw, 5.5rem) 0;
@@ -490,11 +491,11 @@
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background: var(--color-obsidian);
+  background: var(--card-bg);
   box-shadow: var(--shadow-card);
   text-decoration: none;
   display: block;
-  border: 1px solid rgba(17, 27, 18, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.20);
   transition: transform 0.4s var(--ease-snappy), box-shadow 0.4s var(--ease-snappy);
 }
 
@@ -641,12 +642,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-obsidian);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-xl);
   padding: 1.25rem 2rem;
   box-shadow: var(--shadow-card);
-  color: var(--color-cream);
+  color: #FFFFFF;
   flex-wrap: wrap;
   gap: 1.25rem;
   margin-top: 1.5rem;
@@ -662,8 +663,8 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(116, 195, 101, 0.18);
-  color: #89D97B;
+  background: rgba(255, 255, 255, 0.20);
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -679,13 +680,13 @@
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--color-cream);
+  color: #FFFFFF;
   margin-bottom: 2px;
 }
 
 .home-gallery-cta-info p {
   font-size: var(--text-xs);
-  color: var(--card-text-muted);
+  color: rgba(255, 255, 255, 0.92);
   margin: 0;
 }
 
@@ -721,6 +722,13 @@
 }
 
 @media (max-width: 768px) {
+  .spotlight-content.right-align {
+    margin-left: 0;
+    text-align: left;
+  }
+  .spotlight-content.right-align .flex {
+    justify-content: flex-start !important;
+  }
   .intro-grid,
   .food-layout {
     grid-template-columns: 1fr;

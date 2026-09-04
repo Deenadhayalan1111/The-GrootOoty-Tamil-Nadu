@@ -4,7 +4,7 @@
 
 .gallery-page {
   padding-top: var(--nav-height);
-  background-color: var(--color-mantis);
+  background-color: #FFFFFF;
   min-height: 100vh;
 }
 
@@ -35,22 +35,22 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: var(--radius-full);
-  background: rgba(17, 27, 18, 0.08);
-  color: var(--color-obsidian);
-  border: 1px solid rgba(17, 27, 18, 0.18);
+  background: rgba(116, 195, 101, 0.14);
+  color: #111111;
+  border: 1px solid rgba(116, 195, 101, 0.30);
   transition: all var(--dur-fast) ease;
   cursor: pointer;
 }
 
 .gallery-filter-btn:hover {
-  background: rgba(17, 27, 18, 0.16);
+  background: rgba(116, 195, 101, 0.25);
   transform: translateY(-2px);
 }
 
 .gallery-filter-btn.active {
-  background: var(--color-obsidian);
-  color: var(--color-cream);
-  border-color: var(--color-obsidian);
+  background: var(--color-mantis);
+  color: #FFFFFF;
+  border-color: var(--color-mantis);
   box-shadow: var(--shadow-sm);
 }
 
@@ -65,7 +65,7 @@
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--color-obsidian);
+  background: var(--card-bg);
   box-shadow: var(--shadow-card);
   cursor: pointer;
   aspect-ratio: 4/3;

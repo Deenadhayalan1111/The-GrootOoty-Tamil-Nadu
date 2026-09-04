@@ -27,8 +27,8 @@
       tagline: 'Cozy & comfortable double bedroom',
       shortDescription: 'Warm, well-appointed room perfect for couples or solo travelers seeking a peaceful stay in the Nilgiris.',
       longDescription: 'Wake up to the crisp Nilgiri air in our Standard room. A cozy, thoughtfully furnished double bedroom designed for calm comfort with quality bedding, warm blankets, hot water, and a charming view of the surrounding mountain greenery.',
-      image: 'assets/images/1000032839_professional_4k.webp',
-      interiorImage: 'assets/images/1000032839_professional_4k.webp',
+      image: 'assets/images/1000032837_professional_4k.webp',
+      interiorImage: 'assets/images/1000032837_professional_4k.webp',
       features: ['Double Bed', 'Hot Water 24/7', 'High-Speed Wi-Fi', 'Garden View'],
       amenities: [
         { label: 'Comfortable Double Bed' },
@@ -46,8 +46,8 @@
       tagline: 'Signature architectural timber cabin',
       shortDescription: 'Distinctive triangular architectural cabin with exposed timber beams, high ceilings, and forest ambiance.',
       longDescription: 'The A-frame is the signature stay of The Groot Ooty. Its distinctive triangular architecture, soaring ceilings, exposed natural wooden beams, and forest-framed windows create an unforgettable Nilgiri mountain experience.',
-      image: 'assets/images/1000032836_professional_4k.webp',
-      interiorImage: 'assets/images/1000032836_professional_4k.webp',
+      image: 'assets/images/1000032838_professional_4k.webp',
+      interiorImage: 'assets/images/1000032838_professional_4k.webp',
       features: ['Signature Cabin', 'Forest Views', 'High Ceilings', 'Hot Water 24/7'],
       amenities: [
         { label: 'Signature A-frame Timber Architecture' },
@@ -65,8 +65,8 @@
       tagline: 'Spacious premium comfort',
       shortDescription: 'Our most expansive accommodation with elevated furnishings, plush king bed, and private lounge area.',
       longDescription: 'Indulge in The Groot\'s premium retreat. The Luxurious suit features generous living space, refined teak furnishings, plush king bedding, and an ambiance balancing authentic mountain tranquility with elevated comfort.',
-      image: 'assets/images/1000032838_professional_4k.webp',
-      interiorImage: 'assets/images/1000032838_professional_4k.webp',
+      image: 'assets/images/1000032836_professional_4k.webp',
+      interiorImage: 'assets/images/1000032836_professional_4k.webp',
       features: ['King Bed', 'Spacious Suite', 'Lounge Seating', 'Hill Panoramas'],
       amenities: [
         { label: 'Expansive Suite Layout' },
@@ -84,8 +84,8 @@
       tagline: 'Sleep surrounded by the forest',
       shortDescription: 'Panoramic glass walls immersing you directly in the lush green canopy of the Nilgiri hills.',
       longDescription: 'The Glass house provides a one-of-a-kind immersion in Ooty nature. Floor-to-ceiling glass panels replace traditional walls, surrounding you with the living forest while keeping you cozy and warm inside.',
-      image: 'assets/images/1000032837_professional_4k.webp',
-      interiorImage: 'assets/images/1000032837_professional_4k.webp',
+      image: 'assets/images/1000032839_professional_4k.webp',
+      interiorImage: 'assets/images/1000032839_professional_4k.webp',
       features: ['Glass Wall Panorama', 'Forest Immersion', 'Hot Water 24/7', 'Nature Views'],
       amenities: [
         { label: 'Panoramic Glass Wall Design' },
@@ -101,10 +101,10 @@
   const DEFAULT_GALLERY = [
     { id: 'gal-1', url: 'assets/images/1000032834_professional_4k.webp', title: 'The Groot Property Grounds & Garden', category: 'property', assignedRoom: 'property', enabled: true, order: 1 },
     { id: 'gal-2', url: 'assets/images/1000032835_professional_4k.webp', title: 'Nilgiri Morning Mist & Mountain Vista', category: 'nature', assignedRoom: 'property', enabled: true, order: 2 },
-    { id: 'gal-3', url: 'assets/images/1000032836_professional_4k.webp', title: 'A-frame Cabin Exterior & Architecture', category: 'rooms', assignedRoom: 'aframe', enabled: true, order: 3 },
-    { id: 'gal-4', url: 'assets/images/1000032837_professional_4k.webp', title: 'Glass house Forest View Panorama', category: 'rooms', assignedRoom: 'glasshouse', enabled: true, order: 4 },
-    { id: 'gal-5', url: 'assets/images/1000032838_professional_4k.webp', title: 'Luxurious suit Bedroom & Living Space', category: 'rooms', assignedRoom: 'suite', enabled: true, order: 5 },
-    { id: 'gal-6', url: 'assets/images/1000032839_professional_4k.webp', title: 'Standard Room Warm Interior', category: 'rooms', assignedRoom: 'standard', enabled: true, order: 6 },
+    { id: 'gal-3', url: 'assets/images/1000032838_professional_4k.webp', title: 'A-frame Cabin Exterior & Architecture', category: 'rooms', assignedRoom: 'aframe', enabled: true, order: 3 },
+    { id: 'gal-4', url: 'assets/images/1000032839_professional_4k.webp', title: 'Glass house Forest View Panorama', category: 'rooms', assignedRoom: 'glasshouse', enabled: true, order: 4 },
+    { id: 'gal-5', url: 'assets/images/1000032836_professional_4k.webp', title: 'Luxurious suit Bedroom & Living Space', category: 'rooms', assignedRoom: 'suite', enabled: true, order: 5 },
+    { id: 'gal-6', url: 'assets/images/1000032837_professional_4k.webp', title: 'Standard Room Warm Interior', category: 'rooms', assignedRoom: 'standard', enabled: true, order: 6 },
     { id: 'gal-7', url: 'assets/images/1000032840_professional_4k.webp', title: 'Tea Plantation & Nature Trails', category: 'nature', assignedRoom: 'property', enabled: true, order: 7 },
     { id: 'gal-8', url: 'assets/images/1000032841_professional_4k.webp', title: 'Evening Campfire Under Starlit Sky', category: 'campfire', assignedRoom: 'property', enabled: true, order: 8 },
     { id: 'gal-9', url: 'assets/images/IMG-20260821-WA0034_4k.webp', title: 'Main Stay Entrance & Courtyard', category: 'property', assignedRoom: 'property', enabled: true, order: 9 },
@@ -157,9 +157,16 @@
       }
     }
 
-    // ROOMS API
+    // ROOMS API — Price is the ONLY mutable field; all other room metadata is immutable
     getRooms() {
-      return this._read(STORAGE_KEY_ROOMS, DEFAULT_ROOMS);
+      const stored = this._read(STORAGE_KEY_ROOMS, []);
+      return DEFAULT_ROOMS.map(defaultRoom => {
+        const matching = Array.isArray(stored) ? stored.find(s => s.id === defaultRoom.id) : null;
+        if (matching && typeof matching.price === 'number' && !isNaN(matching.price) && matching.price >= 0) {
+          return { ...defaultRoom, price: matching.price };
+        }
+        return { ...defaultRoom };
+      });
     }
 
     getRoom(id) {
@@ -168,65 +175,35 @@
     }
 
     updateRoom(id, updates) {
-      const rooms = this.getRooms().map(r => {
-        if (r.id === id) {
-          return { ...r, ...updates };
-        }
-        return r;
-      });
-      this._write(STORAGE_KEY_ROOMS, rooms);
+      if (updates && updates.price !== undefined) {
+        return this.updateRoomPrice(id, updates.price);
+      }
       return this.getRoom(id);
     }
 
     updateRoomPrice(id, newPrice) {
       const price = parseInt(newPrice, 10);
       if (isNaN(price) || price < 0) return false;
-      return this.updateRoom(id, { price });
+      
+      const currentRooms = this.getRooms();
+      const updatedRooms = currentRooms.map(r => {
+        if (r.id === id) {
+          return { id: r.id, price };
+        }
+        return { id: r.id, price: r.price };
+      });
+
+      this._write(STORAGE_KEY_ROOMS, updatedRooms);
+      return this.getRoom(id);
     }
 
-    toggleRoomStatus(id) {
-      const room = this.getRoom(id);
-      if (!room) return false;
-      const nextStatus = room.status === 'available' ? 'unavailable' : 'available';
-      return this.updateRoom(id, { status: nextStatus });
-    }
-
-    setRoomStatus(id, status) {
-      if (status !== 'available' && status !== 'unavailable') return false;
-      return this.updateRoom(id, { status });
-    }
-
-    // GALLERY API
+    // GALLERY API — Read-only immutable gallery catalogue
     getGallery(includeDisabled = false) {
-      const items = this._read(STORAGE_KEY_GALLERY, DEFAULT_GALLERY);
-      const filtered = includeDisabled ? items : items.filter(img => img.enabled !== false);
-      return filtered.sort((a, b) => (a.order || 0) - (b.order || 0));
+      return [...DEFAULT_GALLERY].sort((a, b) => (a.order || 0) - (b.order || 0));
     }
 
     getGalleryItem(id) {
-      const gallery = this.getGallery(true);
-      return gallery.find(item => item.id === id);
-    }
-
-    updateGalleryItem(id, updates) {
-      const gallery = this.getGallery(true).map(item => {
-        if (item.id === id) {
-          return { ...item, ...updates };
-        }
-        return item;
-      });
-      this._write(STORAGE_KEY_GALLERY, gallery);
-      return this.getGalleryItem(id);
-    }
-
-    assignPhotoToRoom(photoId, roomId) {
-      return this.updateGalleryItem(photoId, { assignedRoom: roomId });
-    }
-
-    toggleGalleryVisibility(photoId) {
-      const item = this.getGalleryItem(photoId);
-      if (!item) return false;
-      return this.updateGalleryItem(photoId, { enabled: !item.enabled });
+      return DEFAULT_GALLERY.find(item => item.id === id);
     }
 
     getRoomPhotos(roomId) {
@@ -243,16 +220,9 @@
       return photos;
     }
 
-    // SETTINGS API
+    // SETTINGS API — Read-only immutable property settings
     getSettings() {
-      return this._read(STORAGE_KEY_SETTINGS, DEFAULT_SETTINGS);
-    }
-
-    updateSettings(updates) {
-      const current = this.getSettings();
-      const updated = { ...current, ...updates };
-      this._write(STORAGE_KEY_SETTINGS, updated);
-      return updated;
+      return { ...DEFAULT_SETTINGS };
     }
 
     // AUTH API (Admin dashboard session)

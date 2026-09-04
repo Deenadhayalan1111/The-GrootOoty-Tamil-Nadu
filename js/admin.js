@@ -1,5 +1,6 @@
 /* =========================================================
    THE GROOT OOTY — Admin Panel Controller
+   Restricted: Room & Property Price Editing Only
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -96,26 +97,14 @@ function loadDashboardData() {
   }
 }
 
-/* --- TAB 1: OVERVIEW DASHBOARD --- */
+/* --- TAB 1: OVERVIEW DASHBOARD (PRICE EDITING TABLE) --- */
 function renderDashboardOverview() {
   if (!window.GrootStore) return;
 
   const rooms = window.GrootStore.getRooms();
-  const gallery = window.GrootStore.getGallery(true);
-  const availCount = rooms.filter(r => r.status !== 'unavailable').length;
-  const unavailCount = rooms.length - availCount;
-
   const totalEl = document.getElementById('stat-total-rooms');
-  const availEl = document.getElementById('stat-avail-rooms');
-  const unavailEl = document.getElementById('stat-unavail-rooms');
-  const galEl = document.getElementById('stat-gallery-count');
-
   if (totalEl) totalEl.textContent = rooms.length;
-  if (availEl) availEl.textContent = availCount;
-  if (unavailEl) unavailEl.textContent = unavailCount;
-  if (galEl) galEl.textContent = gallery.filter(g => g.enabled !== false).length;
 
-  // Render Table in Dashboard
   const tableWrap = document.getElementById('dashboard-rooms-table-wrap');
   if (!tableWrap) return;
 
@@ -124,17 +113,16 @@ function renderDashboardOverview() {
       <table style="width:100%; border-collapse:collapse; text-align:left;">
         <thead>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.12); color:var(--admin-text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;">
-            <th style="padding:12px 14px;">Room</th>
-            <th style="padding:12px 14px;">Price / Night</th>
-            <th style="padding:12px 14px;">Status</th>
-            <th style="padding:12px 14px; text-align:right;">Quick Actions</th>
+            <th style="padding:12px 14px;">Accommodation (Read-Only)</th>
+            <th style="padding:12px 14px;">Price / Night (Editable)</th>
+            <th style="padding:12px 14px;">Status (Read-Only)</th>
+            <th style="padding:12px 14px; text-align:right;">Action</th>
           </tr>
         </thead>
         <tbody>
   `;
 
   rooms.forEach(r => {
-    const isAvail = r.status !== 'unavailable';
     html += `
       <tr style="border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.9rem;">
         <td style="padding:14px; display:flex; align-items:center; gap:12px;">
@@ -151,19 +139,21 @@ function renderDashboardOverview() {
               type="number"
               id="dash-price-${r.id}"
               value="${r.price}"
-              style="width:90px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.2); border-radius:6px; color:#FFFFFF; padding:6px 8px; font-weight:700;"
+              step="100"
+              min="0"
+              style="width:95px; background:rgba(0,0,0,0.4); border:1px solid rgba(116,195,101,0.4); border-radius:6px; color:#FFFFFF; padding:6px 8px; font-weight:700; font-size:0.95rem;"
             />
-            <button onclick="saveQuickPrice('${r.id}')" class="admin-btn admin-btn-primary" style="padding:5px 10px; font-size:0.75rem;">Save</button>
+            <button onclick="saveQuickPrice('${r.id}')" class="admin-btn admin-btn-primary" style="padding:5px 12px; font-size:0.75rem;">Save</button>
           </div>
         </td>
         <td style="padding:14px;">
-          <button onclick="toggleRoomStatus('${r.id}')" class="status-pill ${isAvail ? 'available' : 'unavailable'}" style="cursor:pointer; border:none;">
-            ${isAvail ? '● Available' : '● Sold Out'}
-          </button>
+          <span class="status-pill available" style="border:none;">
+            ● Available
+          </span>
         </td>
         <td style="padding:14px; text-align:right;">
           <button onclick="openRoomModal('${r.id}')" class="admin-btn admin-btn-outline" style="padding:6px 12px; font-size:0.8rem;">
-            Edit Details
+            Edit Price &rarr;
           </button>
         </td>
       </tr>
@@ -174,7 +164,7 @@ function renderDashboardOverview() {
   tableWrap.innerHTML = html;
 }
 
-/* --- TAB 2: ROOMS MANAGEMENT --- */
+/* --- TAB 2: ROOMS & PRICING MANAGEMENT --- */
 function renderRoomsManagement() {
   if (!window.GrootStore) return;
 
@@ -185,7 +175,6 @@ function renderRoomsManagement() {
   container.innerHTML = '';
 
   rooms.forEach(r => {
-    const isAvail = r.status !== 'unavailable';
     const card = document.createElement('div');
     card.className = 'admin-room-card';
 
@@ -194,27 +183,27 @@ function renderRoomsManagement() {
         <img src="${r.image}" alt="${r.name}" />
       </div>
       <div class="admin-room-body">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; flex-wrap:wrap; gap:6px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem; flex-wrap:gap:6px;">
           <h3 class="admin-room-name">${r.name}</h3>
-          <button onclick="toggleRoomStatus('${r.id}')" class="status-pill ${isAvail ? 'available' : 'unavailable'}" style="cursor:pointer; border:none;">
-            ${isAvail ? '● Available' : '● Sold Out'}
-          </button>
+          <span class="status-pill available">
+            ● Available
+          </span>
         </div>
         <p class="admin-room-desc">${r.shortDescription || r.description}</p>
         
         <div class="admin-price-row">
           <span style="font-size:0.85rem; color:var(--admin-text-muted);">Price / Night:</span>
           <span style="font-weight:700; color:var(--admin-accent-glow);">₹</span>
-          <input type="number" id="room-card-price-${r.id}" class="admin-price-input" value="${r.price}" />
+          <input type="number" id="room-card-price-${r.id}" class="admin-price-input" value="${r.price}" step="100" min="0" />
           <button onclick="saveCardPrice('${r.id}')" class="admin-btn admin-btn-primary" style="padding:6px 12px; font-size:0.8rem;">Save</button>
         </div>
 
         <div class="admin-room-actions" style="margin-top:auto; padding-top:0.75rem; border-top:1px solid rgba(255,255,255,0.08);">
           <button onclick="openRoomModal('${r.id}')" class="admin-btn admin-btn-outline" style="flex:1;">
-            Edit Full Info
+            Edit Price
           </button>
-          <a href="room-detail.html?room=${r.id}" target="_blank" class="admin-btn admin-btn-outline" style="font-size:0.8rem;" title="View public page">
-            ↗ Preview
+          <a href="room-detail.html?room=${r.id}" target="_blank" class="admin-btn admin-btn-outline" style="font-size:0.8rem;" title="View public live room page">
+            ↗ Preview Live
           </a>
         </div>
       </div>
@@ -245,17 +234,10 @@ function saveCardPrice(roomId) {
     return;
   }
   window.GrootStore.updateRoomPrice(roomId, newPrice);
-  showToast(`Updated price to ₹${newPrice.toLocaleString()}`);
+  showToast(`Updated price for ${roomId.toUpperCase()} to ₹${newPrice.toLocaleString()}`);
 }
 
-function toggleRoomStatus(roomId) {
-  const updated = window.GrootStore.toggleRoomStatus(roomId);
-  if (updated) {
-    showToast(`${updated.name} is now marked as ${updated.status === 'available' ? 'Available' : 'Unavailable'}.`);
-  }
-}
-
-/* --- ROOM EDIT MODAL --- */
+/* --- ROOM PRICE EDIT MODAL --- */
 function openRoomModal(roomId) {
   const room = window.GrootStore.getRoom(roomId);
   if (!room) return;
@@ -263,10 +245,6 @@ function openRoomModal(roomId) {
   document.getElementById('modal-room-id').value = room.id;
   document.getElementById('modal-room-name').value = room.name;
   document.getElementById('modal-room-price').value = room.price;
-  document.getElementById('modal-room-status').value = room.status;
-  document.getElementById('modal-room-tagline').value = room.tagline || '';
-  document.getElementById('modal-room-desc').value = room.shortDescription || room.description || '';
-  document.getElementById('modal-room-longdesc').value = room.longDescription || '';
 
   document.getElementById('admin-room-modal').classList.add('active');
 }
@@ -279,24 +257,18 @@ function handleSaveRoomModal(e) {
   e.preventDefault();
   const id = document.getElementById('modal-room-id').value;
   const price = parseInt(document.getElementById('modal-room-price').value, 10);
-  const status = document.getElementById('modal-room-status').value;
-  const tagline = document.getElementById('modal-room-tagline').value.trim();
-  const shortDescription = document.getElementById('modal-room-desc').value.trim();
-  const longDescription = document.getElementById('modal-room-longdesc').value.trim();
 
-  window.GrootStore.updateRoom(id, {
-    price,
-    status,
-    tagline,
-    shortDescription,
-    longDescription
-  });
+  if (isNaN(price) || price < 0) {
+    alert('Please enter a valid price amount.');
+    return;
+  }
 
+  window.GrootStore.updateRoomPrice(id, price);
   closeRoomModal();
-  showToast('Room information saved successfully.');
+  showToast(`Room price updated to ₹${price.toLocaleString()} successfully.`);
 }
 
-/* --- TAB 3: GALLERY MANAGEMENT --- */
+/* --- TAB 3: GALLERY (READ-ONLY DISPLAY) --- */
 function renderGalleryManagement() {
   if (!window.GrootStore) return;
 
@@ -304,38 +276,23 @@ function renderGalleryManagement() {
   if (!container) return;
 
   const gallery = window.GrootStore.getGallery(true);
-  const rooms = window.GrootStore.getRooms();
   container.innerHTML = '';
 
   gallery.forEach(item => {
-    const isEnabled = item.enabled !== false;
     const card = document.createElement('div');
     card.className = 'admin-gallery-card';
-
-    let roomOptions = `<option value="property" ${item.assignedRoom === 'property' ? 'selected' : ''}>General Property / Nature</option>`;
-    rooms.forEach(r => {
-      roomOptions += `<option value="${r.id}" ${item.assignedRoom === r.id ? 'selected' : ''}>${r.name}</option>`;
-    });
 
     card.innerHTML = `
       <img src="${item.url}" alt="${item.title}" class="admin-gallery-thumb" />
       <div class="admin-gallery-info">
         <div class="admin-gallery-title" title="${item.title}">${item.title}</div>
-        
-        <div>
-          <label class="admin-label" style="font-size:0.7rem; margin-bottom:2px;">Assigned Accommodation</label>
-          <select onchange="handleGalleryRoomChange('${item.id}', this.value)" class="admin-select" style="font-size:0.825rem; padding:6px 8px;">
-            ${roomOptions}
-          </select>
+        <div style="font-size:0.75rem; color:var(--admin-text-muted);">
+          Assigned: <span style="color:var(--admin-accent-glow); font-weight:600;">${(item.assignedRoom || 'property').toUpperCase()}</span>
         </div>
-
         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:0.5rem; border-top:1px solid rgba(255,255,255,0.06);">
-          <span style="font-size:0.75rem; color:${isEnabled ? '#25D366' : '#FF5252'}; font-weight:700;">
-            ${isEnabled ? '● Visible' : '● Hidden'}
+          <span style="font-size:0.75rem; color:#25D366; font-weight:700;">
+            ● Locked (System Photo)
           </span>
-          <button onclick="toggleGalleryVisibility('${item.id}')" class="admin-btn admin-btn-outline" style="padding:4px 10px; font-size:0.75rem;">
-            ${isEnabled ? 'Hide' : 'Show'}
-          </button>
         </div>
       </div>
     `;
@@ -344,58 +301,24 @@ function renderGalleryManagement() {
   });
 }
 
-function handleGalleryRoomChange(photoId, roomId) {
-  window.GrootStore.assignPhotoToRoom(photoId, roomId);
-  showToast(`Photo assignment updated.`);
-}
-
-function toggleGalleryVisibility(photoId) {
-  window.GrootStore.toggleGalleryVisibility(photoId);
-  renderGalleryManagement();
-  renderDashboardOverview();
-  showToast(`Gallery visibility updated.`);
-}
-
-/* --- TAB 4: SETTINGS --- */
+/* --- TAB 4: SETTINGS (READ-ONLY DISPLAY) --- */
 function renderSettingsForm() {
   if (!window.GrootStore) return;
 
   const settings = window.GrootStore.getSettings();
-  document.getElementById('set-whatsapp').value = settings.whatsapp || '';
-  document.getElementById('set-phone1').value = settings.phone1 || '';
-  document.getElementById('set-phone2').value = settings.phone2 || '';
-  document.getElementById('set-checkin').value = settings.checkInTime || '';
-  document.getElementById('set-checkout').value = settings.checkOutTime || '';
-  document.getElementById('set-note').value = settings.bookingNote || '';
-}
+  const wEl = document.getElementById('set-whatsapp');
+  const p1El = document.getElementById('set-phone1');
+  const p2El = document.getElementById('set-phone2');
+  const ciEl = document.getElementById('set-checkin');
+  const coEl = document.getElementById('set-checkout');
+  const noteEl = document.getElementById('set-note');
 
-function handleSaveSettings(e) {
-  e.preventDefault();
-  const whatsapp = document.getElementById('set-whatsapp').value.trim();
-  const phone1 = document.getElementById('set-phone1').value.trim();
-  const phone2 = document.getElementById('set-phone2').value.trim();
-  const checkInTime = document.getElementById('set-checkin').value.trim();
-  const checkOutTime = document.getElementById('set-checkout').value.trim();
-  const bookingNote = document.getElementById('set-note').value.trim();
-
-  window.GrootStore.updateSettings({
-    whatsapp,
-    phone1,
-    phone2,
-    checkInTime,
-    checkOutTime,
-    bookingNote
-  });
-
-  showToast('Property settings saved successfully.');
-}
-
-function handleResetDefaults() {
-  if (confirm('Are you sure you want to reset all rooms, prices, gallery assignments, and settings back to initial defaults?')) {
-    window.GrootStore.resetToDefaults();
-    loadDashboardData();
-    showToast('Reset all data to default configuration.');
-  }
+  if (wEl) wEl.value = settings.whatsapp || '';
+  if (p1El) p1El.value = settings.phone1 || '';
+  if (p2El) p2El.value = settings.phone2 || '';
+  if (ciEl) ciEl.value = settings.checkInTime || '';
+  if (coEl) coEl.value = settings.checkOutTime || '';
+  if (noteEl) noteEl.value = settings.bookingNote || '';
 }
 
 /* ---------------------------------------------------------

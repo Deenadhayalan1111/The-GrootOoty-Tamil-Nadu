@@ -10,13 +10,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/variables.css?v=3.1" />
+  <link rel="stylesheet" href="css/base.css?v=3.1" />
+  <link rel="stylesheet" href="css/animations.css?v=3.1" />
+  <link rel="stylesheet" href="css/components.css?v=3.1" />
+  <link rel="stylesheet" href="css/header.css?v=3.1" />
+  <link rel="stylesheet" href="css/sections.css?v=3.1" />
+  <link rel="stylesheet" href="css/footer.css?v=3.1" />
   <style>
     .rooms-catalog-grid {
       display: grid;
@@ -26,11 +26,11 @@
     .room-price-tag {
       font-size: 1.15rem;
       font-weight: 700;
-      color: #89D97B;
+      color: #FFFFFF;
     }
     .room-price-sub {
       font-size: 0.75rem;
-      color: var(--card-text-muted);
+      color: rgba(255, 255, 255, 0.90);
       font-weight: 400;
     }
     .room-status-badge {
@@ -43,14 +43,14 @@
       display: inline-block;
     }
     .room-status-badge.available {
-      background: rgba(37, 211, 102, 0.18);
-      color: #25D366;
-      border: 1px solid rgba(37, 211, 102, 0.3);
+      background: rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.35);
     }
     .room-status-badge.unavailable {
-      background: rgba(255, 82, 82, 0.18);
-      color: #FF5252;
-      border: 1px solid rgba(255, 82, 82, 0.3);
+      background: rgba(255, 82, 82, 0.25);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 82, 82, 0.40);
     }
     @media (max-width: 800px) {
       .rooms-catalog-grid {
@@ -106,7 +106,7 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="section-pad-sm" style="padding-top: calc(var(--nav-height) + 3rem); background: var(--color-mantis);">
+  <section class="section-pad-sm" style="padding-top: calc(var(--nav-height) + 3rem);">
     <div class="container">
       <div class="section-header" data-reveal="fade-up">
         <span class="section-overline">Accommodations</span>
@@ -187,7 +187,7 @@
     </div>
   </footer>
 
-  <script src="js/store.js"></script>
+  <script src="js/store.js?v=5.0"></script>
   <script src="js/config.js"></script>
   <script src="js/whatsapp.js"></script>
   <script src="js/main.js"></script>

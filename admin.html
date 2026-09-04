@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/variables.css?v=3.2" />
+  <link rel="stylesheet" href="css/admin.css?v=3.2" />
 </head>
 <body class="admin-body">
 
@@ -21,9 +21,9 @@
   <div id="admin-auth-screen" class="admin-auth-container">
     <div class="admin-login-card">
       <div class="admin-login-logo">The Groot Ooty</div>
-      <div class="admin-login-sub">Admin Management Portal</div>
+      <div class="admin-login-sub">Admin Pricing Portal</div>
       <p class="admin-login-desc">
-        Enter the administrative passcode to manage room pricing, availability, and gallery photo assignments.
+        Enter the administrative passcode to manage room and property pricing.
       </p>
 
       <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
@@ -73,15 +73,15 @@
     <header class="admin-nav">
       <div class="admin-nav-brand">
         <a href="index.html" class="admin-nav-logo">The Groot</a>
-        <span class="admin-badge">Admin Panel</span>
+        <span class="admin-badge">Pricing Admin</span>
       </div>
 
       <!-- Navigation Tabs -->
       <nav class="admin-tabs" role="tablist">
         <button class="admin-tab-btn active" data-tab="dashboard" role="tab">Dashboard</button>
         <button class="admin-tab-btn" data-tab="rooms" role="tab">Rooms & Pricing</button>
-        <button class="admin-tab-btn" data-tab="gallery" role="tab">Gallery & Photos</button>
-        <button class="admin-tab-btn" data-tab="settings" role="tab">Property Settings</button>
+        <button class="admin-tab-btn" data-tab="gallery" role="tab">Gallery (Read-Only)</button>
+        <button class="admin-tab-btn" data-tab="settings" role="tab">Property Info (Read-Only)</button>
       </nav>
 
       <!-- Actions -->
@@ -110,19 +110,19 @@
             <div class="admin-stat-sub">Managed accommodations</div>
           </div>
           <div class="admin-stat-card">
-            <div class="admin-stat-label">Available Rooms</div>
-            <div class="admin-stat-value" id="stat-avail-rooms" style="color:#25D366;">4</div>
-            <div class="admin-stat-sub">Active for direct booking</div>
+            <div class="admin-stat-label">Pricing Status</div>
+            <div class="admin-stat-value" style="color:#74C365;">Active</div>
+            <div class="admin-stat-sub">Live synchronized pricing</div>
           </div>
           <div class="admin-stat-card">
-            <div class="admin-stat-label">Unavailable / Sold Out</div>
-            <div class="admin-stat-value" id="stat-unavail-rooms" style="color:#FF5252;">0</div>
-            <div class="admin-stat-sub">Marked as unavailable</div>
+            <div class="admin-stat-label">Currency</div>
+            <div class="admin-stat-value" style="color:#74C365;">₹ INR</div>
+            <div class="admin-stat-sub">Indian Rupee per night</div>
           </div>
           <div class="admin-stat-card">
-            <div class="admin-stat-label">Gallery Photos</div>
-            <div class="admin-stat-value" id="stat-gallery-count">16</div>
-            <div class="admin-stat-sub">Active in public gallery</div>
+            <div class="admin-stat-label">System Mode</div>
+            <div class="admin-stat-value" style="font-size:1.4rem; color:var(--admin-accent-glow); padding-top:6px;">Price Edit Only</div>
+            <div class="admin-stat-sub">Content locked & protected</div>
           </div>
         </div>
 
@@ -130,13 +130,13 @@
         <div class="admin-section">
           <div class="admin-section-header">
             <div>
-              <h2 class="admin-section-title">Live Room Pricing & Status</h2>
+              <h2 class="admin-section-title">Live Room Pricing</h2>
               <p style="font-size:0.85rem; color:var(--admin-text-muted); margin:4px 0 0;">
-                Modifications here immediately update the public Booking and Room listings.
+                Change nightly rates below and click <strong>Save</strong>. Changes immediately update across all public booking and room listings.
               </p>
             </div>
             <button onclick="switchTab('rooms')" class="admin-btn admin-btn-outline">
-              Manage Rooms &rarr;
+              Manage Pricing Cards &rarr;
             </button>
           </div>
 
@@ -153,9 +153,9 @@
         <div class="admin-section">
           <div class="admin-section-header">
             <div>
-              <h2 class="admin-section-title">Room Management</h2>
+              <h2 class="admin-section-title">Room Pricing Management</h2>
               <p style="font-size:0.85rem; color:var(--admin-text-muted); margin:4px 0 0;">
-                Manage prices, availability, descriptions, and assigned photos for the 4 accommodations.
+                Room details and descriptions are locked. Update nightly rates (₹) and save instantly.
               </p>
             </div>
           </div>
@@ -168,20 +168,20 @@
       </div>
 
       <!-- =====================================================
-           TAB 3: GALLERY & PHOTO MANAGEMENT
+           TAB 3: GALLERY & PHOTO (READ-ONLY)
            ===================================================== -->
       <div id="tab-gallery" class="admin-tab-content">
         <div class="admin-section">
           <div class="admin-section-header">
             <div>
-              <h2 class="admin-section-title">Gallery & Room Photo Mapping</h2>
+              <h2 class="admin-section-title">Photo Gallery (Read-Only)</h2>
               <p style="font-size:0.85rem; color:var(--admin-text-muted); margin:4px 0 0;">
-                Assign photos to specific rooms or general property views, and toggle public visibility.
+                🔒 Read-Only: Photography catalogue is managed by system configuration.
               </p>
             </div>
           </div>
 
-          <!-- Gallery Grid -->
+          <!-- Gallery Grid (Read-Only) -->
           <div class="admin-gallery-grid" id="admin-gallery-list">
             <!-- Rendered dynamically by js/admin.js -->
           </div>
@@ -189,59 +189,55 @@
       </div>
 
       <!-- =====================================================
-           TAB 4: PROPERTY & BOOKING SETTINGS
+           TAB 4: PROPERTY INFO (READ-ONLY)
            ===================================================== -->
       <div id="tab-settings" class="admin-tab-content">
         <div class="admin-section" style="max-width:720px;">
           <div class="admin-section-header">
             <div>
-              <h2 class="admin-section-title">Property & Contact Settings</h2>
+              <h2 class="admin-section-title">Property Information (Read-Only)</h2>
               <p style="font-size:0.85rem; color:var(--admin-text-muted); margin:4px 0 0;">
-                Configure contact phone numbers, WhatsApp routing, and stay policies.
+                🔒 Read-Only: Contact numbers, WhatsApp routing, and stay policies are locked to system defaults.
               </p>
             </div>
           </div>
 
-          <form id="admin-settings-form" onsubmit="handleSaveSettings(event)">
+          <form id="admin-settings-form" onsubmit="event.preventDefault()">
             <div class="admin-form-group">
               <label class="admin-label" for="set-whatsapp">WhatsApp Number (For Direct Bookings)</label>
-              <input type="text" id="set-whatsapp" class="admin-input" placeholder="e.g. 916382316323" required />
+              <input type="text" id="set-whatsapp" class="admin-input" readonly disabled style="opacity:0.8; cursor:not-allowed;" />
             </div>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
               <div class="admin-form-group">
                 <label class="admin-label" for="set-phone1">Primary Phone</label>
-                <input type="text" id="set-phone1" class="admin-input" placeholder="6382316323" required />
+                <input type="text" id="set-phone1" class="admin-input" readonly disabled style="opacity:0.8; cursor:not-allowed;" />
               </div>
               <div class="admin-form-group">
                 <label class="admin-label" for="set-phone2">Alternate Phone</label>
-                <input type="text" id="set-phone2" class="admin-input" placeholder="7395965006" />
+                <input type="text" id="set-phone2" class="admin-input" readonly disabled style="opacity:0.8; cursor:not-allowed;" />
               </div>
             </div>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
               <div class="admin-form-group">
                 <label class="admin-label" for="set-checkin">Check-in Time</label>
-                <input type="text" id="set-checkin" class="admin-input" placeholder="12:00 PM" required />
+                <input type="text" id="set-checkin" class="admin-input" readonly disabled style="opacity:0.8; cursor:not-allowed;" />
               </div>
               <div class="admin-form-group">
                 <label class="admin-label" for="set-checkout">Check-out Time</label>
-                <input type="text" id="set-checkout" class="admin-input" placeholder="11:00 AM" required />
+                <input type="text" id="set-checkout" class="admin-input" readonly disabled style="opacity:0.8; cursor:not-allowed;" />
               </div>
             </div>
 
             <div class="admin-form-group">
               <label class="admin-label" for="set-note">Booking Instruction Note</label>
-              <textarea id="set-note" class="admin-textarea" rows="3"></textarea>
+              <textarea id="set-note" class="admin-textarea" rows="3" readonly disabled style="opacity:0.8; cursor:not-allowed;"></textarea>
             </div>
 
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08); flex-wrap:wrap; gap:1rem;">
-              <button type="submit" class="admin-btn admin-btn-primary" style="padding:12px 24px;">
-                💾 Save Property Settings
-              </button>
-              <button type="button" onclick="handleResetDefaults()" class="admin-btn admin-btn-danger">
-                🔄 Reset All Data to Defaults
-              </button>
+            <div style="margin-top:1.5rem; padding:1rem; background:rgba(116,195,101,0.08); border:1px solid rgba(116,195,101,0.2); border-radius:8px; font-size:0.85rem; color:var(--admin-accent-glow); display:flex; align-items:center; gap:8px;">
+              <span>🔒</span>
+              <span>All property settings and contact channels are locked to ensure brand consistency.</span>
             </div>
           </form>
         </div>
@@ -251,53 +247,33 @@
   </div>
 
   <!-- =========================================================
-       3. EDIT ROOM MODAL
+       3. EDIT ROOM PRICE MODAL (PRICE ONLY)
        ========================================================= -->
   <div id="admin-room-modal" class="admin-modal" role="dialog" aria-modal="true">
     <div class="admin-modal-box">
       <div class="admin-modal-header">
-        <h3 class="admin-modal-title" id="modal-room-title">Edit Room Details</h3>
+        <h3 class="admin-modal-title" id="modal-room-title">Edit Room Price</h3>
         <button onclick="closeRoomModal()" class="admin-modal-close">&times;</button>
       </div>
       <form id="admin-room-edit-form" onsubmit="handleSaveRoomModal(event)">
         <input type="hidden" id="modal-room-id" />
         
         <div class="admin-form-group">
-          <label class="admin-label" for="modal-room-name">Room Name</label>
-          <input type="text" id="modal-room-name" class="admin-input" readonly style="opacity:0.75;" />
+          <label class="admin-label" for="modal-room-name">Accommodation (Read-Only)</label>
+          <input type="text" id="modal-room-name" class="admin-input" readonly disabled style="opacity:0.85; cursor:not-allowed;" />
         </div>
 
         <div class="admin-form-group">
-          <label class="admin-label" for="modal-room-price">Price per Night (₹)</label>
-          <input type="number" id="modal-room-price" class="admin-input" required min="0" />
-        </div>
-
-        <div class="admin-form-group">
-          <label class="admin-label" for="modal-room-status">Availability Status</label>
-          <select id="modal-room-status" class="admin-select">
-            <option value="available">Available for Booking</option>
-            <option value="unavailable">Unavailable / Sold Out</option>
-          </select>
-        </div>
-
-        <div class="admin-form-group">
-          <label class="admin-label" for="modal-room-tagline">Tagline</label>
-          <input type="text" id="modal-room-tagline" class="admin-input" required />
-        </div>
-
-        <div class="admin-form-group">
-          <label class="admin-label" for="modal-room-desc">Short Description</label>
-          <textarea id="modal-room-desc" class="admin-textarea" rows="3" required></textarea>
-        </div>
-
-        <div class="admin-form-group">
-          <label class="admin-label" for="modal-room-longdesc">Long Description</label>
-          <textarea id="modal-room-longdesc" class="admin-textarea" rows="4"></textarea>
+          <label class="admin-label" for="modal-room-price">Price per Night (₹ INR) — Editable</label>
+          <input type="number" id="modal-room-price" class="admin-input" required min="0" step="100" style="font-size:1.2rem; font-weight:700; color:var(--admin-accent-glow);" />
+          <p style="font-size:0.75rem; color:var(--admin-text-muted); margin-top:4px;">
+            Enter the updated nightly tariff. Saving updates the booking engine and live room cards.
+          </p>
         </div>
 
         <div style="display:flex; justify-content:flex-end; gap:1rem; margin-top:1.5rem;">
           <button type="button" onclick="closeRoomModal()" class="admin-btn admin-btn-outline">Cancel</button>
-          <button type="submit" class="admin-btn admin-btn-primary">Save Room Changes</button>
+          <button type="submit" class="admin-btn admin-btn-primary">💾 Save New Price</button>
         </div>
       </form>
     </div>
@@ -306,10 +282,10 @@
   <!-- Toast Notification -->
   <div id="admin-toast" class="admin-toast">
     <span id="toast-icon">✓</span>
-    <span id="toast-msg">Settings saved successfully.</span>
+    <span id="toast-msg">Price saved successfully.</span>
   </div>
 
-  <script src="js/store.js"></script>
-  <script src="js/admin.js"></script>
+  <script src="js/store.js?v=5.0"></script>
+  <script src="js/admin.js?v=4.0"></script>
 </body>
 </html>
